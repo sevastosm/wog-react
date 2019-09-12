@@ -1,6 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
-import TopMenu from "./ui/TopMenu";
+import TopMenu from "./components/TopMenu";
+import SeriesButtons from "./components/SeriesButtons";
+import Playlist from "./components/Playlist";
+
 import "./App.css";
 
 function App() {
@@ -11,19 +13,22 @@ function App() {
       </header>
       <main style={{ marginTop: "50px" }}>
         <div>
-          <div style={{ height: "100vh" }} class="d-flex flex-wrap">
+          <div style={{ height: "100vh" }} className="d-flex flex-wrap">
             <div
-              class="col-lg-8 d-flex flex-column"
+              className="col-lg-8 d-flex flex-column"
               style={{ background: "red" }}
             >
-              <div>Buttons</div>
+              <div>Player</div>
               <div>List</div>
             </div>
             <div
-              class="col-lg-4 d-flex flex-column"
+              className="col-lg-4 d-flex flex-column"
               style={{ background: "green" }}
             >
-              <div>Buttons</div>
+              <SeriesButtons />
+              <hr />
+              <Playlist />
+
               <div>List</div>
             </div>
           </div>
