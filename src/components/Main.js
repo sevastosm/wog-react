@@ -8,48 +8,46 @@ let list = GetRecent.Data;
 
 const Main = () => {
   return (
-    <main className id="page">
-      <div className="m-auto d-flex row">
-        {/* Left column */}
-        <div className="col-lg-8 col-sm-12 " style={{ paddingTop: ".4em" }}>
-          <div id="playerWell">
-            {/* Start of Player */}
-            <div
-              style={{
-                width: "100%",
-                height: "776px",
-                background: "yellowgreen"
-              }}
-            >
-              <h1>Player</h1>
-            </div>
-            {/* End of Player */}
+    <div className="m-auto d-flex row">
+      {/* Left column */}
+      <div className="col-lg-8 col-sm-12 " style={{ paddingTop: ".4em" }}>
+        <div id="playerWell">
+          {/* Start of Player */}
+          <div
+            style={{
+              width: "100%",
+              height: "776px",
+              background: "yellowgreen"
+            }}
+          >
+            <h1>Player</h1>
           </div>
-          <div id="ut-player" />
-
-          {/* Main tabs */}
-          <MainTabs />
-          {/* Main tabs */}
+          {/* End of Player */}
         </div>
-        {/* Left column */}
+        <div id="ut-player" />
 
-        <div className="col-lg-4  col-sm-12">
-          <div id="cColumn" className="right-banners">
-            {/* SerriesButtons */}
-            <SeriesButtons />
-            {/* SerriesButtons */}
-          </div>
-          {/* RecentVideosTabs */}
-          <div id="right-tabs">
-            <Playlist />
-          </div>
+        {/* Main tabs */}
+        <MainTabs />
+        {/* Main tabs */}
+      </div>
+      {/* Left column */}
 
-          {/* Pager */}
-          <div className="datapager"></div>
+      <div className="col-lg-4  col-sm-12">
+        <div id="cColumn" className="right-banners">
+          {/* SerriesButtons */}
+          <SeriesButtons />
+          {/* SerriesButtons */}
         </div>
         {/* RecentVideosTabs */}
+        <div id="right-tabs">
+          <Playlist />
+        </div>
+
+        {/* Pager */}
+        <div className="datapager"></div>
       </div>
-    </main>
+      {/* RecentVideosTabs */}
+    </div>
   );
 };
 export default Main;

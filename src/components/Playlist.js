@@ -4,7 +4,6 @@ import { GetRecent } from "../mocks/mocks";
 let list = GetRecent.Data;
 
 const Playlist = () => {
-  console.log(list);
   return (
     <div
       cellSpacing={0}
@@ -15,7 +14,6 @@ const Playlist = () => {
     >
       <h2 style={{ borderBottom: "1px solid #0000001a" }}>Recent serries</h2>
       {list.map(listItem => {
-        console.log(listItem);
         return (
           <div key={listItem.RecordingID}>
             <div className="recording-row d-flex flex-row mb-3 data0 ">

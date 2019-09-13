@@ -1,5 +1,6 @@
 import React from "react";
 import { GetSeries } from "../mocks/mocks";
+import { AppContext } from "./AppContext";
 
 let customList = [];
 let list = GetSeries.Data;
@@ -25,38 +26,36 @@ list.map(serie => {
 });
 
 const SeriesButtons = () => {
-  console.log(list);
   return (
-    <div className="d-flex">
-      <div className="d-flex flex-column w-100">
-        {customList.map(listItem => {
-          console.log(listItem);
-          return (
-            <div key={listItem.ID} className="adv d-flex">
-              <a
-                href="javascript:__doPostBack('ctl00$main$adv1','')"
-                onclick="_setRecordingsSeries('serieid=110');return false;"
-                id="ctl00_main_adv1"
-              >
-                Button Series
+    <AppContext.Consumer>
+      {({ tonggleAllSeries }) => (
+        <div className="d-flex">
+          <div className="d-flex flex-column w-100">
+            {customList.map(listItem => {
+              return (
+                <div key={listItem.ID} className="adv d-flex">
+                  <a
+                    href="javascript:__doPostBack('ctl00$main$adv1','')"
+                    id="ctl00_main_adv1"
+                  >
+                    Button Series
+                    {/* {listItem.Name} */}
+                  </a>
+                </div>
+              );
+            })}
+            {/* More Series */}
+            <div className="adv d-flex">
+              <a onClick={tonggleAllSeries} id="ctl00_main_adv1">
+                More Series
                 {/* {listItem.Name} */}
               </a>
             </div>
-          );
-        })}
-        {/* More Series */}
-        <div className="adv d-flex">
-          <a
-            href="javascript:__doPostBack('ctl00$main$adv1','')"
-            onclick="_setRecordingsSeries('serieid=110');return false;"
-            id="ctl00_main_adv1"
-          >
-            More Series
-            {/* {listItem.Name} */}
-          </a>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </AppContext.Consumer>
   );
 };
+
 export default SeriesButtons;
