@@ -184,9 +184,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Judges/10_Judges_ie1_ie20_is1_is3_GK_09_09_2019.mp3",
       MP3PathId: "52369",
       Rates: [150],
-      RecordingDate: "2019-09-09T00:00:00",
+      RecordingDate: "2019-09-09",
       RecordingSubject: "Κριταί ιε' 1-20 & ις' 1-3",
-      Subject: "<b>Μάθημα</b>"
+      Subject: "Μάθημα"
     },
     {
       RecordingID: 52351,
@@ -199,10 +199,10 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/2019/37a_Micah_z1_z20_GK_08_09_2019.mp3",
       MP3PathId: "52355",
       Rates: [150],
-      RecordingDate: "2019-09-08T00:00:00",
+      RecordingDate: "2019-09-08",
       RecordingSubject: "1) Μιχαίας ζ' 1-20",
       Subject:
-        '<b>Κυριακάτικο Κήρυγμα</b><br /><i>"Βεβαίως ευλογών θέλω σε ευλογήσει και πληθύνων θέλω σε πληθύνει."</i>'
+        'Κυριακάτικο Κήρυγμα"Βεβαίως ευλογών θέλω σε ευλογήσει και πληθύνων θέλω σε πληθύνει."'
     },
     {
       RecordingID: 52356,
@@ -215,10 +215,10 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/2019/37b_Romans_h18_h39_GK_08_09_2019.mp3",
       MP3PathId: "52360",
       Rates: [150],
-      RecordingDate: "2019-09-08T00:00:00",
+      RecordingDate: "2019-09-08",
       RecordingSubject: "2) προς Ρωμαίους η' 18-39",
       Subject:
-        '<b>Κυριακάτικο Κήρυγμα</b><br /><i>"Βεβαίως ευλογών θέλω σε ευλογήσει και πληθύνων θέλω σε πληθύνει."</i>'
+        'Κυριακάτικο Κήρυγμα"Βεβαίως ευλογών θέλω σε ευλογήσει και πληθύνων θέλω σε πληθύνει."'
     },
     {
       RecordingID: 52349,
@@ -231,9 +231,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Other/2019/36_Matthew_th1_th9_th18_th38_WZ_06_09_2019.mp3",
       MP3PathId: "52349",
       Rates: [150],
-      RecordingDate: "2019-09-06T00:00:00",
+      RecordingDate: "2019-09-06",
       RecordingSubject: "κατά Ματθαίον θ' 1-9 & θ' 18-38 (Wissam Zein)",
-      Subject: "<b>Μηνύματα αδελφών </b>"
+      Subject: "Μηνύματα αδελφών "
     },
     {
       RecordingID: 52340,
@@ -246,9 +246,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Other/2019/36_Daniel_c16_c30_KD_05_09_2019.mp3",
       MP3PathId: "52340",
       Rates: [150],
-      RecordingDate: "2019-09-05T00:00:00",
+      RecordingDate: "2019-09-05",
       RecordingSubject: "Δανιήλ γ' 16-30 (Κώστας Δραγκιώτης)",
-      Subject: "<b>Μηνύματα αδελφών </b>"
+      Subject: "Μηνύματα αδελφών "
     },
     {
       RecordingID: 52335,
@@ -261,9 +261,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Other/2019/36_Luke_ie11_ie32_gd_02_09_2019.mp3",
       MP3PathId: "52335",
       Rates: [150],
-      RecordingDate: "2019-09-02T00:00:00",
+      RecordingDate: "2019-09-02",
       RecordingSubject: "κατά Λουκάν ιε' 11-32 (Γεώργιος Δούκας)",
-      Subject: "<b>Μηνύματα αδελφών </b>"
+      Subject: "Μηνύματα αδελφών "
     },
     {
       RecordingID: 52325,
@@ -276,10 +276,10 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/2019/36a_Job_lb1_lb22_GK_01_09_2019.mp3",
       MP3PathId: "52325",
       Rates: [150],
-      RecordingDate: "2019-09-01T00:00:00",
+      RecordingDate: "2019-09-01",
       RecordingSubject: "1) Ιωβ λβ' 1-22",
       Subject:
-        '<b>Κυριακάτικο Κήρυγμα</b><br /><i>"Σήμερα, για να μην ταλαιπωρηθούμε, να ομολογήσουμε ότι σε πολλά φταίμε."</i>'
+        'Κυριακάτικο Κήρυγμα"Σήμερα, για να μην ταλαιπωρηθούμε, να ομολογήσουμε ότι σε πολλά φταίμε."'
     },
     {
       RecordingID: 52330,
@@ -292,10 +292,10 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/2019/36b_1Peter_e1_e14_GK_01_09_2019.mp3",
       MP3PathId: "52330",
       Rates: [150],
-      RecordingDate: "2019-09-01T00:00:00",
+      RecordingDate: "2019-09-01",
       RecordingSubject: "2) Α' Πέτρου ε' 1-14",
       Subject:
-        '<b>Κυριακάτικο Κήρυγμα</b><br /><i>"Σήμερα, για να μην ταλαιπωρηθούμε, να ομολογήσουμε ότι σε πολλά φταίμε."</i>'
+        'Κυριακάτικο Κήρυγμα"Σήμερα, για να μην ταλαιπωρηθούμε, να ομολογήσουμε ότι σε πολλά φταίμε."'
     },
     {
       RecordingID: 52320,
@@ -308,9 +308,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Other/2019/35_Matthew_ith1_ith30_GK_30_08_2019.mp3",
       MP3PathId: "52320",
       Rates: [150],
-      RecordingDate: "2019-08-30T00:00:00",
+      RecordingDate: "2019-08-30",
       RecordingSubject: "κατά Ματθαίον ιθ' 1-30 (Γεώργιος Κλουβάτος)",
-      Subject: "<b>Μηνύματα αδελφών </b>"
+      Subject: "Μηνύματα αδελφών "
     },
     {
       RecordingID: 52315,
@@ -323,9 +323,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Hebrews2018/26_Hebrews2018_ib12_ib29_GK_29_08_2019.mp3",
       MP3PathId: "52315",
       Rates: [150],
-      RecordingDate: "2019-08-29T00:00:00",
+      RecordingDate: "2019-08-29",
       RecordingSubject: "προς Εβραίους ιβ' 12-29",
-      Subject: "<b>Μάθημα</b>"
+      Subject: "Μάθημα"
     },
     {
       RecordingID: 52310,
@@ -338,9 +338,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Judges/09_Judges_ic1_ic20_GK_26_08_2019.mp3",
       MP3PathId: "52310",
       Rates: [150],
-      RecordingDate: "2019-08-26T00:00:00",
+      RecordingDate: "2019-08-26",
       RecordingSubject: "Κριταί ιγ' 1-20",
-      Subject: "<b>Μάθημα</b>"
+      Subject: "Μάθημα"
     },
     {
       RecordingID: 52300,
@@ -353,10 +353,10 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/2019/35a_Isaiah_ne1_ne5_GK_25_08_2019.mp3",
       MP3PathId: "52300",
       Rates: [150],
-      RecordingDate: "2019-08-25T00:00:00",
+      RecordingDate: "2019-08-25",
       RecordingSubject: "1) Ησαΐας νε' 1-5",
       Subject:
-        '<b>Κυριακάτικο Κήρυγμα</b><br /><i>"Πρόσκληση για όσους διψάνε για την βασιλεία των ουρανών."</i>'
+        'Κυριακάτικο Κήρυγμα"Πρόσκληση για όσους διψάνε για την βασιλεία των ουρανών."'
     },
     {
       RecordingID: 52305,
@@ -369,10 +369,10 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/2019/35b_John_d1_d42_GK_25_08_2019.mp3",
       MP3PathId: "52305",
       Rates: [150],
-      RecordingDate: "2019-08-25T00:00:00",
+      RecordingDate: "2019-08-25",
       RecordingSubject: "2) κατά Ιωάννην δ' 1-42",
       Subject:
-        '<b>Κυριακάτικο Κήρυγμα</b><br /><i>"Πρόσκληση για όσους διψάνε για την βασιλεία των ουρανών."</i>'
+        'Κυριακάτικο Κήρυγμα"Πρόσκληση για όσους διψάνε για την βασιλεία των ουρανών."'
     },
     {
       RecordingID: 52295,
@@ -385,9 +385,9 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Other/2019/34_Message_FragkiadoulisIoannis_23_08_2019.mp3",
       MP3PathId: "52295",
       Rates: [150],
-      RecordingDate: "2019-08-23T00:00:00",
+      RecordingDate: "2019-08-23",
       RecordingSubject: "Μήνυμα αδ. Φραγκιαδούλη Ιωάννη",
-      Subject: "<b>Μηνύματα αδελφών </b>"
+      Subject: "Μηνύματα αδελφών "
     },
     {
       RecordingID: 52290,
@@ -400,16 +400,16 @@ export const GetRecent = {
         "http://wordofgod.ddns.net/GR/Audio/Hebrews2018/25_Hebrews2018_ib11_ib14_GK_22_08_2019.mp3",
       MP3PathId: "52290",
       Rates: [150],
-      RecordingDate: "2019-08-22T00:00:00",
+      RecordingDate: "2019-08-22",
       RecordingSubject: "προς Εβραίους ιβ' 11-14",
-      Subject: "<b>Μάθημα</b>"
+      Subject: "Μάθημα"
     }
   ],
   success: true
 };
 export const GetProgram = {
   Data: {
-    datesAndName: [{ date: "2019-09-12T00:00:00", dateName: "Πέμπτη" }],
+    datesAndName: [{ date: "2019-09-12", dateName: "Πέμπτη" }],
     timetable: [
       {
         date: "2019-09-12T13:00:00",
@@ -434,7 +434,7 @@ export const GetProgram = {
       {
         date: "2019-09-12T19:50:00",
         text:
-          '<b>Ωδές Σωτηρίας</b>  - (Εκπομπή 49η) <br>"Με την εσχατη σάλπιγγα..." - Καλεσμένη: Σεραφεία Κορτέση'
+          'Ωδές Σωτηρίας  - (Εκπομπή 49η) <br>"Με την εσχατη σάλπιγγα..." - Καλεσμένη: Σεραφεία Κορτέση'
       },
       { date: "2019-09-12T20:40:00", text: "Ζωντανή μετάδοση" },
       {
@@ -444,7 +444,7 @@ export const GetProgram = {
       {
         date: "2019-09-12T22:10:00",
         text:
-          "<b>Απαντήσεις μέσα από το Λόγο του Θεού:</b><br>1. Τι είναι αυτό που κάνει ο άνθρωπος ώστε να δεσμεύεται με δεσμά. Αυτά τα δεσμά μήπως έχουν σχέση με ακάθαρτα πνεύματα; <br>2. Πιστεύτε ότι η αναγνώριση της Ιερουσαλήμ ως πρωτεύουσα του Ισραήλ από την Αμερική είναι σημείο των εσχάτων καιρών ή ένα απλό γεγονός άνευ σημασίας και προσοχής; <br>3. Μπορούν οι νεκροί να έρθουν στο όνειρο μας σταλμένοι από τον Κύριον για να φέρουν κάποιο μήνυμα;"
+          "Απαντήσεις μέσα από το Λόγο του Θεού:<br>1. Τι είναι αυτό που κάνει ο άνθρωπος ώστε να δεσμεύεται με δεσμά. Αυτά τα δεσμά μήπως έχουν σχέση με ακάθαρτα πνεύματα; <br>2. Πιστεύτε ότι η αναγνώριση της Ιερουσαλήμ ως πρωτεύουσα του Ισραήλ από την Αμερική είναι σημείο των εσχάτων καιρών ή ένα απλό γεγονός άνευ σημασίας και προσοχής; <br>3. Μπορούν οι νεκροί να έρθουν στο όνειρο μας σταλμένοι από τον Κύριον για να φέρουν κάποιο μήνυμα;"
       },
       { date: "2019-09-12T23:00:00", text: "Ομολογία Μιχάλη & Λίλης Λάνο" }
     ]

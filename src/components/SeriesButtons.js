@@ -27,15 +27,35 @@ list.map(serie => {
 const SeriesButtons = () => {
   console.log(list);
   return (
-    <div>
-      {customList.map(listItem => {
-        console.log(listItem);
-        return (
-          <div key={listItem.ID}>
-            <h3>{listItem.Name}</h3>
-          </div>
-        );
-      })}
+    <div className="d-flex">
+      <div className="d-flex flex-column w-100">
+        {customList.map(listItem => {
+          console.log(listItem);
+          return (
+            <div key={listItem.ID} className="adv d-flex">
+              <a
+                href="javascript:__doPostBack('ctl00$main$adv1','')"
+                onclick="_setRecordingsSeries('serieid=110');return false;"
+                id="ctl00_main_adv1"
+              >
+                Button Series
+                {/* {listItem.Name} */}
+              </a>
+            </div>
+          );
+        })}
+        {/* More Series */}
+        <div className="adv d-flex">
+          <a
+            href="javascript:__doPostBack('ctl00$main$adv1','')"
+            onclick="_setRecordingsSeries('serieid=110');return false;"
+            id="ctl00_main_adv1"
+          >
+            More Series
+            {/* {listItem.Name} */}
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
