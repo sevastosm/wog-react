@@ -24,7 +24,7 @@ export default class TopMenu extends React.Component {
       <header>
         <div className="navbar navbar-expand-md fixed-top">
           <div className="header-item d-flex  flex-grow-1">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               <img
                 src={Logo}
                 className="rounded float-left img-fluid"

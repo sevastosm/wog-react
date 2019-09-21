@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Playlist from "./Playlist";
 import { GetSeries } from "../mocks/mocks";
 import { AppContext } from "./AppContext";
-import {UncontrolledCollapse, Collapse, Button, CardBody, Card } from 'reactstrap';
-
+import {UncontrolledCollapse} from 'reactstrap';
+import { ReactComponent as Arrow} from "../Assets/Header/Arrow.svg"
 
 let customListist = GetSeries.Data;
 
@@ -53,8 +53,10 @@ let customListist = GetSeries.Data;
       return (
     <AppContext.Consumer>
       {({ tonggleAllSeries }) => (
-        <div> <h2 style={{ borderBottom: "1px solid #0000001a" }}>All serries</h2>
-        <div className="d-flex flex-wrap" >
+       <div > <div className="d-flex" style={{ borderBottom: "1px solid #0000001a",padding:'15px 25px',alignItems:'center' }}>
+           <div className={'btn1 d-flex '} style={{maxWidth:'80px',padding:'20px'}} onClick={tonggleAllSeries}><Arrow/></div>
+            <h2 style={{flexGrow:'1'}} >All serries</h2></div>
+        <div className="d-flex flex-wrap mt-2" >
           <div className="d-flex right-banners col-lg-3 col-sm-12">
           <div className="d-flex flex-column  w-100">
             {customListist.map(listItem => {
@@ -76,7 +78,7 @@ let customListist = GetSeries.Data;
 
 <div className="col-lg-9 col-sm-12">
           <Playlist />
-        <button onClick={tonggleAllSeries}>Close</button>
+       
 
         </div></div>
         </div>
