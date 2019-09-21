@@ -5,7 +5,6 @@ import "./index.css";
 import "./old.css";
 
 import App from "./App";
-import Main from "./main";
 
 import * as serviceWorker from "./serviceWorker";
 

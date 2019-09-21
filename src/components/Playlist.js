@@ -12,7 +12,7 @@ const Playlist = () => {
       width="100%"
       className="recentsermonstable"
     >
-      <h2 style={{ borderBottom: "1px solid #0000001a" }}>Recent serries</h2>
+     
       {list.map(listItem => {
         return (
           <div key={listItem.RecordingID}>
@@ -27,7 +27,7 @@ const Playlist = () => {
                     >
                       <img
                         id="ctl00_main_tabs2_tRcnt_ucRecentRecs_lvSrmns_ctrl0_youTubeThumb"
-                        // src="https://img.youtube.com/vi/fONWDMlq8yQ/1.jpg"
+                       src={listItem.YouTubeThumb}
                         style={{ borderWidth: "0px" }}
                       />
                     </a>

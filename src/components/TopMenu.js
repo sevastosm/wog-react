@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import Logo from "../Assets/Header/logo.svg" 
+
+import SpeakersAutoComplete from "./SpeakersAutoComplete"
+
 
 export default class TopMenu extends React.Component {
   constructor(props) {
@@ -19,7 +10,8 @@ export default class TopMenu extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isSearchOpen:false
     };
   }
   toggle() {
@@ -31,10 +23,10 @@ export default class TopMenu extends React.Component {
     return (
       <header>
         <div className="navbar navbar-expand-md fixed-top">
-          <div className="header-item  flex-grow-1">
+          <div className="header-item d-flex  flex-grow-1">
             <a className="navbar-brand" href="#">
               <img
-                src="../images/fav/logo-wogsvg.svg"
+                src={Logo}
                 className="rounded float-left img-fluid"
                 alt="..."
               />
@@ -44,7 +36,9 @@ export default class TopMenu extends React.Component {
             id="mainSearchcontainer"
             className="header-item  flex-grow-1 d-flex"
           >
-            <input id="mainSearch" type="text" name="name" />
+
+            <SpeakersAutoComplete />
+            
             <a id="searchHead" onclick="runHeadSearch()">
               <div className="main-icon" data-type="svg">
                 <svg

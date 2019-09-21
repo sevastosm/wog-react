@@ -3,6 +3,7 @@ import { GetRecent } from "../mocks/mocks";
 import SeriesButtons from "./SeriesButtons";
 import Playlist from "./Playlist";
 import MainTabs from "./MainTabs";
+import Videoplayer from "./VideoPlayer"
 
 let list = GetRecent.Data;
 
@@ -11,20 +12,9 @@ const Main = () => {
     <div className="m-auto d-flex row">
       {/* Left column */}
       <div className="col-lg-8 col-sm-12 " style={{ paddingTop: ".4em" }}>
-        <div id="playerWell">
-          {/* Start of Player */}
-          <div
-            style={{
-              width: "100%",
-              height: "776px",
-              background: "yellowgreen"
-            }}
-          >
-            <h1>Player</h1>
-          </div>
-          {/* End of Player */}
-        </div>
-        <div id="ut-player" />
+        <div/>
+        {/* Video player */}
+           <Videoplayer/>
 
         {/* Main tabs */}
         <MainTabs />
@@ -40,6 +30,7 @@ const Main = () => {
         </div>
         {/* RecentVideosTabs */}
         <div id="right-tabs">
+        <h2 style={{ borderBottom: "1px solid #0000001a" }}>Recent serries</h2>
           <Playlist />
         </div>
 

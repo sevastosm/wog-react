@@ -23,8 +23,16 @@ html {
   color: #193a49;
 }
 
-header div {
+header > div {
   background-color: #193d4d;
+}
+div#mainSearchcontainer{
+  align-items: center;
+}
+#mainSearch {
+  min-width: 400px;
+  background: #fff;
+  border-radius: 5px; 
 }
 .footer {
   position: absolute;
@@ -88,7 +96,7 @@ body > .container {
 }
 
 #page {
-  margin-top: 4.5rem;
+  margin-top: 6.5rem;
 }
 
 code {
@@ -209,6 +217,7 @@ iframe#ifrProgramData {
   text-transform: capitalize;
   flex-grow: 1;
   align-items: center;
+  max-height: 40px
 }
 
 .recentsermonstable .adv {
@@ -258,11 +267,6 @@ iframe#ifrProgramData {
   margin-bottom: 0.2em;
 }
 
-.adv + div {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-}
 
 .recording-date {
   font-weight: bold;
@@ -273,6 +277,11 @@ iframe#ifrProgramData {
   text-transform: capitalize;
 }
 
+
+#ut-player {
+  width: 100%;
+  height: 43.5em;
+}
 /***Search box header master */
 
 /*#mainSearch { width: 7em; box-sizing: border-box; border: navajowhite; border-radius: 4px; font-size: 16px; background-image: url(../images/svg/search.svg); background-position: .2em; background-repeat: no-repeat; padding: 0px 2em; -webkit-transition: width 0.4s ease-in-out; transition: width 0.4s ease-in-out; background-size: 17px; }*/

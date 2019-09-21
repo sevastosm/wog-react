@@ -35,11 +35,12 @@ const SeriesButtons = () => {
               return (
                 <div key={listItem.ID} className="adv d-flex">
                   <a
-                    href="javascript:__doPostBack('ctl00$main$adv1','')"
+                    href=""
                     id="ctl00_main_adv1"
                   >
-                    Button Series
-                    {/* {listItem.Name} */}
+                    {listItem.Name} 
+                   
+
                   </a>
                 </div>
               );
@@ -47,7 +48,7 @@ const SeriesButtons = () => {
             {/* More Series */}
             <div className="adv d-flex">
               <a onClick={tonggleAllSeries} id="ctl00_main_adv1">
-                More Series
+              All Series
                 {/* {listItem.Name} */}
               </a>
             </div>

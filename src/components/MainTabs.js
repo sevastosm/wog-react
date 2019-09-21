@@ -1,4 +1,5 @@
 import React from "react";
+import Program from "./Program"
 import {
   TabContent,
   TabPane,
@@ -67,7 +68,7 @@ export default class MainTabs extends React.Component {
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
-                <h4>Tab 2 Contents</h4>
+              <Program/>
               </Col>
             </Row>
           </TabPane>
