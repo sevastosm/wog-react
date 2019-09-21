@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import Playlist from "./Playlist";
 import { GetSeries } from "../mocks/mocks";
 import { AppContext } from "./AppContext";
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import {UncontrolledCollapse, Collapse, Button, CardBody, Card } from 'reactstrap';
 
 
 let customListist = GetSeries.Data;
+
+
 
 
   class AllSeries extends Component {
@@ -18,6 +20,35 @@ let customListist = GetSeries.Data;
     toggle=()=> {
       this.setState(state => ({ collapse: !state.collapse }));
     }
+
+    // If serries has childern
+
+    multiSerries =(listItem)=>{
+
+    
+     return (<div>
+        <div key={listItem.ID} id={listItem.Name+listItem.ID}  className="adv d-flex">
+                        <a
+                          id="ctl00_main_adv1"
+                        >
+                          {listItem.Name} 
+                        </a>
+                      </div>
+       <UncontrolledCollapse style={{padding: '4px 0px'}}  toggler={'#'+listItem.Name+listItem.ID}>
+       {listItem.Series.map(listItem => {
+                    return   <div key={listItem.ID} className="adv d-flex">
+                    <a
+                      id="ctl00_main_adv1"
+                    >
+                      {listItem.Name} 
+                    </a>
+       </div>})}
+                  </UncontrolledCollapse >
+                    </div>)
+    
+    }
+  
+
     render() {
       return (
     <AppContext.Consumer>
@@ -28,25 +59,8 @@ let customListist = GetSeries.Data;
           <div className="d-flex flex-column  w-100">
             {customListist.map(listItem => {
               return (
-                listItem.Series? (<div>
-  <div key={listItem.ID} onClick={this.toggle} className="adv d-flex">
-                  <a
-                    id="ctl00_main_adv1"
-                  >
-                    {listItem.Name} 
-                  </a>
-                </div>
-
- {listItem.Series.map(listItem => {
-              return  <Collapse isOpen={this.state.collapse}>  <div key={listItem.ID} className="adv d-flex">
-              <a
-                id="ctl00_main_adv1"
-              >
-                {listItem.Name} 
-              </a>
-            </div> </Collapse>})
- }
-              </div>):(
+                   // If serries has childern
+                listItem.Series? this.multiSerries(listItem):(
                 <div key={listItem.ID} className="adv d-flex">
                   <a
                     id="ctl00_main_adv1"
