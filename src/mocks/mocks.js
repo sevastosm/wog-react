@@ -451,3 +451,13 @@ export const GetProgram = {
   },
   success: true
 };
+
+export const options = [
+  { value: '1', label: 'Κοροβέσης Γιώργος' },
+  { value: '2', label: 'Wissam Zein' },
+  { value: '3', label: 'Βασίλης Καβίδας' },
+  { value: '4', label: 'Βάιος Κωστέλλος' },
+  { value: '5', label: 'Χάρης Καραγιάννης' },
+
+
+];

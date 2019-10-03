@@ -15,11 +15,26 @@ class App extends React.Component {
         allSeriesOpen: !this.state.allSeriesOpen
       });
     };
-
-    this.state = {
-      allSeriesOpen: false,
-      tonggleAllSeries: this.tonggleAllSeries
+    this.setSelectedVideo = (videoId) => {
+      this.setState({
+        selectedVideo: videoId
+      });
     };
+
+    this.actions={
+      tonggleAllSeries: this.tonggleAllSeries,
+      setSelectedVideo:this.setSelectedVideo
+    }
+
+    this.state =    
+    {data:{
+      allSeriesOpen: false,
+      setSelectedVideo:''
+    },actions: {
+    tonggleAllSeries: this.tonggleAllSeries,
+
+  }}
+
   }
 
   render() {

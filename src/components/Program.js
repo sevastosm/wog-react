@@ -9,7 +9,7 @@ let list = GetProgram.Data;
 const Program = () => {
   return (
     <AppContext.Consumer>
-      {({ tonggleAllSeries }) => (
+      {(appState) => (
         <div className="d-flex">
 
           <div className="d-flex flex-column w-100">

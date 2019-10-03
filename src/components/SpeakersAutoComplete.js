@@ -1,36 +1,178 @@
 import React from 'react';
-import Select from 'react-select';
+import deburr from 'lodash/deburr';
+import Autosuggest from 'react-autosuggest';
+import match from 'autosuggest-highlight/match';
+import parse from 'autosuggest-highlight/parse';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import MenuItem from '@material-ui/core/MenuItem';
+import Popper from '@material-ui/core/Popper';
+import { makeStyles } from '@material-ui/core/styles';
 
-const options = [
-  { value: '1', label: 'Κοροβέσης Γιώργος' },
-  { value: '2', label: 'Wissam Zein' },
-  { value: '3', label: 'Βασίλης Καβίδας' },
-  { value: '4', label: 'Βάιος Κωστέλλος' },
-  { value: '5', label: 'Χάρης Καραγιάννης' },
-
-
+const suggestions = [
+  { label: 'Κοροβέσης Γιώργος' },
+  { label: 'Wissam Zein' },
+  { label: 'Βασίλης Καβίδας' },
+  { label: 'Βάιος Κωστέλλος' },
+  { label: 'Χάρης Καραγιάννης' },
 ];
 
-class SpeakersAutoComplete extends React.Component {
-  state = {
-    selectedOption: null,
-    menuIsOpen:false
-  };
-  handleChange = selectedOption => {
-    this.setState({ selectedOption:selectedOption,menuIsOpen:true });
-    console.log(`Option selected:`, selectedOption);
-  };
-  render() {
-    const { selectedOption } = this.state;
+function renderInputComponent(inputProps) {
+  const { classes, inputRef = () => {}, ref, ...other } = inputProps;
 
-    return (
-      <Select id="mainSearch"
-        value={selectedOption}
-        onChange={this.handleChange}
-        options={options}
-        placeholder ={'Select Speaker '}
-      />
-    );
-  }
+  return (
+    <TextField
+      fullWidth
+      InputProps={{
+        inputRef: node => {
+          ref(node);
+          inputRef(node);
+        },
+        classes: {
+          input: classes.input,
+        },
+      }}
+      {...other}
+    />
+  );
 }
-export default SpeakersAutoComplete
+
+function renderSuggestion(suggestion, { query, isHighlighted }) {
+  const matches = match(suggestion.label, query);
+  const parts = parse(suggestion.label, matches);
+
+  return (
+    <MenuItem selected={isHighlighted} component="div">
+      <div>
+        {parts.map(part => (
+          <span key={part.text} style={{ fontWeight: part.highlight ? 500 : 400 }}>
+            {part.text}
+          </span>
+        ))}
+      </div>
+    </MenuItem>
+  );
+}
+
+function getSuggestions(value) {
+  const inputValue = deburr(value.trim()).toLowerCase();
+  const inputLength = inputValue.length;
+  let count = 0;
+
+  return inputLength === 0
+    ? []
+    : suggestions.filter(suggestion => {
+        const keep =
+          count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
+
+        if (keep) {
+          count += 1;
+        }
+
+        return keep;
+      });
+}
+
+function getSuggestionValue(suggestion) {
+  return suggestion.label;
+}
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    height: 250,
+    flexGrow: 1,
+  },
+  container: {
+    position: 'relative',
+  },
+  suggestionsContainerOpen: {
+    position: 'absolute',
+    zIndex: 1,
+    marginTop: theme.spacing(1),
+    left: 0,
+    right: 0,
+  },
+  suggestion: {
+    display: 'block',
+  },
+  suggestionsList: {
+    margin: 0,
+    padding: 0,
+    listStyleType: 'none',
+  },
+  divider: {
+    height: theme.spacing(2),
+  },
+}));
+
+export default function IntegrationAutosuggest() {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [state, setState] = React.useState({
+    single: '',
+    popper: '',
+  });
+
+  const [stateSuggestions, setSuggestions] = React.useState([]);
+
+  const handleSuggestionsFetchRequested = ({ value }) => {
+    setSuggestions(getSuggestions(value));
+  };
+
+  const handleSuggestionsClearRequested = () => {
+    setSuggestions([]);
+  };
+
+  const handleChange = name => (event, { newValue }) => {
+    setState({
+      ...state,
+      [name]: newValue,
+    });
+  };
+
+  const autosuggestProps = {
+    renderInputComponent,
+    suggestions: stateSuggestions,
+    onSuggestionsFetchRequested: handleSuggestionsFetchRequested,
+    onSuggestionsClearRequested: handleSuggestionsClearRequested,
+    getSuggestionValue,
+    renderSuggestion,
+  };
+
+  return (
+    <div className={classes.root}>
+      <Autosuggest
+        {...autosuggestProps}
+        inputProps={{
+          classes,
+          id: 'react-autosuggest-popper',
+          label: 'Country',
+          placeholder: 'With Popper',
+          value: state.popper,
+          onChange: handleChange('popper'),
+          inputRef: node => {
+            setAnchorEl(node);
+          },
+          InputLabelProps: {
+            shrink: true,
+          },
+        }}
+        theme={{
+          suggestionsList: classes.suggestionsList,
+          suggestion: classes.suggestion,
+        }}
+        renderSuggestionsContainer={options => (
+          <Popper anchorEl={anchorEl} open={Boolean(options.children)}>
+            <Paper
+              square
+              {...options.containerProps}
+              style={{ width: anchorEl ? anchorEl.clientWidth : undefined }}
+            >
+              {options.children}
+            </Paper>
+          </Popper>
+        )}
+      />
+    </div>
+  );
+}

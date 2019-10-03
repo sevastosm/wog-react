@@ -52,9 +52,9 @@ let customListist = GetSeries.Data;
     render() {
       return (
     <AppContext.Consumer>
-      {({ tonggleAllSeries }) => (
-       <div > <div className="d-flex" style={{ borderBottom: "1px solid #0000001a",padding:'15px 25px',alignItems:'center' }}>
-           <div className={'btn1 d-flex '} style={{maxWidth:'80px',padding:'20px'}} onClick={tonggleAllSeries}><Arrow/></div>
+      {(appState) => (
+       <div> <div className="d-flex" style={{ borderBottom: "1px solid #0000001a",padding:'15px 25px',alignItems:'center' }}>
+           <div className={'btn1 d-flex '} style={{maxWidth:'80px',padding:'20px'}} onClick={appState.actions.tonggleAllSeries}><Arrow/></div>
             <h2 style={{flexGrow:'1'}} >All serries</h2></div>
         <div className="d-flex flex-wrap mt-2" >
           <div className="d-flex right-banners col-lg-3 col-sm-12">
