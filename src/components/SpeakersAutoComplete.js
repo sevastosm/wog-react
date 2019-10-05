@@ -1,6 +1,5 @@
 import React from 'react';
 import Select from 'react-select';
-import { element } from 'prop-types';
 
 const options = [
   { value: '1', label: 'Κοροβέσης Γιώργος' },
@@ -15,33 +14,21 @@ const options = [
 class SpeakersAutoComplete extends React.Component {
   state = {
     selectedOption: null,
-    openMenu:false
+    menuIsOpen:false
   };
   handleChange = selectedOption => {
-    this.setState({ selectedOption:selectedOption,menuIsOpen:true });
+    this.setState({ selectedOption:selectedOption });
     console.log(`Option selected:`, selectedOption);
   };
-  handleInputChange = (query, { action }) => {
-    if (action === "input-change"&&query!=="") {
-        this.setState({ openMenu: true });
-    }else{
-      this.setState({ openMenu: false });
-    }
-};
-hideMenu = () => {
-this.setState({ openMenu: false });
-};
   render() {
-    const { selectedOption,openMenu } = this.state;
+    const { selectedOption } = this.state;
 
     return (
       <Select id="mainSearch"
         value={selectedOption}
-        onInputChange={this.handleInputChange}
-        onChange={this.hideMenu}
+        onChange={this.handleChange}
         options={options}
         placeholder ={'Select Speaker '}
-        menuIsOpen={openMenu}
       />
     );
   }

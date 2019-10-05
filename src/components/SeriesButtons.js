@@ -28,7 +28,7 @@ list.map(serie => {
 const SeriesButtons = () => {
   return (
     <AppContext.Consumer>
-      {({ tonggleAllSeries }) => (
+      {( appState ) => (
         <div className="d-flex">
           <div className="d-flex flex-column w-100">
             {customList.map(listItem => {
@@ -47,7 +47,7 @@ const SeriesButtons = () => {
             })}
             {/* More Series */}
             <div className="adv d-flex">
-              <a onClick={tonggleAllSeries} id="ctl00_main_adv1">
+              <a onClick={appState.actions.tonggleAllSeries} id="ctl00_main_adv1">
               All Series
                 {/* {listItem.Name} */}
               </a>
