@@ -16,8 +16,8 @@ const Playlist = () => {
       {list.map(listItem => {
         return (
           <div key={listItem.RecordingID}>
-            <div className="recording-row d-flex flex-row mb-3 data0 ">
-              <div className="col-4 d-flex flex-column ">
+            <div className="recording-row d-flex mb-3 data0 ">
+              <div className="col-lg-4 col-xs-12 d-flex flex-column ">
                 <div className="adv d-flex justify-content-center">
                   <div>
                     <a
@@ -114,7 +114,7 @@ const Playlist = () => {
                 </div>
               </div>
 
-              <div className="col-8 pt-1">
+              <div className="col-lg-8 col-xs-12 pt-1">
                 <div className="recording-date">{listItem.RecordingDate}</div>
                 <div className="playlist-discription">
                   {listItem.RecordingSubject}

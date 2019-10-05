@@ -1,0 +1,32 @@
+.mobile{
+
+.recording-row{
+    flex-direction: column;
+  }
+  
+ .recentsermonstable .adv {
+   
+    margin: auto;
+    margin-bottom: 15px;
+  }
+
+  #ut-player {
+    width: 100%;
+    height: 10.5em;
+    position: fixed;
+    right: 0;
+    z-index: 10;
+    top: 30px;
+    }
+
+  .footer {
+    min-height: 51px;
+    line-height: 25px;     background-color: #193a49;
+    margin-top: 1em;
+}
+ .footerRow{
+    display: none;
+  }
+
+
+}

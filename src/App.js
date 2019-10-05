@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Main from "./components/Main";
 import AllSeries from "./components/AllSeries";
 import { AppContext } from "./components/AppContext";
-import "./App.css";
+import "./styles/app.scss";
 
 class App extends React.Component {
   constructor(props) {
