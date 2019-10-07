@@ -17,7 +17,7 @@ const Playlist = () => {
         return (
           <div key={listItem.RecordingID}>
             <div className="recording-row d-flex mb-3 data0 ">
-              <div className="col-lg-4 col-xs-12 d-flex flex-column ">
+              <div className="col-xs-12 d-flex flex-column ">
                 <div className="adv d-flex justify-content-center">
                   <div>
                     <a

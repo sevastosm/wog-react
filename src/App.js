@@ -28,10 +28,14 @@ class App extends React.Component {
       setSelectedVideo:this.setSelectedVideo
     }
 
-    this.state =    
-    {data:{
+    this.state = 
+
+    {
+      isMobileDevice:false,
+      data:{
       allSeriesOpen: false,
-      setSelectedVideo:''
+      setSelectedVideo:'',
+      backTolive:false
     },actions: {
     tonggleAllSeries: this.tonggleAllSeries,
 
@@ -61,6 +65,9 @@ class App extends React.Component {
 
      if(isMobileDevice){
        document.getElementById("root").classList.add('mobile')
+       this.setState({
+         isMobileDevice:true
+       })
      }
 
    }

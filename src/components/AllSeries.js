@@ -4,6 +4,7 @@ import { GetSeries } from "../mocks/mocks";
 import { AppContext } from "./AppContext";
 import {UncontrolledCollapse} from 'reactstrap';
 import { ReactComponent as Arrow} from "../Assets/Header/Arrow.svg"
+import VideoPlayer from "./VideoPlayer"
 
 let customListist = GetSeries.Data;
 
@@ -59,24 +60,26 @@ let customListist = GetSeries.Data;
         <div className="d-flex flex-wrap mt-2" >
           <div className="d-flex right-banners col-lg-3 col-sm-12">
           <div className="d-flex flex-column  w-100">
+            {appState.isMobileDevice?<VideoPlayer/>:''}
             {customListist.map(listItem => {
               return (
-                   // If serries has childern
+                // If serries has childern
                 listItem.Series? this.multiSerries(listItem):(
-                <div key={listItem.ID} className="adv d-flex">
+                  <div key={listItem.ID} className="adv d-flex">
                   <a
                     id="ctl00_main_adv1"
-                  >
+                    >
                     {listItem.Name} 
                   </a>
                 </div>)
               );
             })}
-          
           </div>
         </div>
 
 <div className="col-lg-9 col-sm-12">
+{appState.isMobileDevice?"":<VideoPlayer/>}
+
           <Playlist />
        
 
