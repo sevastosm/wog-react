@@ -11,7 +11,7 @@ const Main = () => {
   return (
     <div className="m-auto d-flex row">
       {/* Left column */}
-      <div className="col-lg-8 col-sm-12 " style={{ paddingTop: ".4em" }}>
+      <div className="col-lg-8 col-sm-12 main-container">
         <div/>
         {/* Video player */}
            <Videoplayer/>
