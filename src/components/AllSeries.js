@@ -8,9 +8,6 @@ import VideoPlayer from "./VideoPlayer"
 
 let customListist = GetSeries.Data;
 
-
-
-
   class AllSeries extends Component {
     constructor(props) {
       super(props);
@@ -26,7 +23,6 @@ let customListist = GetSeries.Data;
 
     multiSerries =(listItem)=>{
 
-    
      return (<div>
         <div key={listItem.ID} id={listItem.Name+listItem.ID}  className="adv d-flex">
                         <a
@@ -48,7 +44,6 @@ let customListist = GetSeries.Data;
                     </div>)
     
     }
-  
 
     render() {
       return (
@@ -79,10 +74,7 @@ let customListist = GetSeries.Data;
 
 <div className="col-lg-9 col-sm-12">
 {appState.isMobileDevice?"":<VideoPlayer/>}
-
           <Playlist />
-       
-
         </div></div>
         </div>
       )}
