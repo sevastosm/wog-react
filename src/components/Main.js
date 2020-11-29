@@ -4,10 +4,13 @@ import SeriesButtons from "./SeriesButtons";
 import Playlist from "./Playlist";
 import MainTabs from "./MainTabs";
 import Videoplayer from "./VideoPlayer"
+import apis from  "./api/apis"
 
 let list = GetRecent.Data;
 
 const Main = () => {
+
+  apis.GET_ALL_SERMONS()
   return (
     <div className="m-auto d-flex row">
       {/* Left column */}
