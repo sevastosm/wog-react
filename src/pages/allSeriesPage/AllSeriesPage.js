@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import Playlist from "./Playlist";
-import { GetSeries } from "../mocks/mocks";
-import { AppContext } from "./AppContext";
+import { Link } from 'react-router-dom'
+import Playlist from "../../components/Playlist";
+import { GetSeries } from "../../mocks/mocks";
+import { AppContext } from "../../components/AppContext";
 import { UncontrolledCollapse } from "reactstrap";
-import { ReactComponent as Arrow } from "../Assets/Header/Arrow.svg";
-import VideoPlayer from "./VideoPlayer";
+import { ReactComponent as Arrow } from "../../Assets/Header/Arrow.svg";
+import VideoPlayer from "../../components/VideoPlayer";
 
 let customListist = GetSeries.Data;
 
-class AllSeries extends Component {
+class AllSeriesPage extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -25,7 +26,6 @@ class AllSeries extends Component {
     return (
       <div>
         <div
-          key={listItem.ID}
           id={listItem.Name + listItem.ID}
           className="adv d-flex"
         >
@@ -61,13 +61,13 @@ class AllSeries extends Component {
                 alignItems: "center",
               }}
             >
-              <div
+              <Link
+                to='/'
                 className={"btn1 d-flex "}
                 style={{ maxWidth: "80px", padding: "20px" }}
-                onClick={appState.actions.tonggleAllSeries}
               >
                 <Arrow />
-              </div>
+              </Link>
               <h2 style={{ flexGrow: "1" }}>All serries</h2>
             </div>
             <div className="d-flex flex-wrap mt-2">
@@ -101,4 +101,4 @@ class AllSeries extends Component {
   }
 }
 
-export default AllSeries;
+export default AllSeriesPage;

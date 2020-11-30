@@ -92,8 +92,8 @@ const Playlist = () => {
                   </a>
                   <a
                     id="ctl00_main_tabs2_tRcnt_ucRecentRecs_lvSrmns_ctrl0_hpDl"
-                    onclick="showDownloadMenu(52367, event);return false;"
-                    oncontextmenu="showDownloadMenu(52367, event);return false;"
+                    onClick="showDownloadMenu(52367, event);return false;"
+                    onContextMenu="showDownloadMenu(52367, event);return false;"
                     href="javascript:void(0);"
                   >
                     <div className="main-icon" data-type="svg">

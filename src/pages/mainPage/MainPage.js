@@ -1,14 +1,14 @@
 import React from "react";
-import { GetRecent } from "../mocks/mocks";
-import SeriesButtons from "./SeriesButtons";
-import Playlist from "./Playlist";
-import MainTabs from "./MainTabs";
-import Videoplayer from "./VideoPlayer"
-import apis from  "./api/apis"
+import { GetRecent } from "../../mocks/mocks";
+import SeriesButtons from "../../components/SeriesButtons";
+import Playlist from "../../components/Playlist";
+import MainTabs from "../../components/MainTabs";
+import Videoplayer from "../../components/VideoPlayer"
+import apis from  "../../components/api/apis"
 
 let list = GetRecent.Data;
 
-const Main = () => {
+const MainPage = () => {
 
   apis.GET_ALL_SERMONS()
   return (
@@ -44,4 +44,4 @@ const Main = () => {
     </div>
   );
 };
-export default Main;
+export default MainPage;

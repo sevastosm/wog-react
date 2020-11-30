@@ -1,6 +1,9 @@
 import React from "react";
 import { GetSeries } from "../mocks/mocks";
 import { AppContext } from "./AppContext";
+import { Link } from 'react-router-dom'
+
+import routes from '../constants/constants'
 
 let customList = [];
 let list = GetSeries.Data;
@@ -39,18 +42,16 @@ const SeriesButtons = () => {
                     id="ctl00_main_adv1"
                   >
                     {listItem.Name} 
-                   
-
                   </a>
                 </div>
               );
             })}
             {/* More Series */}
             <div className="adv d-flex">
-              <a onClick={appState.actions.tonggleAllSeries} id="ctl00_main_adv1">
+              <Link to={routes.ALL_SERIES} id="ctl00_main_adv1">
               All Series
                 {/* {listItem.Name} */}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -60,3 +61,4 @@ const SeriesButtons = () => {
 };
 
 export default SeriesButtons;
+// onClick={appState.actions.tonggleAllSeries} 

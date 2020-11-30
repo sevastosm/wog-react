@@ -17,12 +17,12 @@ const Program = () => {
             <div>{list.datesAndName[0].dateName}</div>
             <div>{list.datesAndName[0].date }</div>
 
-            {list.timetable.map(listItem => {
+            {list.timetable.map((listItem, index) => {
                 let s = listItem.date
                 let s1 = s.substring(s.indexOf("T")+1);
                 s1.trim();
               return (
-                <div className="d-flex flex-column">
+                <div key={index} className="d-flex flex-column">
                  <div>{s1} : </div><div dangerouslySetInnerHTML={{__html:listItem.text}} />
                 </div>
               );

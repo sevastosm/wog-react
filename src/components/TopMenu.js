@@ -39,7 +39,7 @@ export default class TopMenu extends React.Component {
 
             <SpeakersAutoComplete />
             
-            <a id="searchHead" onclick="runHeadSearch()">
+            <a id="searchHead" onClick="runHeadSearch()">
               <div className="main-icon" data-type="svg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
+import route from "../constants/constants"
+import routes from "../routes";
 export default class Footer extends React.Component {
   constructor(props) {
     super(props);
@@ -21,97 +24,70 @@ export default class Footer extends React.Component {
           <div className="footerRow">
             <ul>
               <li>
-                <a
-                  id="ctl00_ifrContact"
-                  onclick="CB_Open('href=http://www.wordofgod.gr/Contact.aspx?lang=el,,width=1000,,height=1000');"
-                  title="Επικοινωνία"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={route.CONTACT}
+                  style={{ cursor: "pointer", color: "white", textDecoration:"none" }}
                 >
                   Επικοινωνία
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  id="ctl00_ifrHelp"
-                  onclick="CB_Open('href=http://www.wordofgod.gr/Help.aspx?lang=el,,width=1000,,height=1000');"
-                  title="Βοήθεια"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={route.HELP}
+                  style={{ cursor: "pointer", color: "white", textDecoration:"none" }}
                 >
                   Βοήθεια
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  id="ctl00_ifrNewsletter"
-                  onclick="CB_Open('href=http://www.wordofgod.gr/Newsletter.aspx?lang=el,,width=1000,,height=1000');"
-                  title="Newsletter"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={route.NEWSLETTER}
+                  style={{ cursor: "pointer", color: "white", textDecoration:"none" }}
                 >
                   Newsletter
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  id="ctl00_ifrWhatisWordofgod"
-                  onclick="CB_Open('href=http://www.wordofgod.gr/WhatisWordofGod.aspx?lang=el,,width=1000,,height=1000');"
-                  title="Τι είναι το WordofGod"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={route.ABOUT}
+                  style={{ cursor: "pointer", color: "white", textDecoration:"none" }}
                 >
                   Τι είναι το WordofGod
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  id="ctl00_ifrHistory"
-                  onclick="CB_Open('href=http://www.wordofgod.gr/History.aspx?lang=el,,width=1000,,height=1000');"
-                  title="Ιστορία"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={route.HISTORY}
+                  style={{ cursor: "pointer", color: "white", textDecoration:"none" }}
                 >
                   Ιστορία
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  id="ctl00_ifrLinks"
-                  onclick="CB_Open('href=http://www.wordofgod.gr/Links.aspx?lang=el,,width=1000,,height=1000');"
-                  title="Σύνδεσμοι"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={route.LINK}
+                  style={{ cursor: "pointer", color: "white", textDecoration:"none" }}
                 >
                   Σύνδεσμοι
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/cookies.aspx"
-                  id="ctl00_lnkCookies"
-                  title="Cookies"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={route.COOKIES}
+                  style={{ cursor: "pointer", textDecoration:"none" }}
                 >
                   Cookies
-                </a>
+                </Link>
               </li>
-              <li>
-                <a
-                  id="ctl00_ifrDonate"
-                  onclick="CB_Open('href=http://www.wordofgod.gr/DonateInfo.aspx?lang=el,,width=1000,,height=1000');"
-                  title="Donate"
+              {/* <li>
+                <Link
+                  to="/donate"
                   style={{ cursor: "pointer", display: "none" }}
                 >
                   Donate
-                </a>
-              </li>
+                </Link>
+              </li> */}
             </ul>
-          </div>
-          <div className="container mw-100 t-0 text-center mr-auto">
-            <a
-              id="ctl00_ifrCopyright"
-              onclick="CB_Open('href=http://www.wordofgod.gr/Legal.aspx?lang=el,,width=1000,,height=1000');"
-              title="Copyright"
-              style={{ cursor: "pointer" }}
-            >
-              Copyright&nbsp;2019&nbsp;Word of God - Ο Λόγος του Θεού στη
-              σύγχρονη τεχνολογία
-            </a>
           </div>
         </div>
       </footer>
