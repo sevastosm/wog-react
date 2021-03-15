@@ -1,0 +1,29 @@
+.footer {
+    position: absolute;
+    width: 100%;
+    min-height: 120px;
+    line-height: 60px;
+    background-color: #193a49;
+    margin-top: 1em;
+  }
+
+  .footer > .container:last-child {
+    background-color: #499b7b;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #fff;
+    bottom: 0;
+    position: absolute;
+  }
+
+  .footerRow ul {
+    display: flex;
+    color: #fff;
+    flex-wrap: wrap;
+  }
+  .footerRow ul li {
+    flex-grow: 1;
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+  }

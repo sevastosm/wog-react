@@ -5,16 +5,16 @@ import {
     HelpPage,
     HistoryPage,
     LinksPage,
-    MainPage,
+    HomePage,
     Newsletter,
     WogInfoPage
 } from './pages'
 
-import route from './constants/constants'
+import {route} from './constants/'
 
 const routes = [
     {
-        component: MainPage,
+        component: HomePage,
         exact: true,
         path: `/`
     },

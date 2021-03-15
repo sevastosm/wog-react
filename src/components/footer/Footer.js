@@ -1,23 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import './footer.scss'
 
-import route from "../constants/constants"
-import routes from "../routes";
-export default class Footer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-  render() {
+import {route} from "../../constants"
+export default function() {
     return (
       <footer>
         <div id="footer" className="footer">
@@ -93,4 +79,4 @@ export default class Footer extends React.Component {
       </footer>
     );
   }
-}
+

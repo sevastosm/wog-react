@@ -1,0 +1,25 @@
+@import"../../styles/colors";
+
+.thump {
+  padding: 0.5em;
+  background: $dark-green;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom:10px
+}
+.thump:hover {
+    background: $light-green;
+  }
+
+.info{
+  text-align: left;
+}
+
+.action-icon {
+  width: 2em;
+  margin-bottom: 0.2em;
+}
+
+.action-icon>svg {
+  fill:$dark-green;
+}

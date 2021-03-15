@@ -1,0 +1,26 @@
+header > div {
+  background-color: #193d4d;
+}
+
+div#mainSearchcontainer{
+  align-items: center;
+}
+
+.img-fluid {
+  width: 5rem;
+}
+.navbar {
+  padding: 0.5rem 3rem;
+}
+.navbar-toggler {
+  background-color: #499b7b;
+  border: 1px solid #499b7b;
+  border-radius: 0.25rem;
+}
+.navbar-toggler-icon {
+  color: #fff;
+}
+
+body > .container {
+  padding: 140px 15px 0;
+}

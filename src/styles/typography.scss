@@ -1,0 +1,33 @@
+@import "./colors";
+
+html {
+  font-size: 16px;
+}
+
+h1,.title {
+  font-size: 1.125em;
+}
+h2 {
+  font-size: 1em;
+}
+
+h3,.title-small{
+  font-size: 0.8125em;
+}
+
+span {
+  font-size: 13px;
+}
+
+a ,.nav-link{
+  color: $light-green
+}
+
+a:hover,.nav-link:hover {
+  text-decoration: none;
+  color: $light-green;
+}
+
+button {
+  font-size:0.875em;
+}

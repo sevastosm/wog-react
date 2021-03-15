@@ -1,0 +1,23 @@
+@import "../../styles/colors.scss";
+.banner {
+  padding: 0.5em;
+  background: #193a49;
+  margin: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  flex-grow: 1;
+  align-items: center;
+  max-height: 55px;
+}
+
+.banner > a {
+  font-weight: bold;
+  color: #fff;
+  width: 100%;
+  justify-content: center;
+  text-decoration: none;
+}
+.banner > a:hover{
+  color: $light-green;
+}

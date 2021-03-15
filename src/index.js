@@ -4,8 +4,7 @@ import { BrowserRouter } from "react-router-dom"
 import { Provider } from "./components/AppContext"
 import Layout from './components/Layout'
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
-import "./old.css";
+import "./styles/app.scss"
 
 import App from "./App";
 

@@ -1,23 +1,21 @@
 import React from "react";
 import { GetRecent } from "../../mocks/mocks";
-import SeriesButtons from "../../components/SeriesButtons";
-import Playlist from "../../components/Playlist";
+import Banners from "../../components/banners/Banners";
+import Playlist from "../../components/playlist/Playlist";
 import MainTabs from "../../components/MainTabs";
-import Videoplayer from "../../components/VideoPlayer"
-import apis from  "../../components/api/apis"
-
+import VideoPlayer from "../../components/player/VideoPlayer"
 let list = GetRecent.Data;
 
-const MainPage = () => {
+export default function HomePage (){
 
-  apis.GET_ALL_SERMONS()
+  // apis.GET_ALL_SERMONS()
   return (
     <div className="m-auto d-flex row">
       {/* Left column */}
       <div className="col-lg-8 col-sm-12 main-container">
         <div/>
         {/* Video player */}
-           <Videoplayer/>
+           <VideoPlayer/>
 
         {/* Main tabs */}
         <MainTabs />
@@ -28,12 +26,12 @@ const MainPage = () => {
       <div className="col-lg-4  col-sm-12">
         <div id="cColumn" className="right-banners">
           {/* SerriesButtons */}
-          <SeriesButtons />
+          <Banners />
           {/* SerriesButtons */}
         </div>
         {/* RecentVideosTabs */}
         <div id="right-tabs">
-        <h2 style={{ borderBottom: "1px solid #0000001a" }}>Recent serries</h2>
+        <h1 className="title" style={{ borderBottom: "1px solid #0000001a" }}>Recent serries</h1>
           <Playlist />
         </div>
 
@@ -44,4 +42,3 @@ const MainPage = () => {
     </div>
   );
 };
-export default MainPage;

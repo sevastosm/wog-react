@@ -11,32 +11,21 @@ import {
 } from "reactstrap";
 import classnames from "classnames";
 
-export default class MainTabs extends React.Component {
-  constructor(props) {
-    super(props);
+export default function (props) {
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: "2"
-    };
-  }
+  const [activeTab,setActiveTab]= React.useState("2")
 
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      });
-    }
+  const handleTabclick = (tab)=>{
+   setActiveTab(tab)
   }
-  render() {
     return (
       <div className="mt-2">
         <Nav tabs>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === "1" })}
+              className={classnames({ active: activeTab === "1" })}
               onClick={() => {
-                this.toggle("1");
+                handleTabclick("1");
               }}
             >
               Τώρα βλέπετε
@@ -44,20 +33,20 @@ export default class MainTabs extends React.Component {
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === "2" })}
+              className={classnames({ active: activeTab === "2" })}
               onClick={() => {
-                this.toggle("2");
+                handleTabclick("2");
               }}
             >
               Πρόγραμμα
             </NavLink>
           </NavItem>
         </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
-                <h4>Tab 1 Contents</h4>
+                <h1 className="title">Tab 1 Contents</h1>
               </Col>
             </Row>
           </TabPane>
@@ -71,5 +60,5 @@ export default class MainTabs extends React.Component {
         </TabContent>
       </div>
     );
-  }
+
 }
