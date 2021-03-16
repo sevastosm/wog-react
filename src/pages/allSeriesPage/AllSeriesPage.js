@@ -6,6 +6,7 @@ import { AppContext } from "../../components/AppContext";
 import { UncontrolledCollapse } from "reactstrap";
 import { ReactComponent as Arrow } from "../../Assets/Header/Arrow.svg";
 import VideoPlayer from "../../components/player/VideoPlayer";
+import Filter from '../../components/filter/Filter'
 
 let customListist = GetSeries.Data;
 
@@ -74,6 +75,7 @@ class AllSeriesPage extends Component {
               <div className="d-flex right-banners col-lg-3 col-sm-12">
                 <div className="d-flex flex-column  w-100">
                   {appState.isMobileDevice ? <VideoPlayer /> : ""}
+                  <Filter />
                   {customListist.map((listItem) => {
                     return (
                       // If serries has childern
