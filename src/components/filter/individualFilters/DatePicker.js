@@ -6,33 +6,31 @@ import { el, enGB, es, it, ro, ru, pl, fr } from 'date-fns/locale'
 import 'react-datepicker/dist/react-datepicker.css'
 
 function setDatePickerLang(lang) {
-    let languageToRegister
     switch (lang) {
         case 'gr':
-            languageToRegister = () => registerLocale('gr', el)
+            registerLocale('gr', el)
             break
         case 'es':
-            languageToRegister = () => registerLocale('es', es)
+            registerLocale('es', es)
             break
         case 'it':
-            languageToRegister = () => registerLocale('it', it)
+            registerLocale('it', it)
             break
         case 'ro':
-            languageToRegister = () => registerLocale('ro', ro)
+            registerLocale('ro', ro)
             break
         case 'ru':
-            languageToRegister = () => registerLocale('ru', ru)
+            registerLocale('ru', ru)
             break
         case 'pl':
-            languageToRegister = () => registerLocale('pl', pl)
+            registerLocale('pl', pl)
             break
         case 'fr':
-            languageToRegister = () => registerLocale('fr', fr)
+            registerLocale('fr', fr)
             break
         default:
-            languageToRegister = () => registerLocale('en', enGB)
+            registerLocale('en', enGB)
     }
-    languageToRegister()
 }
 
 export default function SelectDates({ dates, lang, setFilters }) {
