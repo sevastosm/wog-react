@@ -10,6 +10,7 @@ const route= {
 };
 
 const endPoints = {
+  GET_SERRIES_LIST: "/api/series/searchlist/gr",
   GET_ALL_SERRIES: "/api/series/gr",
   GET_RECENT: "/api/contents/sermons_recent/gr",
   GET_PROGRAM:"/api/contents/program/gr/2",
