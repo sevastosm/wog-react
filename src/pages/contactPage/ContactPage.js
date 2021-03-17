@@ -1,9 +1,9 @@
 import React,{ useContext, useMemo } from 'react'
-import { AppContext } from "../../components/AppContext"
+import {useGlobaState} from "../../components/AppContext"
 import { useLocation } from "react-router-dom";
 
 export default function ContactPage(){
-  const {text, dispatch} = useContext(AppContext)
+  const {text, dispatch} = useGlobaState()
   let location = useLocation()
 
   const getNameFromLocation = useMemo(()=>{

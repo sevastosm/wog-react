@@ -21,42 +21,42 @@ const routes = [
     {
         component: AllSeriesPage,
         exact: true,
-        path: `/${route.ALL_SERIES}`
+        path: `/${route.ALL_SERIES}/:id`
     },
     {
         component: ContactPage,
         exact: true,
-        path: `/${route.CONTACT}`
+        path: `/${route.CONTACT}/:id`
     },
     {
         component: CookiesPage,
         exact: true,
-        path: `/${route.COOKIES}`
+        path: `/${route.COOKIES}/:id`
     },
     {
         component: HelpPage,
         exact: true,
-        path: `/${route.HELP}`
+        path: `/${route.HELP}/:id`
     },
     {
         component: HistoryPage,
         exact: true,
-        path: `/${route.HISTORY}`
+        path: `/${route.HISTORY}/:id`
     },
     {
         component: LinksPage,
         exact: true,
-        path: `/${route.LINK}`
+        path: `/${route.LINK}/:id`
     },
     {
         component: Newsletter,
         exact: true,
-        path: `/${route.NEWSLETTER}`
+        path: `/${route.NEWSLETTER}/:id`
     },
     {
         component: WogInfoPage,
         exact: true,
-        path: `/${route.ABOUT}`
+        path: `/${route.ABOUT}/:id`
     }
 ]
 

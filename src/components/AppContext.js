@@ -1,5 +1,5 @@
-import React, { useReducer } from 'react'
-export const AppContext = React.createContext({})
+import React, { useReducer,useContext } from 'react'
+const AppContext = React.createContext({})
 
 // this.state =
 
@@ -14,28 +14,30 @@ export const AppContext = React.createContext({})
 
 //   }}
 
-const initialAppState = {
-    text: 'testing',
-    nowPlaying: ''
+
+/**
+ * on page load
+ * get recent series
+ * get resourses
+ *
+ * store recent series ,resourses
+ *
+ */
+
+const globalState = {
+    resourses: 'testing',
+    "recent-series": ''
 }
 
-function reducer(state, action) {
-    switch (action.type) {
-        case '1':
-            return { text: state.text + ' success' }
-        case '2':
-            return { text: state.text + ' failed' }
-        default:
-            return state
-    }
-}
 
 export const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialAppState)
 
     return (
-        <AppContext.Provider value={{ ...state, dispatch: dispatch }}>
+        <AppContext.Provider value={{ ...state }}>
             {children}
         </AppContext.Provider>
     )
 }
+
+export const useGlobalState =()=>useContext(AppContext)
