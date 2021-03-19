@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import Playlist from "../../components/playlist/Playlist";
 import { GetSeries } from "../../mocks/mocks";
-import { AppContext } from "../../components/AppContext";
+import AppContext  from "../../components/AppContext";
 import { UncontrolledCollapse } from "reactstrap";
 import { ReactComponent as Arrow } from "../../Assets/Header/Arrow.svg";
 import VideoPlayer from "../../components/player/VideoPlayer";

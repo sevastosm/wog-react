@@ -9,6 +9,7 @@ import {
     Newsletter,
     WogInfoPage
 } from './pages'
+import {HomeOnEnter} from "./routingPolicy"
 
 import {route} from './constants/'
 
@@ -16,8 +17,9 @@ const routes = [
     {
         component: HomePage,
         exact: true,
-        path: `/`
+        path: `/:id`,
     },
+
     {
         component: AllSeriesPage,
         exact: true,
@@ -57,7 +59,12 @@ const routes = [
         component: WogInfoPage,
         exact: true,
         path: `/${route.ABOUT}/:id`
-    }
+    },
+    {
+        component: HomePage,
+        exact: true,
+        path: `/`,
+    },
 ]
 
 export default routes

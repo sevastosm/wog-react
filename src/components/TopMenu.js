@@ -1,60 +1,65 @@
 import React from "react";
 import Logo from "../Assets/Header/logo.svg";
+import { Link } from "react-router-dom"
+
 export default function TopMenu() {
+
+  const handleClick=(id)=>localStorage.setItem('param',id)
+
   return (
     <header>
       <div className="navbar navbar-expand-md fixed-top">
         <div className="header-item d-flex  flex-grow-1">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img
               src={Logo}
               className="rounded float-left img-fluid"
               alt="..."
             />
-          </a>
+          </Link>
         </div>
         <div className="d-flex flex-column flex-wrap ">
           <div className="header-item">
             <ul className="tabs navbar-nav mr-auto flex-row">
               <li className="nav-item">
-                <a className="nav-link" href="el" title="Ελληνικά">
+                <Link className="nav-link" to="el" title="Ελληνικά" onClick={()=>handleClick('el')}>
                   GR
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="en" title="English">
+                <Link className="nav-link" to="en" title="English" onClick={()=>handleClick('en')}>
                   EN
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="it" title="Italiano">
+                <Link className="nav-link" to="it" title="Italiano" onClick={()=>handleClick('it')}>
                   IT
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="ru" title="Русский">
+                <Link className="nav-link" to="ru" title="Русский" onClick={()=>handleClick('ru')}>
                   RU
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="ro" title="Română">
+                <Link className="nav-link" to="ro" title="Română" onClick={()=>handleClick('ro')}>
                   RO
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="pl" title="Polski">
+                <Link className="nav-link" to="pl" title="Polski" onClick={()=>handleClick('pl')}>
                   PL
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="fr" title="Francais">
+                <Link className="nav-link" to="fr" title="Francais" onClick={()=>handleClick('fr')}>
                   FR
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="sq" title="Squip">
+                <Link className="nav-link" to="sq" title="Squip" onClick={()=>handleClick('sq')}>
                   AL
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

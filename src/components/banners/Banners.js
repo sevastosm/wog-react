@@ -1,6 +1,6 @@
 import React from "react";
 import { GetSeries } from "../../mocks/mocks";
-import { AppContext } from "../AppContext";
+import AppContext from "../AppContext";
 import { Link } from "react-router-dom";
 import "./Banners.scss";
 import {route} from "../../constants"

@@ -1,5 +1,5 @@
 import React,{ useContext, useMemo } from 'react'
-import {useGlobaState} from "../../components/AppContext"
+import useGlobaState from "../../components/AppContext"
 import { useLocation } from "react-router-dom";
 
 export default function ContactPage(){

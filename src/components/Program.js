@@ -1,6 +1,6 @@
 import React from "react";
 import { GetProgram } from "../mocks/mocks";
-import { AppContext } from "./AppContext";
+import AppContext from "./AppContext";
 
 let list = GetProgram.Data;
 export default function Program (){

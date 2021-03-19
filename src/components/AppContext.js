@@ -31,13 +31,12 @@ const globalState = {
 
 
 export const Provider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, initialAppState)
-
     return (
-        <AppContext.Provider value={{ ...state }}>
+        <AppContext.Provider value={{ ...globalState }}>
             {children}
         </AppContext.Provider>
     )
 }
 
 export const useGlobalState =()=>useContext(AppContext)
+export default AppContext

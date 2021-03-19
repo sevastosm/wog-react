@@ -1,15 +1,22 @@
 import React from "react";
-import { GetRecent } from "../../mocks/mocks";
+import {
+  useParams
+} from "react-router-dom";
 import Banners from "../../components/banners/Banners";
 import Playlist from "../../components/playlist/Playlist";
 import MainTabs from "../../components/MainTabs";
 import VideoPlayer from "../../components/player/VideoPlayer"
-let list = GetRecent.Data;
+import getIntialData from "../../utils"
+
+
+const hasParm = window.localStorage.getItem("param");
 
 export default function HomePage (){
+  let { id } = useParams();
+  console.log("slug",id)
 
-  // apis.GET_ALL_SERMONS()
-  return (
+  getIntialData(id?id:hasParm||'el')
+    return (
     <div className="m-auto d-flex row">
       {/* Left column */}
       <div className="col-lg-8 col-sm-12 main-container">
