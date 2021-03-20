@@ -1,4 +1,3 @@
-import IntroPage from "./introPage/IntroPage";
 import AllSeriesPage from "./allSeriesPage/AllSeriesPage";
 import ContactPage from "./contactPage/ContactPage";
 import CookiesPage from "./cookiesPage/CookiesPage";
@@ -18,5 +17,4 @@ export {
   HomePage,
   Newsletter,
   WogInfoPage,
-  IntroPage,
 };

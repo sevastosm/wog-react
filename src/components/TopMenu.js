@@ -4,7 +4,8 @@ import { Link } from "react-router-dom"
 
 export default function TopMenu() {
 
-  const handleClick=(id)=>localStorage.setItem('param',id)
+  // set selected language to localStorage
+  const handleClick=(id)=>localStorage.setItem('lang',id)
 
   return (
     <header>
@@ -22,42 +23,42 @@ export default function TopMenu() {
           <div className="header-item">
             <ul className="tabs navbar-nav mr-auto flex-row">
               <li className="nav-item">
-                <Link className="nav-link" to="el" title="Ελληνικά" onClick={()=>handleClick('el')}>
+                <Link className="nav-link" to="/el" title="Ελληνικά" onClick={()=>handleClick('el')}>
                   GR
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="en" title="English" onClick={()=>handleClick('en')}>
+                <Link className="nav-link" to="/en" title="English" onClick={()=>handleClick('en')}>
                   EN
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="it" title="Italiano" onClick={()=>handleClick('it')}>
+                <Link className="nav-link" to="/it" title="Italiano" onClick={()=>handleClick('it')}>
                   IT
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="ru" title="Русский" onClick={()=>handleClick('ru')}>
+                <Link className="nav-link" to="/ru" title="Русский" onClick={()=>handleClick('ru')}>
                   RU
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="ro" title="Română" onClick={()=>handleClick('ro')}>
+                <Link className="nav-link" to="/ro" title="Română" onClick={()=>handleClick('ro')}>
                   RO
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="pl" title="Polski" onClick={()=>handleClick('pl')}>
+                <Link className="nav-link" to="/pl" title="Polski" onClick={()=>handleClick('pl')}>
                   PL
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="fr" title="Francais" onClick={()=>handleClick('fr')}>
+                <Link className="nav-link" to="/fr" title="Francais" onClick={()=>handleClick('fr')}>
                   FR
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="sq" title="Squip" onClick={()=>handleClick('sq')}>
+                <Link className="nav-link" to="/sq" title="Squip" onClick={()=>handleClick('sq')}>
                   AL
                 </Link>
               </li>

@@ -1,28 +1,22 @@
 import React from "react";
-import {
-  useParams
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Banners from "../../components/banners/Banners";
 import Playlist from "../../components/playlist/Playlist";
 import MainTabs from "../../components/MainTabs";
-import VideoPlayer from "../../components/player/VideoPlayer"
-import getIntialData from "../../utils"
-
-
-const hasParm = window.localStorage.getItem("param");
-
-export default function HomePage (){
-  let { id } = useParams();
-  console.log("slug",id)
-
-  getIntialData(id?id:hasParm||'el')
-    return (
+import VideoPlayer from "../../components/player/VideoPlayer";
+import { getHomeData } from "../../utils";
+export default function HomePage() {
+  const { lang } = useParams();
+  React.useEffect(() => {
+    getHomeData(lang).then((data) => console.log(data));
+  }, [lang]);
+  return (
     <div className="m-auto d-flex row">
-      {/* Left column */}
+      {console.log("render")}
       <div className="col-lg-8 col-sm-12 main-container">
-        <div/>
+        <div />
         {/* Video player */}
-           <VideoPlayer/>
+        <VideoPlayer />
 
         {/* Main tabs */}
         <MainTabs />
@@ -38,7 +32,9 @@ export default function HomePage (){
         </div>
         {/* RecentVideosTabs */}
         <div id="right-tabs">
-        <h1 className="title" style={{ borderBottom: "1px solid #0000001a" }}>Recent serries</h1>
+          <h1 className="title" style={{ borderBottom: "1px solid #0000001a" }}>
+            Recent serries
+          </h1>
           <Playlist />
         </div>
 
@@ -48,4 +44,4 @@ export default function HomePage (){
       {/* RecentVideosTabs */}
     </div>
   );
-};
+}

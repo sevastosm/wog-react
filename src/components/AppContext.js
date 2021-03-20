@@ -1,42 +1,32 @@
-import React, { useReducer,useContext } from 'react'
-const AppContext = React.createContext({})
-
-// this.state =
-
-//     {
-//       isMobileDevice:false,
-//       data:{
-//       allSeriesOpen: false,
-//       setSelectedVideo:'',
-//       backTolive:false
-//     },actions: {
-//     tonggleAllSeries: this.tonggleAllSeries,
-
-//   }}
-
-
-/**
- * on page load
- * get recent series
- * get resourses
- *
- * store recent series ,resourses
- *
- */
+import React from "react";
+import {getIntialData,applicationLang} from "../utils"
+const AppContext = React.createContext({});
 
 const globalState = {
-    resourses: 'testing',
-    "recent-series": ''
-}
-
+  resourses: null,
+  recen_series: null,
+};
 
 export const Provider = ({ children }) => {
-    return (
-        <AppContext.Provider value={{ ...globalState }}>
-            {children}
-        </AppContext.Provider>
-    )
-}
+ const [state, setGlobalstate] = React.useState(globalState);
+  console.log("globalState", state);
 
-export const useGlobalState =()=>useContext(AppContext)
-export default AppContext
+  const getData = () =>
+    getIntialData().then((data) => {
+      console.log("DATA", data);
+      setGlobalstate(data);
+    });
+
+  const lang = applicationLang()
+  React.useEffect(() => {
+    getData();
+  }, [lang]);
+  return (
+    <AppContext.Provider value={{ state, setGlobalstate }}>
+      {children}
+    </AppContext.Provider>
+  );
+};
+
+export const useGlobalState = () => React.useContext(AppContext);
+export default AppContext;

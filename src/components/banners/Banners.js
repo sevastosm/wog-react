@@ -1,9 +1,13 @@
 import React from "react";
 import { GetSeries } from "../../mocks/mocks";
+import {
+  useParams,
+} from "react-router-dom";
 import AppContext from "../AppContext";
 import { Link } from "react-router-dom";
 import "./Banners.scss";
 import {route} from "../../constants"
+import {applicationLang} from '../../utils'
 
 let customList = [];
 let list = GetSeries.Data;
@@ -29,6 +33,7 @@ list.map((serie) => {
 });
 
 export default function Banners() {
+  const handleClick=(id)=>localStorage.setItem('lang',id)
   return (
     <AppContext.Consumer>
       {(appState) => (
@@ -45,7 +50,7 @@ export default function Banners() {
             })}
             {/* More Series */}
             <div className="banner d-flex">
-              <Link to={route.ALL_SERIES} id="ctl00_main_adv1 button">
+              <Link onClick={()=>handleClick(applicationLang())} to={`${applicationLang()}/${route.ALL_SERIES}/`} id="ctl00_main_adv1 button">
                 All Series
                 {/* {listItem.Name} */}
               </Link>
