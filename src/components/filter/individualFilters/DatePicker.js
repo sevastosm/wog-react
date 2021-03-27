@@ -1,9 +1,11 @@
 import React from 'react'
 import DatePicker from 'react-datepicker'
+import { Label } from 'reactstrap'
 import { registerLocale } from 'react-datepicker'
 import { el, enGB, es, it, ro, ru, pl, fr } from 'date-fns/locale'
 
 import 'react-datepicker/dist/react-datepicker.css'
+import './datepicker.scss'
 
 function setDatePickerLang(lang) {
     switch (lang) {
@@ -33,7 +35,7 @@ function setDatePickerLang(lang) {
     }
 }
 
-export default function SelectDates({ dates, lang, setFilters }) {
+export default function SelectDates({ labelValue, dates, lang, setFilters }) {
     const setDateFrom = React.useCallback(
         date => {
             setFilters(previousValues => ({
@@ -59,17 +61,22 @@ export default function SelectDates({ dates, lang, setFilters }) {
     }, [lang])
 
     return (
-        <>
-            <DatePicker
-                selected={dates.dateFrom}
-                onChange={setDateFrom}
-                locale={lang}
-            />
-            <DatePicker
-                selected={dates.dateTo}
-                onChange={setDateTo}
-                locale={lang}
-            />
-        </>
+        <div>
+            <Label for="datepicker">{labelValue}</Label>
+            <div className="datepickers-container">
+                <DatePicker
+                    selected={dates.dateFrom}
+                    onChange={setDateFrom}
+                    locale={lang}
+                    className="datepicker"
+                />
+                <DatePicker
+                    selected={dates.dateTo}
+                    onChange={setDateTo}
+                    locale={lang}
+                    className="datepicker"
+                />
+            </div>
+        </div>
     )
 }

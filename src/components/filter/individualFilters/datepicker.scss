@@ -1,0 +1,15 @@
+@import '../../../styles/colors.scss';
+
+.datepickers-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    :last-child {
+        margin: 2px 0px;
+    }
+}
+
+.datepicker {
+    width: 100%;
+}

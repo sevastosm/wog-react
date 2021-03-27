@@ -7,6 +7,7 @@ import {
     SelectSpeaker,
     Searchbar
 } from '../filter/individualFilters'
+import { useGlobalState } from '../AppContext'
 import getData from '../../api/apis'
 import {
     createAllSpeakersChoice,
@@ -63,7 +64,10 @@ export default function Filter() {
     })
     const [isOpen, setIsOpen] = React.useState(false)
     let { lang } = useParams()
-
+    const {
+        state: { Data }
+    } = useGlobalState()
+    console.log('FILTERS', Data)
     const toggle = React.useCallback(() => {
         setIsOpen(!isOpen)
     }, [isOpen])
@@ -163,9 +167,10 @@ export default function Filter() {
             <Button onClick={toggle} className="filter-btn">
                 Filters
             </Button>
-            <Collapse isOpen={isOpen} className="filter-collapsibles">
-                <Fade in={isOpen}>
+            <Collapse isOpen={isOpen}>
+                <Fade in={isOpen} className="filter-collapsibles">
                     <SelectDates
+                        labelValue={Data ? Data['47'].Text : ''}
                         dates={{
                             dateFrom: selectedFilters.dateFrom,
                             dateTo: selectedFilters.dateTo
@@ -174,33 +179,38 @@ export default function Filter() {
                         setFilters={setSelectedFilters}
                     />
                     <Searchbar
+                        labelValue={Data ? Data['56'].Text : ''}
                         value={selectedFilters.text}
                         setFilters={setSelectedFilters}
                     />
                     <SelectSpeaker
+                        labelValue={Data ? Data['96'].Text : ''}
                         values={selectedFilters.speakersIds}
                         lang={lang}
                         setFilters={setSelectedFilters}
                         speakers={fetchedData.speakers}
                     />
                     <SelectSermon
+                        labelValue={Data ? Data['2'].Text : ''}
                         sermons={fetchedData.sermons}
                         values={selectedFilters.sermonsIds}
                         lang={lang}
                         setFilters={setSelectedFilters}
                     />
-                    <Button
-                        onClick={resetSelectedFilters}
-                        className="reset-filters-btn"
-                    >
-                        Reset Filters
-                    </Button>
-                    <Button
-                        onClick={onApplyFilters}
-                        className="reset-filters-btn"
-                    >
-                        Apply Filters
-                    </Button>
+                    <div className="actions-container">
+                        <Button
+                            onClick={resetSelectedFilters}
+                            className="reset-filters-btn"
+                        >
+                            {Data ? Data['54'].Text : ''}
+                        </Button>
+                        <Button
+                            onClick={onApplyFilters}
+                            className="reset-filters-btn"
+                        >
+                            {Data ? Data['56'].Text : ''}
+                        </Button>
+                    </div>
                 </Fade>
             </Collapse>
         </>
