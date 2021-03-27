@@ -6,7 +6,7 @@ export default function SelectSpeaker({speakers, values, setFilters }) {
         e => {
             setFilters(previousValues => ({
                 ...previousValues,
-                speakersIds: e
+                speakersIds: e || []
             }))
         },
         [setFilters]

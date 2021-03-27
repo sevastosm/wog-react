@@ -7,8 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 function setDatePickerLang(lang) {
     switch (lang) {
-        case 'gr':
-            registerLocale('gr', el)
+        case 'el':
+            registerLocale('el', el)
             break
         case 'es':
             registerLocale('es', es)

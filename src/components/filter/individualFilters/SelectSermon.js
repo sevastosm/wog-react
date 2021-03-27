@@ -6,7 +6,7 @@ export default function SelectSermon({ sermons, values, setFilters }) {
         e => {
             setFilters(previousValues => ({
                 ...previousValues,
-                sermonsIds: e
+                sermonsIds: e || []
             }))
         },
         [setFilters]

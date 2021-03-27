@@ -12,7 +12,7 @@ import {
     createAllSpeakersChoice,
     createAllSermonsChoice
 } from './individualFilters/utils'
-
+import { format } from 'date-fns'
 import './filter.scss'
 
 function formatSpeaker(speaker) {
@@ -26,7 +26,7 @@ function formatSpeaker(speaker) {
 }
 
 const fetchSpeaker = async lang => {
-    const data = await getData(lang)
+    const data = await getData('GET_ALL_SPEAKERS', lang)
     return data
 }
 
@@ -41,15 +41,16 @@ function formatSermon(sermon) {
 }
 
 const fetchSermons = async lang => {
-    const data = await getData(lang)
+    const data = await getData('GET_SERRIES_LIST', lang)
     return data
 }
 
 const defaultValues = {
     dateFrom: new Date(),
     dateTo: new Date(),
-    speakersIds: null,
-    sermonsIds: null
+    speakersIds: [],
+    sermonsIds: [],
+    text: ''
 }
 
 export default function Filter() {
@@ -77,10 +78,14 @@ export default function Filter() {
             fetchSermons(lang)
         ])
 
-        const formatedSpeakers = speakers.Data.map(formatSpeaker)
+        const formatedSpeakers = speakers.Data.map(formatSpeaker).filter(
+            sp => sp.value
+        )
         formatedSpeakers.unshift(createAllSpeakersChoice(lang))
 
-        const formatedSermons = sermons.Data.map(formatSermon)
+        const formatedSermons = sermons.Data.map(formatSermon).filter(
+            sp => sp.value
+        )
         formatedSermons.unshift(createAllSermonsChoice(lang))
 
         setFetchedData({
@@ -93,7 +98,65 @@ export default function Filter() {
         getAndSetFetchedData(lang)
     }, [lang, getAndSetFetchedData])
 
-    const onApplyFilters = React.useCallback(() => {}, [])
+    const prepareBodyForPost = React.useCallback(() => {
+        const {
+            dateFrom,
+            dateTo,
+            sermonsIds,
+            speakersIds,
+            text
+        } = selectedFilters
+
+        const formattedDateFrom = format(dateFrom, 'yyyy/MM/dd')
+        const formattedDateTo = format(dateTo, 'yyyy/MM/dd')
+
+        const formattedSpeakerIds = speakersIds.map(sp => {
+            return sp.value
+        })
+
+        const formattedSermonIds = sermonsIds.map(sermon => {
+            return sermon.value
+        })
+
+        const hasSelectedAllSermons = function () {
+            formattedSermonIds.filter(
+                sermon => sermon.value >= 900 && sermon.value <= 907
+            )
+
+            return formattedSermonIds.length > 0 ? true : false
+        }
+
+        const body = {
+            Lang: lang,
+            DateFrom: formattedDateFrom,
+            DateTo: formattedDateTo,
+            SpeakersList: formattedSpeakerIds,
+            SeriesList: formattedSermonIds,
+            AllSeries: hasSelectedAllSermons(),
+            Text: text
+        }
+
+        return body
+    }, [lang, selectedFilters])
+
+    const onApplyFilters = React.useCallback(async () => {
+        const body = prepareBodyForPost()
+
+        const response = await fetch(
+            `https://www.wordofgod.gr/api/contents/search`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            }
+        )
+
+        const data = await response.json()
+
+        console.log(data)
+    }, [prepareBodyForPost])
 
     return (
         <>
@@ -110,7 +173,10 @@ export default function Filter() {
                         lang={lang}
                         setFilters={setSelectedFilters}
                     />
-                    <Searchbar setFilters={setSelectedFilters} />
+                    <Searchbar
+                        value={selectedFilters.text}
+                        setFilters={setSelectedFilters}
+                    />
                     <SelectSpeaker
                         values={selectedFilters.speakersIds}
                         lang={lang}
