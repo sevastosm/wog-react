@@ -35,7 +35,14 @@ function setDatePickerLang(lang) {
     }
 }
 
-export default function SelectDates({ labelValue, dates, lang, setFilters }) {
+export default function SelectDates({
+    labelValue,
+    fromDateLabel,
+    toDateLabel,
+    dates,
+    lang,
+    setFilters
+}) {
     const setDateFrom = React.useCallback(
         date => {
             setFilters(previousValues => ({
@@ -62,18 +69,22 @@ export default function SelectDates({ labelValue, dates, lang, setFilters }) {
 
     return (
         <div>
-            <Label for="datepicker">{labelValue}</Label>
-            <div className="datepickers-container">
+            <Label for="datepickers">{labelValue}</Label>
+            <div id="datepickers" className="datepickers-container">
+                <Label for="fromDatepicker">{fromDateLabel}</Label>
                 <DatePicker
                     selected={dates.dateFrom}
                     onChange={setDateFrom}
                     locale={lang}
+                    id="fromDatepicker"
                     className="datepicker"
                 />
+                <Label for="toDatepicker">{toDateLabel}</Label>
                 <DatePicker
                     selected={dates.dateTo}
                     onChange={setDateTo}
                     locale={lang}
+                    id="toDatepicker"
                     className="datepicker"
                 />
             </div>

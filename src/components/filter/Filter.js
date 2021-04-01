@@ -11,7 +11,8 @@ import { useGlobalState } from '../AppContext'
 import getData from '../../api/apis'
 import {
     createAllSpeakersChoice,
-    createAllSermonsChoice
+    createAllSermonsChoice,
+    dataLabel
 } from './individualFilters/utils'
 import { format } from 'date-fns'
 import './filter.scss'
@@ -67,7 +68,7 @@ export default function Filter() {
     const {
         state: { Data }
     } = useGlobalState()
-    console.log('FILTERS', Data)
+
     const toggle = React.useCallback(() => {
         setIsOpen(!isOpen)
     }, [isOpen])
@@ -102,6 +103,15 @@ export default function Filter() {
         getAndSetFetchedData(lang)
     }, [lang, getAndSetFetchedData])
 
+    const labels = dataLabel(Data)
+
+    const getLabel = React.useCallback(
+        num => {
+            return labels(num)
+        },
+        [labels]
+    )
+
     const prepareBodyForPost = React.useCallback(() => {
         const {
             dateFrom,
@@ -130,7 +140,7 @@ export default function Filter() {
             return formattedSermonIds.length > 0 ? true : false
         }
 
-        const body = {
+        return {
             Lang: lang,
             DateFrom: formattedDateFrom,
             DateTo: formattedDateTo,
@@ -139,38 +149,43 @@ export default function Filter() {
             AllSeries: hasSelectedAllSermons(),
             Text: text
         }
-
-        return body
     }, [lang, selectedFilters])
 
-    const onApplyFilters = React.useCallback(async () => {
-        const body = prepareBodyForPost()
+    const onApplyFilters = React.useCallback(
+        async e => {
+            try {
+                const body = prepareBodyForPost()
 
-        const response = await fetch(
-            `https://www.wordofgod.gr/api/contents/search`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify(body)
+                const response = await fetch(
+                    `https://www.wordofgod.gr/api/contents/search`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(body)
+                    }
+                )
+
+                const data = await response.json()
+            } catch (error) {
+                console.log(error)
             }
-        )
-
-        const data = await response.json()
-
-        console.log(data)
-    }, [prepareBodyForPost])
+        },
+        [prepareBodyForPost]
+    )
 
     return (
         <>
             <Button onClick={toggle} className="filter-btn">
-                Filters
+                {getLabel('51')}
             </Button>
             <Collapse isOpen={isOpen}>
                 <Fade in={isOpen} className="filter-collapsibles">
                     <SelectDates
-                        labelValue={Data ? Data['47'].Text : ''}
+                        labelValue={getLabel('47')}
+                        fromDateLabel={getLabel('115')}
+                        toDateLabel={getLabel('73')}
                         dates={{
                             dateFrom: selectedFilters.dateFrom,
                             dateTo: selectedFilters.dateTo
@@ -179,19 +194,19 @@ export default function Filter() {
                         setFilters={setSelectedFilters}
                     />
                     <Searchbar
-                        labelValue={Data ? Data['56'].Text : ''}
+                        labelValue={getLabel('110')}
                         value={selectedFilters.text}
                         setFilters={setSelectedFilters}
                     />
                     <SelectSpeaker
-                        labelValue={Data ? Data['96'].Text : ''}
+                        labelValue={getLabel('98')}
                         values={selectedFilters.speakersIds}
                         lang={lang}
                         setFilters={setSelectedFilters}
                         speakers={fetchedData.speakers}
                     />
                     <SelectSermon
-                        labelValue={Data ? Data['2'].Text : ''}
+                        labelValue={getLabel('2')}
                         sermons={fetchedData.sermons}
                         values={selectedFilters.sermonsIds}
                         lang={lang}
@@ -199,16 +214,16 @@ export default function Filter() {
                     />
                     <div className="actions-container">
                         <Button
-                            onClick={resetSelectedFilters}
-                            className="reset-filters-btn"
-                        >
-                            {Data ? Data['54'].Text : ''}
-                        </Button>
-                        <Button
                             onClick={onApplyFilters}
                             className="reset-filters-btn"
                         >
-                            {Data ? Data['56'].Text : ''}
+                            {getLabel('57')}
+                        </Button>
+                        <Button
+                            onClick={resetSelectedFilters}
+                            className="reset-filters-btn"
+                        >
+                            {getLabel('55')}
                         </Button>
                     </div>
                 </Fade>
