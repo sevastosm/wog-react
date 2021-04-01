@@ -1,11 +1,8 @@
 import React from "react";
-import { GetRecent } from "../../mocks/mocks";
 import  ListItem from "./listitem/ListItem"
 import "./Playlist.scss"
 
-let list = GetRecent.Data;
-
-export default function () {
+export default function ({sermons}) {
   return (
     <div
       cellSpacing={0}
@@ -13,9 +10,9 @@ export default function () {
       border={0}
       width="100%"
     >
-      {list.map((listItem) => {
+      {sermons.map((sermon) => {
         return (
-          <ListItem listItem={listItem} />
+          <ListItem listItem={sermon} />
         );
       })}
     </div>
