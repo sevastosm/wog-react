@@ -1,0 +1,16 @@
+- 1 on video select call now-you-see end-point.
+- 2 fix global state with reducers
+- 3 style fixes
+- homepage -> Tabs , Banners right
+- maybe a nice scroll bar.
+- 4 activate action buttons on list-item (play,listen,download)
+- 5 video player create back-to live logic
+- 6 banners click logic
+- 7 get program logic
+- 8 active sermon list logic
+- 9 treeview style all-series page
+- 10 style all-series-page
+- 11 mobile style
+- 12 mobile vieoplayer
+- 13 create page for footer links
+
