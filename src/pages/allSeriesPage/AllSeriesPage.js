@@ -91,30 +91,15 @@ class AllSeriesPage extends Component {
                     <div>
                         {' '}
                         <div
-                            className="d-flex"
-                            style={{
-                                borderBottom: '1px solid #0000001a',
-                                padding: '15px 25px',
-                                alignItems: 'center'
-                            }}
                         >
-                            <Link
-                                to="/"
-                                className={'btn1 d-flex '}
-                                style={{ maxWidth: '80px', padding: '20px' }}
-                            >
-                                <Arrow />
-                            </Link>
-                            <h2 style={{ flexGrow: '1' }}>All serries</h2>
+                            <div className="col-lg-9 col-sm-12">
+                                <VideoPlayer />
+                            </div>
                         </div>
                         <div className="d-flex flex-wrap mt-2">
                             <div className="d-flex right-banners col-lg-3 col-sm-12">
                                 <div className="d-flex flex-column  w-100">
-                                    {appState.isMobileDevice ? (
-                                        <VideoPlayer />
-                                    ) : (
-                                        ''
-                                    )}
+
                                     <Filter />
                                     {customList.map(listItem => {
                                         return (
@@ -141,7 +126,6 @@ class AllSeriesPage extends Component {
                             </div>
 
                             <div className="col-lg-9 col-sm-12">
-                                {appState.isMobileDevice ? '' : <VideoPlayer />}
                                 <Playlist sermons={this.state.sermons} />
                             </div>
                         </div>

@@ -3,6 +3,9 @@ import  ListItem from "./listitem/ListItem"
 import "./Playlist.scss"
 
 export default function ({sermons}) {
+
+  console.log("recet sermons",sermons)
+  if (!sermons) return null
   return (
     <div
       cellSpacing={0}

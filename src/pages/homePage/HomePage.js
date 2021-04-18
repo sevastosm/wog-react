@@ -7,12 +7,20 @@ import VideoPlayer from "../../components/player/VideoPlayer";
 import { getHomeData } from "../../utils";
 export default function HomePage() {
   const { lang } = useParams();
+
+  const [homeData, setHomeData] = React.useState({
+    program: null,
+    series: null,
+  });
+
   React.useEffect(() => {
-    getHomeData(lang).then((data) => console.log(data));
+    getHomeData(lang).then((data) =>
+      setHomeData({ series: data[0].Data, program: data[1].Data })
+    );
   }, [lang]);
+
   return (
     <div className="m-auto d-flex row">
-      {console.log("render")}
       <div className="col-lg-8 col-sm-12 main-container">
         <div />
         {/* Video player */}
@@ -35,7 +43,7 @@ export default function HomePage() {
           <h1 className="title" style={{ borderBottom: "1px solid #0000001a" }}>
             Recent serries
           </h1>
-          <Playlist />
+          <Playlist sermons={homeData.series} />
         </div>
 
         {/* Pager */}

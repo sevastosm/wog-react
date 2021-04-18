@@ -41,8 +41,8 @@ export default function Banners() {
           <div className="d-flex flex-column w-100">
             {customList.map((listItem) => {
               return (
-                <div key={listItem.ID} className="banner d-flex button">
-                  <a href="" id="ctl00_main_adv1">
+                <div key={listItem.ID} className="d-flex button">
+                  <a href="" >
                     {listItem.Name}
                   </a>
                 </div>

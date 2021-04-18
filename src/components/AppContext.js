@@ -4,17 +4,23 @@ const AppContext = React.createContext({});
 
 const globalState = {
   resourses: null,
-  recen_series: null,
+  recent_series: null,
+  activeVideo:'_40O8BbkhGE'
 };
 
 export const Provider = ({ children }) => {
  const [state, setGlobalstate] = React.useState(globalState);
+
+
+ const setVideo = video =>{
+  setGlobalstate(prevState=>({...prevState,activeVideo:video}));
+ }
   console.log("globalState", state);
 
   const getData = () =>
     getIntialData().then((data) => {
       console.log("DATA", data);
-      setGlobalstate(data);
+      setGlobalstate(prevState=>({...prevState,resourses:data}));
     });
 
   const lang = applicationLang()
@@ -22,7 +28,7 @@ export const Provider = ({ children }) => {
     getData();
   }, [lang]);
   return (
-    <AppContext.Provider value={{ state, setGlobalstate }}>
+    <AppContext.Provider value={{ state, setGlobalstate,setVideo }}>
       {children}
     </AppContext.Provider>
   );
