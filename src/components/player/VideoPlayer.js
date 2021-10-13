@@ -1,36 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./VideoPlayer.scss";
-import { useGlobalState } from '../AppContext'
-
+import AppContext from "../AppContext";
 
 export default function VideoPlayer() {
+  const { activeVideo } = useContext(AppContext);
+  const getVideo = React.useCallback(
+    () => `https://www.youtube.com/embed/${activeVideo.YouTubeId}?autoplay=1`,
+    [activeVideo]
+  );
 
-
-  const state = useGlobalState()
-
-  console.log(state.state)
-
-
-  const getVideo =React.useCallback(()=>`https://www.youtube.com/embed/${state.state.activeVideo}?autoplay=1`,[state])
-
-
-if(!state) return null
-
+  if (!activeVideo) return null;
 
   return (
     <div>
       {/* Start of Player */}
-      {/* <iframe
-        id="ut-player"
-        frameBorder={0}
-        allowFullScreen={1}
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        title="YouTube video player"
-        width={640}
-        height={360}
-        src="https://www.youtube.com/embed/_40O8BbkhGE?rel=0&hl=el&enablejsapi=1&origin=http%3A%2F%2Fwww.wordofgod.gr&widgetid=1?autoplay=1"
-      /> */}
-
       <iframe
         id="ut-player"
         width={640}
@@ -38,8 +21,8 @@ if(!state) return null
         src={getVideo()}
         title="YouTube video player"
         frameborder="0"
-        allow="accelerometer; autoplay;  clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        // allow="accelerometer; autoplay;  clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen="true"
       ></iframe>
       {/* End of Player */}
     </div>

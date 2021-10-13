@@ -1,4 +1,4 @@
-header{
+header {
   height: 107px;
 }
 
@@ -6,7 +6,7 @@ header > div {
   background-color: #193d4d;
 }
 
-div#mainSearchcontainer{
+div#mainSearchcontainer {
   align-items: center;
 }
 
@@ -25,7 +25,28 @@ div#mainSearchcontainer{
   color: #fff;
 }
 
-
 body > .container {
   padding: 140px 15px 0;
+}
+
+.listItem {
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 11px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+}
+
+.listItem:hover {
+  background: #dddddd6b;
+}
+
+.listItem.active {
+  background: #dddddd6b;
+}
+
+.playList {
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 400px));
 }

@@ -1,21 +1,17 @@
-import React from 'react'
-import TopMenu from './TopMenu'
-import Footer from './footer/Footer'
-import getData from '../api/apis'
+import React from "react";
+import TopMenu from "./TopMenu";
+import Footer from "./footer/Footer";
 
+import "../styles/app.scss";
 
-import '../styles/app.scss'
-
-export default function Layout ({ children }){
-
-
-    return (
-        <div className="d-flex flex-column justify-content-center ">
-            <main id="page">
-                <TopMenu />
-                {children}
-            </main>
-            <Footer />
-        </div>
-    )
+export default function Layout({ children }) {
+  return (
+    <div className="d-flex flex-column justify-content-center ">
+      <main id="page">
+        <TopMenu />
+        {children}
+      </main>
+      <Footer />
+    </div>
+  );
 }

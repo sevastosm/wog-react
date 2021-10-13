@@ -1,34 +1,61 @@
-import React from "react";
-import {getIntialData,applicationLang} from "../utils"
+import React, { useCallback } from "react";
+import { useLocation } from "react-router-dom";
+import { getIntialData, applicationLang } from "../utils";
 const AppContext = React.createContext({});
 
-const globalState = {
+const live = {
+  YouTubeId: "Jp6ueJnMdFw",
+  Subject: "LIVE",
+  RecordingSubject: "Live streaming from youtube",
+};
+const lang = applicationLang();
+
+const store = {
   resourses: null,
   recent_series: null,
-  activeVideo:'_40O8BbkhGE'
+  activeVideo: live,
+  activePlaylist: [],
+  program: null,
+  lang: lang,
 };
 
 export const Provider = ({ children }) => {
- const [state, setGlobalstate] = React.useState(globalState);
+  const useParamsL = useLocation();
+  console.log("useParamsL", useParamsL);
 
+  const [state, setGlobalstate] = React.useState(store);
 
- const setVideo = video =>{
-  setGlobalstate(prevState=>({...prevState,activeVideo:video}));
- }
-  console.log("globalState", state);
+  const setVideo = (video) => {
+    setGlobalstate({ ...state, activeVideo: video });
+  };
+  const setActivePlaylist = (data) => {
+    setGlobalstate({ ...state, activePlaylist: data });
+  };
 
-  const getData = () =>
-    getIntialData().then((data) => {
-      console.log("DATA", data);
-      setGlobalstate(prevState=>({...prevState,resourses:data}));
-    });
+  const getData = useCallback(
+    () =>
+      getIntialData().then((data) => {
+        setGlobalstate({
+          ...state,
+          activePlaylist: data[0].Data,
+          program: data[1],
+          resourses: data[2].Data,
+        });
+      }),
+    []
+  );
 
-  const lang = applicationLang()
+  const lang = applicationLang();
   React.useEffect(() => {
-    getData();
+    getData(lang);
+    setGlobalstate({ ...state, lang: lang });
   }, [lang]);
+
+  console.log("STORE___", state);
   return (
-    <AppContext.Provider value={{ state, setGlobalstate,setVideo }}>
+    <AppContext.Provider
+      value={{ ...state, setGlobalstate, setVideo, setActivePlaylist }}
+    >
       {children}
     </AppContext.Provider>
   );

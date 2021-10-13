@@ -1,24 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import Banners from "../../components/banners/Banners";
 import Playlist from "../../components/playlist/Playlist";
 import MainTabs from "../../components/MainTabs";
 import VideoPlayer from "../../components/player/VideoPlayer";
-import { getHomeData } from "../../utils";
+
+export const HomeContext = React.createContext({});
 export default function HomePage() {
-  const { lang } = useParams();
-
-  const [homeData, setHomeData] = React.useState({
-    program: null,
-    series: null,
-  });
-
-  React.useEffect(() => {
-    getHomeData(lang).then((data) =>
-      setHomeData({ series: data[0].Data, program: data[1].Data })
-    );
-  }, [lang]);
-
   return (
     <div className="m-auto d-flex row">
       <div className="col-lg-8 col-sm-12 main-container">
@@ -43,7 +30,7 @@ export default function HomePage() {
           <h1 className="title" style={{ borderBottom: "1px solid #0000001a" }}>
             Recent serries
           </h1>
-          <Playlist sermons={homeData.series} />
+          <Playlist />
         </div>
 
         {/* Pager */}

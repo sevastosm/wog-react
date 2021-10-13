@@ -1,7 +1,7 @@
 import getUserLocales from "get-user-locale";
 import getData from "./api/apis";
 
-const localeCashed =()=> window.localStorage.getItem("lang");
+const localeCashed = () => window.localStorage.getItem("lang");
 const validLanuages = ["el", "en", "it", "ru", "ro", "pl", "fr", "sq"];
 
 const getBroswerLang = () => {
@@ -10,27 +10,55 @@ const getBroswerLang = () => {
   return isValidLanguage ? locale : "en";
 };
 
-
 export const applicationLang = () => {
-  const lang = localeCashed()||getBroswerLang()
-  window.localStorage.setItem("lang",lang);
-  return lang
-}
+  const lang = localeCashed() || getBroswerLang();
+  window.localStorage.setItem("lang", lang);
+  return lang;
+};
 
-export const getIntialData = async () =>{
-  const lang = applicationLang()
- return await getData("GET_RESOURCES", lang).then((values) => {
-    console.log("GET_RESOURCES", values);
-    return values;
-  })
-}
-export const getHomeData = (lang) =>{
- return Promise.all([
+// export const getIntialData = async () => {
+//   const lang = applicationLang();
+//   return await getData("GET_RESOURCES", lang).then((values) => {
+//     console.log("GET_RESOURCES", values);
+//     return values;
+//   });
+// };
+export const getIntialData = async () => {
+  const lang = applicationLang();
+
+  return await Promise.all([
     getData("GET_RECENT", lang),
     getData("GET_PROGRAM", lang),
+    getData("GET_RESOURCES", lang),
   ]).then((values) => {
     console.log("GET_RECENT", values[0].Data);
     console.log("GET_PROGRAM", values[1].Data);
     return values;
-  })
-}
+  });
+};
+
+export const getPlaylist = async (id) => {
+  try {
+    const response = await fetch(
+      "https://www.wordofgod.gr/api/contents/search",
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          Lang: "gr",
+          DateFrom: "",
+          DateTo: "",
+          SpeakersList: [],
+          SeriesList: [id],
+          AllSeries: false,
+          Text: "",
+        }),
+      }
+    );
+
+    const data = await response.json();
+    return data.Data;
+  } catch (error) {
+    console.log(error);
+  }
+};

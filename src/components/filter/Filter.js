@@ -179,6 +179,7 @@ export default function Filter() {
         <>
             <Button onClick={toggle} className="filter-btn">
                 {getLabel('51')}
+                FILTERS
             </Button>
             <Collapse isOpen={isOpen}>
                 <Fade in={isOpen} className="filter-collapsibles">
@@ -218,12 +219,14 @@ export default function Filter() {
                             className="reset-filters-btn"
                         >
                             {getLabel('57')}
+                            SEARCH
                         </Button>
                         <Button
                             onClick={resetSelectedFilters}
                             className="reset-filters-btn"
                         >
                             {getLabel('55')}
+                            RESET
                         </Button>
                     </div>
                 </Fade>
