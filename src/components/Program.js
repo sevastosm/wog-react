@@ -14,8 +14,8 @@ export default function Program() {
   return (
     <div className="d-flex">
       <div className="d-flex flex-column w-100">
-        <div>{Data.DatesAndName[0].DateName}</div>
-        <div>{Data.DatesAndName[0].Date}</div>
+        <div>{Data.DatesAndName[0]?.DateName}</div>
+        <div>{Data.DatesAndName[0]?.Date}</div>
 
         {Data.Timetable.map((listItem, index) => {
           let s = listItem.Date;

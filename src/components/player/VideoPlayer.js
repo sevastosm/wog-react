@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import "./VideoPlayer.scss";
+import { useMedia } from "react-media";
+
 import AppContext from "../AppContext";
 
 export default function VideoPlayer() {
+  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+
   const { activeVideo } = useContext(AppContext);
   const getVideo = React.useCallback(
     () => `https://www.youtube.com/embed/${activeVideo.YouTubeId}?autoplay=1`,
@@ -16,6 +20,7 @@ export default function VideoPlayer() {
       {/* Start of Player */}
       <iframe
         id="ut-player"
+        className={isSmallScreen && "small"}
         width={640}
         height={360}
         src={getVideo()}

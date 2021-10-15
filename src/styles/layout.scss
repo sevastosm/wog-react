@@ -1,6 +1,9 @@
 header {
   height: 107px;
 }
+header.small {
+  height: 55px;
+}
 
 header > div {
   background-color: #193d4d;
@@ -48,5 +51,54 @@ body > .container {
 .playList {
   max-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(auto, 400px));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.playList.small {
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+}
+
+.small {
+  .info * {
+    font-size: 0.94em;
+  }
+}
+
+.small .navbar {
+  padding: 0 0.5rem;
+}
+
+.small .header-item {
+  justify-content: space-between;
+}
+.small .navbar-brand {
+  padding: 0;
+}
+.small .navbar-brand > img {
+  height: 45px;
+}
+
+.toogle div {
+  width: 30px;
+  height: 3px;
+  background-color: #499b7b;
+  margin: 6px 0;
+}
+
+.small {
+  .tabs.navbar-nav {
+    margin: 5px 0;
+    flex-wrap: wrap;
+  }
+  .nav-item {
+    width: 30%;
+  }
+  .nav-link {
+    border-radius: 5px;
+    color: white;
+    background-color: #193d4d;
+    margin: 5px 5px 5px 0;
+    font-size: 10px;
+    text-align: center;
+  }
 }

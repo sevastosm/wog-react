@@ -4,17 +4,17 @@ import "./Playlist.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import AppContext from "../AppContext";
+import { useMedia } from "react-media";
 
 export default function () {
   const { activePlaylist } = useContext(AppContext);
-
-  console.log("activePlaylist", activePlaylist);
+  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
 
   if (!activePlaylist) return null;
   return (
     <PerfectScrollbar scrollbarXActive={false}>
       <div
-        className={"playList"}
+        className={`playList ${isSmallScreen && "small"}`}
         cellSpacing={0}
         cellPadding={5}
         border={0}

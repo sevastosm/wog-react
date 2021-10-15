@@ -11,8 +11,15 @@ import {
 } from "reactstrap";
 import classnames from "classnames";
 import NowYouSee from "./NowYouSee";
+import useResources from "../hooks/UseResources";
 export default function (props) {
+  const resourses = useResources(["tabCurrentStreamHdr", "tabProgramHdr"]);
+
   const [activeTab, setActiveTab] = React.useState("1");
+
+  if (resourses.length < 1) {
+    return null;
+  }
 
   const handleTabclick = (tab) => {
     setActiveTab(tab);
@@ -27,7 +34,7 @@ export default function (props) {
               handleTabclick("1");
             }}
           >
-            Τώρα βλέπετε
+            {resourses[0].Text}
           </NavLink>
         </NavItem>
         <NavItem>
@@ -37,7 +44,7 @@ export default function (props) {
               handleTabclick("2");
             }}
           >
-            Πρόγραμμα
+            {resourses[1].Text}
           </NavLink>
         </NavItem>
       </Nav>

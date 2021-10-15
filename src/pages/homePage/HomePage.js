@@ -3,9 +3,10 @@ import Banners from "../../components/banners/Banners";
 import Playlist from "../../components/playlist/Playlist";
 import MainTabs from "../../components/MainTabs";
 import VideoPlayer from "../../components/player/VideoPlayer";
+import { useMedia } from "react-media";
 
-export const HomeContext = React.createContext({});
 export default function HomePage() {
+  const isSmallScreen = useMedia({ query: "(max-width: 599px)" });
   return (
     <div className="m-auto d-flex row">
       <div className="col-lg-8 col-sm-12 main-container">
@@ -22,7 +23,8 @@ export default function HomePage() {
       <div className="col-lg-4  col-sm-12">
         <div id="cColumn" className="right-banners">
           {/* SerriesButtons */}
-          <Banners />
+          {!isSmallScreen && <Banners />}
+
           {/* SerriesButtons */}
         </div>
         {/* RecentVideosTabs */}

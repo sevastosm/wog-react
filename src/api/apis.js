@@ -1,4 +1,4 @@
-const host = "http://wordofgod.gr";
+const host = "https://wordofgod.gr";
 const getData = async (url, lang) => {
   const endPoints = {
     GET_SERRIES_LIST: `/api/series/searchlist/${lang}`,

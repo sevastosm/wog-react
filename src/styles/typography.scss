@@ -4,14 +4,16 @@ html {
   font-size: 16px;
 }
 
-h1,.title {
+h1,
+.title {
   font-size: 1.125em;
 }
 h2 {
   font-size: 1em;
 }
 
-h3,.title-small{
+h3,
+.title-small {
   font-size: 0.8125em;
 }
 
@@ -19,15 +21,28 @@ span {
   font-size: 13px;
 }
 
-a ,.nav-link{
-  color: $light-green
+a,
+.nav-link {
+  color: $light-green;
 }
 
-a:hover,.nav-link:hover {
+a:hover,
+.nav-link:hover {
   text-decoration: none;
   color: $light-green;
 }
 
 button {
-  font-size:0.875em;
+  font-size: 0.875em;
+}
+
+i {
+  text-decoration: none;
+  font-style: inherit;
+  font-size: 14px;
+}
+
+.title {
+  color: white;
+  font-size: 1.5em;
 }

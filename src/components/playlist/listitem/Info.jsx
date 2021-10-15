@@ -9,13 +9,13 @@ export default function Info({ listItem }) {
   }
 
   return (
-    <div className="info col-lg-8 col-xs-12 pt-1">
+    <div className="info col-lg-8 col-xs-12 pt-1 mx-4">
+      <h3 className="title-small">{listItem.RecordingDate}</h3>
       <div className="maintitle">
         <div dangerouslySetInnerHTML={createMarkup(listItem.Subject)} />
       </div>
-      <h3 className="title-small">{listItem.RecordingDate}</h3>
       <div className="title-small">
-        <Truncate lines={4} ellipsis={<span>...Read more</span>}>
+        <Truncate lines={4} ellipsis={<span>...</span>}>
           {<div dangerouslySetInnerHTML={createMarkup(listItem.RecordingSubject)} />}
         </Truncate>
       </div>

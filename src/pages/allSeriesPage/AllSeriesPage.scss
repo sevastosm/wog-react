@@ -1,8 +1,36 @@
 .button {
-    background-color: #fff !important;
-    color: #000 !important;
-    outline: none !important;
-    border: none !important;
-    padding: 0px !important;
-    text-align: left !important;
+  background: #193a49;
+  color: #fff;
+  outline: none !important;
+  border: none !important;
+  padding: 0px;
+  font-weight: bold;
+  text-align: left !important;
+  border-radius: 5px;
+}
+.button > span {
+  background: #193a49;
+  color: #fff;
+  outline: none !important;
+  border: none !important;
+  padding: 0px;
+  font-weight: bold;
+  text-align: left !important;
+}
+
+.small {
+  .button {
+    margin: 5px 0;
+    padding: 5px;
+    font-size: 10px;
+    span {
+      font-size: 10px;
+    }
+  }
+}
+.tonglefilters {
+  margin: 0 11px;
+  font-size: 15px;
+  padding: 5px;
+  margin-bottom: 10px;
 }

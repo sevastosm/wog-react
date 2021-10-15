@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../Assets/Header/logo.svg";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import useResources from "../hooks/UseResources";
+import AppContext from "../components/AppContext";
+import Languages from "./Languages";
+import { useMedia } from "react-media";
 
 export default function TopMenu() {
+  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
 
-  // set selected language to localStorage
-  const handleClick=(id)=>localStorage.setItem('lang',id)
+  const { setLang, sidebar, setSidebar } = useContext(AppContext);
+
+  const resourses = useResources("ChristianChannel");
+
+  const handleClick = () => {
+    setSidebar(!sidebar);
+  };
 
   return (
-    <header>
-      <div className="navbar navbar-expand-md fixed-top">
+    <header className={isSmallScreen && "small"}>
+      <div className={`navbar navbar-expand-md fixed-top`}>
         <div className="header-item d-flex  flex-grow-1">
           <Link className="navbar-brand" to="/">
             <img
@@ -18,53 +28,20 @@ export default function TopMenu() {
               alt="..."
             />
           </Link>
+          {isSmallScreen && (
+            <button className="button toogle" onClick={handleClick}>
+              <div></div>
+              <div></div>
+              <div></div>
+            </button>
+          )}
         </div>
-        <div className="d-flex flex-column flex-wrap ">
-          <div className="header-item">
-            <ul className="tabs navbar-nav mr-auto flex-row">
-              <li className="nav-item">
-                <Link className="nav-link" to="/el" title="Ελληνικά" onClick={()=>handleClick('el')}>
-                  GR
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/en" title="English" onClick={()=>handleClick('en')}>
-                  EN
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/it" title="Italiano" onClick={()=>handleClick('it')}>
-                  IT
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/ru" title="Русский" onClick={()=>handleClick('ru')}>
-                  RU
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/ro" title="Română" onClick={()=>handleClick('ro')}>
-                  RO
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/pl" title="Polski" onClick={()=>handleClick('pl')}>
-                  PL
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/fr" title="Francais" onClick={()=>handleClick('fr')}>
-                  FR
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/sq" title="Squip" onClick={()=>handleClick('sq')}>
-                  AL
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+        {!isSmallScreen && (
+          <>
+            <h1 className="title flex-grow-1">{resourses?.Text}</h1>
+            <Languages />
+          </>
+        )}
       </div>
     </header>
   );

@@ -11,8 +11,8 @@ const getBroswerLang = () => {
 };
 
 export const applicationLang = () => {
-  const lang = localeCashed() || getBroswerLang();
-  window.localStorage.setItem("lang", lang);
+  const lang = localeCashed();
+  // window.localStorage.setItem("lang", lang);
   return lang;
 };
 
@@ -23,21 +23,21 @@ export const applicationLang = () => {
 //     return values;
 //   });
 // };
-export const getIntialData = async () => {
-  const lang = applicationLang();
-
+export const getIntialData = async (lang = "el") => {
   return await Promise.all([
     getData("GET_RECENT", lang),
     getData("GET_PROGRAM", lang),
     getData("GET_RESOURCES", lang),
+    getData("GET_ALL_SERRIES", lang),
   ]).then((values) => {
+    window.localStorage.setItem("lang", lang);
     console.log("GET_RECENT", values[0].Data);
     console.log("GET_PROGRAM", values[1].Data);
     return values;
   });
 };
 
-export const getPlaylist = async (id) => {
+export const getPlaylist = async (id, lang) => {
   try {
     const response = await fetch(
       "https://www.wordofgod.gr/api/contents/search",
@@ -45,7 +45,7 @@ export const getPlaylist = async (id) => {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
-          Lang: "gr",
+          Lang: lang,
           DateFrom: "",
           DateTo: "",
           SpeakersList: [],

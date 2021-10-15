@@ -11,17 +11,19 @@ const live = {
 const lang = applicationLang();
 
 const store = {
-  resourses: null,
+  resourses: [],
   recent_series: null,
   activeVideo: live,
   activePlaylist: [],
   program: null,
-  lang: lang,
+  lang: window.localStorage.getItem("lang") || "el",
+  series: null,
+  sidebar: false,
+  filterSidebar: false,
 };
 
 export const Provider = ({ children }) => {
   const useParamsL = useLocation();
-  console.log("useParamsL", useParamsL);
 
   const [state, setGlobalstate] = React.useState(store);
 
@@ -32,29 +34,48 @@ export const Provider = ({ children }) => {
     setGlobalstate({ ...state, activePlaylist: data });
   };
 
+  const setLang = (data) => {
+    setGlobalstate({ ...state, lang: data });
+  };
+  const setSidebar = (data) => {
+    setGlobalstate({ ...state, sidebar: data });
+  };
+  const setFilterSidebar = (data) => {
+    setGlobalstate({ ...state, filterSidebar: data });
+  };
+
+  const { lang } = state;
+
   const getData = useCallback(
     () =>
-      getIntialData().then((data) => {
+      getIntialData(lang).then((data) => {
         setGlobalstate({
           ...state,
           activePlaylist: data[0].Data,
           program: data[1],
           resourses: data[2].Data,
+          series: data[3].Data,
         });
       }),
-    []
+    [lang, state]
   );
 
-  const lang = applicationLang();
   React.useEffect(() => {
     getData(lang);
-    setGlobalstate({ ...state, lang: lang });
   }, [lang]);
 
   console.log("STORE___", state);
   return (
     <AppContext.Provider
-      value={{ ...state, setGlobalstate, setVideo, setActivePlaylist }}
+      value={{
+        ...state,
+        setGlobalstate,
+        setVideo,
+        setActivePlaylist,
+        setLang,
+        setSidebar,
+        setFilterSidebar,
+      }}
     >
       {children}
     </AppContext.Provider>
