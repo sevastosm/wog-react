@@ -1,19 +1,22 @@
-import getUserLocales from "get-user-locale";
+// import getUserLocales from "get-user-locale";
 import getData from "./api/apis";
 
-const localeCashed = () => window.localStorage.getItem("lang");
-const validLanuages = ["el", "en", "it", "ru", "ro", "pl", "fr", "sq"];
+// const localeCashed = () => window.localStorage.getItem("lang");
+// const validLanuages = ["el", "en", "it", "ru", "ro", "pl", "fr", "sq"];
 
-const getBroswerLang = () => {
-  const locale = getUserLocales().slice(0, 2);
-  const isValidLanguage = validLanuages.includes(locale);
-  return isValidLanguage ? locale : "en";
-};
+// const getBroswerLang = () => {
+//   const locale = getUserLocales().slice(0, 2);
+//   const isValidLanguage = validLanuages.includes(locale);
+//   return isValidLanguage ? locale : "en";
+// };
 
 export const applicationLang = () => {
-  const lang = localeCashed();
+  let lang = window.localStorage.getItem("lang");
+  if (lang) {
+    return lang;
+  }
   // window.localStorage.setItem("lang", lang);
-  return lang;
+  return "el";
 };
 
 // export const getIntialData = async () => {

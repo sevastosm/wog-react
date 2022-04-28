@@ -12,6 +12,7 @@ import {
 import classnames from "classnames";
 import NowYouSee from "./NowYouSee";
 import useResources from "../hooks/UseResources";
+
 export default function (props) {
   const resourses = useResources(["tabCurrentStreamHdr", "tabProgramHdr"]);
 

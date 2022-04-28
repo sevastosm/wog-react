@@ -36,6 +36,7 @@ const AllSeriesPage = () => {
       <>
         <div
           id={listItem.Name + listItem.ID}
+          key={listItem.Name + listItem.ID}
           className="adv button w-100 d-flex"
         >
           <span>{listItem.Name}</span>
@@ -44,19 +45,21 @@ const AllSeriesPage = () => {
           style={{ padding: "4px 0px" }}
           toggler={"#" + listItem.Name + listItem.ID}
         >
-          {listItem.Series.map((listItem) => {
-            return (
-              <div key={listItem.ID} className="adv d-flex">
-                <Button
-                  id={listItem.ID}
-                  className="button w-100"
-                  onClick={onClick}
-                >
-                  {listItem.Name}
-                </Button>
-              </div>
-            );
-          })}
+          {listItem.Series
+            ? listItem.Series.map((listItem) => {
+                return (
+                  <div key={listItem.ID} className="adv d-flex">
+                    <Button
+                      id={listItem.ID}
+                      className="button w-100"
+                      onClick={onClick}
+                    >
+                      {listItem.Name}
+                    </Button>
+                  </div>
+                );
+              })
+            : null}
         </UncontrolledCollapse>
       </>
     );

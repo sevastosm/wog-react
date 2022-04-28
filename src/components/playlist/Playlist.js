@@ -12,18 +12,19 @@ export default function () {
 
   if (!activePlaylist) return null;
   return (
-    <PerfectScrollbar scrollbarXActive={false}>
-      <div
-        className={`playList ${isSmallScreen && "small"}`}
-        cellSpacing={0}
-        cellPadding={5}
-        border={0}
-        width="100%"
-      >
-        {activePlaylist.map((sermon) => {
-          return <ListItem listItem={sermon} />;
-        })}
-      </div>
-    </PerfectScrollbar>
+    // <PerfectScrollbar scrollbarXActive={false}>
+    <div
+      className={`playList ${isSmallScreen && "small"}`}
+      strt
+      cellSpacing={0}
+      cellPadding={5}
+      border={0}
+      width="100%"
+    >
+      {activePlaylist.map((sermon) => {
+        return <ListItem key={sermon.ID} listItem={sermon} />;
+      })}
+    </div>
+    // </PerfectScrollbar>
   );
 }

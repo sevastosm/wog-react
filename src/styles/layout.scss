@@ -49,7 +49,7 @@ body > .container {
 }
 
 .playList {
-  max-height: 100vh;
+  // max-height: 100vh;.footer
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }

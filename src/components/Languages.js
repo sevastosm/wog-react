@@ -45,6 +45,16 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
+                to="/es"
+                title="Español"
+                onClick={() => setLang("es")}
+              >
+                ES
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
                 to="/ru"
                 title="Русский"
                 onClick={() => setLang("ru")}
