@@ -19,7 +19,7 @@ export default function Languages() {
                 className="nav-link"
                 to="/el"
                 title="Ελληνικά"
-                onClick={() => setLang("el")}
+                onClick={() => setLang("gr")}
               >
                 GR
               </Link>

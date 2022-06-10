@@ -45,7 +45,7 @@ export default function Banners() {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex mb-3">
       <div className="d-flex w-100 flex-column">
         {lang === "el" &&
           customList.map((listItem) => {

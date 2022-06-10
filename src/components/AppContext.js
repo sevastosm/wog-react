@@ -16,26 +16,33 @@ const store = {
   activeVideo: live,
   activePlaylist: [],
   program: null,
-  lang: window.localStorage.getItem("lang") || "el",
+  lang: window.localStorage.getItem("lang") || "gr",
   series: null,
   sidebar: false,
   filterSidebar: false,
   Data: [],
+  loader: false,
+  speakersList: [],
+  seriesSearchList: [],
 };
 
 export const Provider = ({ children }) => {
-  const useParamsL = useLocation();
-
   const [state, setGlobalstate] = React.useState(store);
 
   const setVideo = (video) => {
     setGlobalstate({ ...state, activeVideo: video });
   };
-  const setActivePlaylist = (data) => {
-    setGlobalstate({ ...state, activePlaylist: data });
+
+  const setLoader = (loader) => {
+    setGlobalstate({ ...state, loader: loader });
   };
 
-  const setLang = (data) => {
+  const setActivePlaylist = (data) => {
+    setGlobalstate({ ...state, activePlaylist: data, loader: false });
+  };
+
+  const setLang = async (data) => {
+    await window.localStorage.setItem("lang", data);
     setGlobalstate({ ...state, lang: data });
   };
   const setSidebar = (data) => {
@@ -56,6 +63,8 @@ export const Provider = ({ children }) => {
           program: data[1],
           resourses: data[2].Data,
           series: data[3].Data,
+          seriesSearchList: data[4].Data,
+          speakersList: data[5].Data,
         });
       }),
     [lang, state]
@@ -76,6 +85,7 @@ export const Provider = ({ children }) => {
         setLang,
         setSidebar,
         setFilterSidebar,
+        setLoader,
       }}
     >
       {children}

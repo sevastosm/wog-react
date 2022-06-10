@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import Playlist from "../../components/playlist/Playlist";
-import { UncontrolledCollapse, Button } from "reactstrap";
+import { UncontrolledCollapse } from "reactstrap";
 import VideoPlayer from "../../components/player/VideoPlayer";
 import Banners from "../../components/banners/Banners";
 import MainTabs from "../../components/MainTabs";
@@ -32,6 +32,7 @@ const AllSeriesPage = () => {
     activePlaylist,
     setVideo,
     activeVideo,
+    setLoader,
   } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
 
@@ -40,9 +41,11 @@ const AllSeriesPage = () => {
 
   const onClick = async (e) => {
     const { id } = e.target;
+    setLoader(true);
     const result = await getPlaylist(id, lang);
 
     setActivePlaylist(result);
+    // setLoader(false)
     // setVideo(result[0]);
 
     history.push(`?lang=${lang}&search=series&sid=${id}`);
@@ -60,16 +63,16 @@ const AllSeriesPage = () => {
 
     return (
       <>
-        <Button
-          id={listItem.Name + listItem.ID}
-          key={listItem.Name + listItem.ID}
+        <button
+          id={lang + listItem.ID}
+          key={lang + listItem.ID}
           className="w-100 d-flex"
         >
-          {listItem.Name}jjjj
-        </Button>
+          {listItem.Name}
+        </button>
         <UncontrolledCollapse
           style={{ padding: "4px 0px" }}
-          toggler={"#" + listItem.Name + listItem.ID}
+          toggler={"#" + lang + listItem.ID}
           onOpened={() => {
             console.log("sdfsdf");
           }}
@@ -78,13 +81,13 @@ const AllSeriesPage = () => {
             ? listItem.Series.map((listItem) => {
                 return (
                   <div key={listItem.ID} className="d-flex">
-                    <Button
+                    <button
                       id={listItem.ID}
                       className="w-100"
                       onClick={onClick}
                     >
                       {listItem.Name}
-                    </Button>
+                    </button>
                   </div>
                 );
               })
@@ -101,8 +104,7 @@ const AllSeriesPage = () => {
     return (
       <div className={isSmallScreen && "small"}>
         <div className="d-flex flex-column  w-100">
-          <Filter />
-          <Banners />
+          {/* <Banners /> */}
           {customList.map((listItem) => {
             return (
               // If serries has childern
@@ -110,20 +112,19 @@ const AllSeriesPage = () => {
                 MultiSerries(listItem)
               ) : (
                 <div key={listItem.ID} className="d-flex">
-                  <Button id={listItem.ID} onClick={onClick} className="w-100">
+                  <button id={listItem.ID} onClick={onClick} className="w-100">
                     {listItem.Name}
-                  </Button>
+                  </button>
                 </div>
               )
             );
           })}
+          <Filter />
         </div>
       </div>
     );
   };
   useEffect(() => {
-    console.log("LANG", activePlaylist);
-
     setVideo({
       YouTubeId: "ENn6RLC0wpo",
       Subject: "LIVE",
@@ -140,7 +141,7 @@ const AllSeriesPage = () => {
   }, [lang, activePlaylist, activeVideo]);
 
   return (
-    <div>
+    <div className="p-2">
       {isSmallScreen && (
         <>
           <FiltersSidebar>
@@ -157,15 +158,15 @@ const AllSeriesPage = () => {
         </div>
       </div>
       <div className="d-flex flex-wrap mt-2">
-        <div className="d-flex right-banners col-lg-3 col-sm-12">
+        <div className="d-flex right-banners col-lg-2 col-sm-12">
           {!isSmallScreen && <SerriesList />}
         </div>
 
         <div className="col-lg-9 col-sm-12">
           {isSmallScreen && (
-            <Button onClick={handleClick} className="button tonglefilters">
+            <button onClick={handleClick} className="button tonglefilters">
               Filters
-            </Button>
+            </button>
           )}
           <Playlist />
         </div>

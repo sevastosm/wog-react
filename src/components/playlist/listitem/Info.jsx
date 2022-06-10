@@ -9,7 +9,7 @@ export default function Info({ listItem }) {
   }
 
   return (
-    <div className="info col-lg-8 col-xs-12 pt-1 mx-4">
+    <div className="info col-lg-6 col-xs-12 pt-1 mx-4">
       <h3 className="title-small">{listItem.RecordingDate}</h3>
       <div className="maintitle">
         <div dangerouslySetInnerHTML={createMarkup(listItem.Subject)} />

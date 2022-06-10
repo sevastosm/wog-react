@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams, useRouteMatch } from "react-router-dom";
 import { applicationLang } from "../../utils";
 
 import "./footer.scss";
@@ -11,6 +11,14 @@ import { route } from "../../constants";
 export default function () {
   const { setActivePlaylist, series, lang, setFilterSidebar, filterSidebar } =
     useContext(AppContext);
+  const locat = useLocation();
+  const params = useParams();
+  const match = useRouteMatch("/:lang");
+
+  console.log("locat", locat);
+  console.log("params", params);
+  console.log("match", match);
+
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
   return (
     <footer className={isSmallScreen && "small"}>
@@ -19,7 +27,7 @@ export default function () {
           <ul>
             <li>
               <Link
-                to={`${lang}/${route.CONTACT}`}
+                to={`${match.url}/${route.CONTACT}`}
                 style={{
                   cursor: "pointer",
                   color: "white",
@@ -31,7 +39,7 @@ export default function () {
             </li>
             <li>
               <Link
-                to={route.HELP}
+                to={`${match.url}/${route.HELP}`}
                 style={{
                   cursor: "pointer",
                   color: "white",
@@ -43,7 +51,7 @@ export default function () {
             </li>
             <li>
               <Link
-                to={route.NEWSLETTER}
+                to={`${match.url}/${route.NEWSLETTER}`}
                 style={{
                   cursor: "pointer",
                   color: "white",
@@ -55,7 +63,7 @@ export default function () {
             </li>
             <li>
               <Link
-                to={route.ABOUT}
+                to={`${match.url}/${route.ABOUT}`}
                 style={{
                   cursor: "pointer",
                   color: "white",
@@ -67,7 +75,7 @@ export default function () {
             </li>
             <li>
               <Link
-                to={route.HISTORY}
+                to={`${match.url}/${route.HISTORY}`}
                 style={{
                   cursor: "pointer",
                   color: "white",
@@ -79,7 +87,7 @@ export default function () {
             </li>
             <li>
               <Link
-                to={route.LINK}
+                to={`${match.url}/${route.LINK}`}
                 style={{
                   cursor: "pointer",
                   color: "white",
@@ -91,7 +99,7 @@ export default function () {
             </li>
             <li>
               <Link
-                to={route.COOKIES}
+                to={`${match.url}/${route.COOKIES}`}
                 style={{ cursor: "pointer", textDecoration: "none" }}
               >
                 Cookies

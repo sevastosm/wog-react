@@ -22,10 +22,10 @@ export default function ({ listItem }) {
     <div
       onClick={handleClick}
       className={`listItem ${listItem.RecordingID === activeVideo.RecordingID ? "active" : ""}`} key={listItem.RecordingID}>
-      <div className="d-flex mb-3">
+      <div className="d-flex">
         <div className="col-xs-12 d-flex flex-column ">
           <VideoThumb listItem={listItem} />
-          <Buttons />
+          {/* <Buttons listItem={listItem} /> */}
         </div>
         <Info listItem={listItem} />
       </div>

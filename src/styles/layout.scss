@@ -34,10 +34,11 @@ body > .container {
 
 .listItem {
   cursor: pointer;
-  border: 1px solid transparent;
+  border: 1px solid #b5abab21;
   padding: 11px;
-  margin-bottom: 3px;
+  margin: 3px;
   border-radius: 5px;
+  max-width: 400px;
 }
 
 .listItem:hover {
@@ -51,7 +52,7 @@ body > .container {
 .playList {
   // max-height: 100vh;.footer
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
 .playList.small {
@@ -101,4 +102,11 @@ body > .container {
     font-size: 10px;
     text-align: center;
   }
+}
+
+.tab-content {
+  padding: 11px;
+  border: 1px solid #dee2e6;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
 }

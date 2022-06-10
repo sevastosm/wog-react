@@ -26,25 +26,28 @@ export const applicationLang = () => {
 //     return values;
 //   });
 // };
-export const getIntialData = async (lang = "el") => {
-  return await Promise.all([
+export const getIntialData = (lang = "el") => {
+  return Promise.all([
     getData("GET_RECENT", lang),
     getData("GET_PROGRAM", lang),
     getData("GET_RESOURCES", lang),
-    getData("GET_ALL_SERRIES", lang),
+    getData("GET_ALL_SERIES", lang),
+    getData("GET_SERIES_SEARCH_LIST", lang),
+    getData("GET_ALL_SPEAKERS", lang),
   ]).then((values) => {
-    window.localStorage.setItem("lang", lang);
+    console.log("VALUES", values);
+    // window.localStorage.setItem("lang", lang);
     console.log("GET_RECENT", values[0].Data);
     console.log("GET_PROGRAM", values[1].Data);
     return values;
   });
 };
 
-export const getPlaylist = async (id, lang) => {
+export const getPlaylist = async (id, lang, page = 1, items = 1000) => {
   console.log("LANG", lang);
   try {
     const response = await fetch(
-      `https://www.wordofgod.gr/api/series/${lang}/${id}/1000/1`,
+      `https://www.wordofgod.gr/api/series/${lang}/${id}/${items}/${page}`,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },

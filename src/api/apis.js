@@ -1,8 +1,8 @@
 const host = "https://wordofgod.gr";
 const getData = async (url, lang) => {
   const endPoints = {
-    GET_SERRIES_LIST: `/api/series/searchlist/${lang}`,
-    GET_ALL_SERRIES: `/api/series/${lang}`,
+    GET_SERIES_SEARCH_LIST: `/api/series/searchlist/${lang}`,
+    GET_ALL_SERIES: `/api/series/${lang}`,
     GET_RECENT: `/api/contents/sermons_recent/${lang}`,
     GET_PROGRAM: `/api/contents/program/${lang}/2`,
     GET_RESOURCES: `/api/contents/resources/${lang}`,

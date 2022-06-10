@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Collapse, Fade } from "reactstrap";
 import {
@@ -7,7 +7,8 @@ import {
   SelectSpeaker,
   Searchbar,
 } from "../filter/individualFilters";
-import { useGlobalState } from "../AppContext";
+import AppContext, { useGlobalState } from "../AppContext";
+
 import getData from "../../api/apis";
 import {
   createAllSpeakersChoice,
@@ -43,7 +44,7 @@ function formatSermon(sermon) {
 }
 
 const fetchSermons = async (lang) => {
-  const data = await getData("GET_SERRIES_LIST", lang);
+  const data = await getData("GET_SERIES_SEARCH_LIST", lang);
   return data;
 };
 
@@ -56,15 +57,25 @@ const defaultValues = {
 };
 
 export default function Filter() {
+  const { setActivePlaylist, speakersList, lang, seriesSearchList, setLoader } =
+    useContext(AppContext);
   const [selectedFilters, setSelectedFilters] = React.useState({
     ...defaultValues,
   });
+  const formatedSpeakers = speakersList
+    .map(formatSpeaker)
+    .filter((sp) => sp.value);
+  formatedSpeakers.unshift(createAllSpeakersChoice(lang));
+
+  const formatedSermons = seriesSearchList
+    .map(formatSermon)
+    .filter((sp) => sp.value);
+  formatedSermons.unshift(createAllSermonsChoice(lang));
   const [fetchedData, setFetchedData] = React.useState({
-    speakers: [],
-    sermons: [],
+    speakers: formatedSpeakers,
+    sermons: formatedSermons,
   });
   const [isOpen, setIsOpen] = React.useState(false);
-  let { lang } = useParams();
   const { Data } = useGlobalState();
   const toggle = React.useCallback(() => {
     setIsOpen(!isOpen);
@@ -73,32 +84,6 @@ export default function Filter() {
   const resetSelectedFilters = React.useCallback(() => {
     setSelectedFilters({ ...defaultValues });
   }, []);
-
-  const getAndSetFetchedData = React.useCallback(async (lang) => {
-    const [speakers, sermons] = await Promise.all([
-      fetchSpeaker(lang),
-      fetchSermons(lang),
-    ]);
-
-    const formatedSpeakers = speakers.Data.map(formatSpeaker).filter(
-      (sp) => sp.value
-    );
-    formatedSpeakers.unshift(createAllSpeakersChoice(lang));
-
-    const formatedSermons = sermons.Data.map(formatSermon).filter(
-      (sp) => sp.value
-    );
-    formatedSermons.unshift(createAllSermonsChoice(lang));
-
-    setFetchedData({
-      speakers: formatedSpeakers,
-      sermons: formatedSermons,
-    });
-  }, []);
-
-  React.useEffect(() => {
-    // getAndSetFetchedData(lang);
-  }, [lang, getAndSetFetchedData]);
 
   const labels = dataLabel(Data);
 
@@ -133,11 +118,11 @@ export default function Filter() {
 
     return {
       Lang: lang,
-      DateFrom: formattedDateFrom,
-      DateTo: formattedDateTo,
+      // DateFrom: formattedDateFrom,
+      // DateTo: formattedDateTo,
       SpeakersList: formattedSpeakerIds,
       SeriesList: formattedSermonIds,
-      AllSeries: hasSelectedAllSermons(),
+      // AllSeries: hasSelectedAllSermons(),
       Text: text,
     };
   }, [lang, selectedFilters]);
@@ -146,7 +131,7 @@ export default function Filter() {
     async (e) => {
       try {
         const body = prepareBodyForPost();
-
+        setLoader(true);
         const response = await fetch(
           `https://www.wordofgod.gr/api/contents/search`,
           {
@@ -159,6 +144,9 @@ export default function Filter() {
         );
 
         const data = await response.json();
+        console.log("SEARCH_DATA", data);
+
+        setActivePlaylist(data.Data);
       } catch (error) {
         console.log(error);
       }

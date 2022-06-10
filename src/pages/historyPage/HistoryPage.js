@@ -1,16 +1,16 @@
-import React from 'react'
-import { useLocation } from "react-router-dom";
+import React from "react";
+import useResources from "../../hooks/UseResources";
 
-export default function HistoryPage(){
-  let location = useLocation()
-
-  const getNameFromLocation = React.useMemo(()=>{
-    if(location.pathname === '/history'){
-      return "Ιστορία"
-    }
-  },[location])
-
-  return <div>
-    <h3>{getNameFromLocation}</h3>
-  </div>
+export default function HistoryPage() {
+  const resourses = useResources("HistoryText");
+  if (!resourses) return null;
+  function createMarkup(content) {
+    return { __html: content };
+  }
+  return (
+    <div
+      className="p-5"
+      dangerouslySetInnerHTML={createMarkup(resourses.Text)}
+    />
+  );
 }

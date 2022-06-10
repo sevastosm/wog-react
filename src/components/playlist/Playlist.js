@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import ListItem from "./listitem/ListItem";
+import Loader from "../loader/Loader";
 import "./Playlist.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -7,10 +8,10 @@ import AppContext from "../AppContext";
 import { useMedia } from "react-media";
 
 export default function () {
-  const { activePlaylist } = useContext(AppContext);
+  const { activePlaylist, loader } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
-
-  if (!activePlaylist) return null;
+  if (loader) return <Loader />;
+  if (!activePlaylist) return <Loader />;
   return (
     // <PerfectScrollbar scrollbarXActive={false}>
     <div

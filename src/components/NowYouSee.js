@@ -8,7 +8,7 @@ export default function NowYouSee({ listItem }) {
   }
 
   return (
-    <div className="info col-lg-8 col-xs-12 pt-1">
+    <div className="info col-xs-12 pt-1">
       <h3 className="title-small">{activeVideo.RecordingDate}</h3>
       <div className="maintitle">
         <div dangerouslySetInnerHTML={createMarkup(activeVideo.Subject)} />

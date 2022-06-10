@@ -52,7 +52,7 @@ export default function (props) {
             {resourses[0].Text}
           </NavLink>
         </NavItem>
-        {lang === "el" && (
+        {lang === "gr" && (
           <NavItem>
             <NavLink
               className={classnames({ active: activeTab === "2" })}
@@ -74,7 +74,7 @@ export default function (props) {
             </Col>
           </Row>
         </TabPane>
-        {lang === "el" && (
+        {lang === "gr" && (
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
