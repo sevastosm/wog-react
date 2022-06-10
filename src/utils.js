@@ -12,10 +12,10 @@ import getData from "./api/apis";
 
 export const applicationLang = () => {
   let lang = window.localStorage.getItem("lang");
+  console.log("lang", lang);
   if (lang) {
     return lang;
   }
-  // window.localStorage.setItem("lang", lang);
   return "el";
 };
 
@@ -41,21 +41,22 @@ export const getIntialData = async (lang = "el") => {
 };
 
 export const getPlaylist = async (id, lang) => {
+  console.log("LANG", lang);
   try {
     const response = await fetch(
-      "https://www.wordofgod.gr/api/contents/search",
+      `https://www.wordofgod.gr/api/series/${lang}/${id}/1000/1`,
       {
-        method: "POST",
+        method: "GET",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          Lang: lang,
-          DateFrom: "",
-          DateTo: "",
-          SpeakersList: [],
-          SeriesList: [id],
-          AllSeries: false,
-          Text: "",
-        }),
+        // body: JSON.stringify({
+        //   Lang: lang,
+        //   DateFrom: "",
+        //   DateTo: "",
+        //   SpeakersList: [],
+        //   SeriesList: [id],
+        //   AllSeries: false,
+        //   Text: "",
+        //}),
       }
     );
 

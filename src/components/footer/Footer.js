@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { applicationLang } from "../../utils";
+
 import "./footer.scss";
 import { useMedia } from "react-media";
+import AppContext from "../../components/AppContext";
 
 import { route } from "../../constants";
 
 export default function () {
+  const { setActivePlaylist, series, lang, setFilterSidebar, filterSidebar } =
+    useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
   return (
     <footer className={isSmallScreen && "small"}>
@@ -14,7 +19,7 @@ export default function () {
           <ul>
             <li>
               <Link
-                to={route.CONTACT}
+                to={`${lang}/${route.CONTACT}`}
                 style={{
                   cursor: "pointer",
                   color: "white",

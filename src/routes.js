@@ -13,19 +13,12 @@ import {
 import { route } from "./constants/";
 
 const routes = [
-
-  {
-    component: HomePage,
-    exact: true,
-    path: `/:lang`,
-  },
-
-  {
-    component: AllSeriesPage,
-    exact: true,
-    sensitive: true,
-    path: `/:lang/${route.ALL_SERIES}`,
-  },
+  // {
+  //   component: AllSeriesPage,
+  //   exact: true,
+  //   sensitive: true,
+  //   path: `/:lang/${route.ALL_SERIES}`,
+  // },
   {
     component: ContactPage,
     exact: true,
@@ -38,7 +31,7 @@ const routes = [
   },
   {
     component: HelpPage,
-    exact: true,
+    exact: false,
     path: `/:lang/${route.HELP}/`,
   },
   {
@@ -60,6 +53,11 @@ const routes = [
     component: WogInfoPage,
     exact: true,
     path: `/:lang/${route.ABOUT}/`,
+  },
+  {
+    component: AllSeriesPage,
+    exact: true,
+    path: `/:lang`,
   },
 ];
 

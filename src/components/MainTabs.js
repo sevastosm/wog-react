@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../components/AppContext";
 import Program from "./Program";
 import {
   TabContent,
@@ -8,23 +9,36 @@ import {
   NavLink,
   Row,
   Col,
+  Button,
 } from "reactstrap";
 import classnames from "classnames";
 import NowYouSee from "./NowYouSee";
 import useResources from "../hooks/UseResources";
 
 export default function (props) {
-  const resourses = useResources(["tabCurrentStreamHdr", "tabProgramHdr"]);
-
+  const resourses = useResources([
+    "tabCurrentStreamHdr",
+    "tabProgramHdr",
+    "ImageReturnToLive",
+  ]);
+  const { lang, setVideo } = useContext(AppContext);
   const [activeTab, setActiveTab] = React.useState("1");
 
   if (resourses.length < 1) {
     return null;
   }
 
+  console.log("LANIO", lang);
   const handleTabclick = (tab) => {
     setActiveTab(tab);
   };
+
+  const handleClick = () => {
+    setVideo({ YouTubeId: "ENn6RLC0wpo" });
+  };
+
+  console.log(resourses);
+
   return (
     <div className="mt-2">
       <Nav tabs>
@@ -38,16 +52,19 @@ export default function (props) {
             {resourses[0].Text}
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "2" })}
-            onClick={() => {
-              handleTabclick("2");
-            }}
-          >
-            {resourses[1].Text}
-          </NavLink>
-        </NavItem>
+        {lang === "el" && (
+          <NavItem>
+            <NavLink
+              className={classnames({ active: activeTab === "2" })}
+              onClick={() => {
+                handleTabclick("2");
+              }}
+            >
+              {resourses[1].Text}
+            </NavLink>
+          </NavItem>
+        )}
+        <Button onClick={handleClick}> {resourses[2].Text}</Button>
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
@@ -57,13 +74,15 @@ export default function (props) {
             </Col>
           </Row>
         </TabPane>
-        <TabPane tabId="2">
-          <Row>
-            <Col sm="12">
-              <Program />
-            </Col>
-          </Row>
-        </TabPane>
+        {lang === "el" && (
+          <TabPane tabId="2">
+            <Row>
+              <Col sm="12">
+                <Program />
+              </Col>
+            </Row>
+          </TabPane>
+        )}
       </TabContent>
     </div>
   );

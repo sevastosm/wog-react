@@ -3,9 +3,9 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Layout from "./components/Layout";
 import Banners from "./components/banners/Banners";
+import { applicationLang } from "./utils";
 
 import routes from "./routes";
-import { applicationLang } from "./utils";
 import { useMedia } from "react-media";
 import Languages from "./components/Languages";
 
@@ -30,7 +30,9 @@ export default function App() {
         </Sidebar>
       )}
       <Switch>
-        <Redirect exact from="/" to={applicationLang()} />
+        <Route exact path="/">
+          <Redirect to={`/${applicationLang()}`} />
+        </Route>
         <Routes />
       </Switch>
     </Layout>

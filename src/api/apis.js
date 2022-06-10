@@ -10,7 +10,7 @@ const getData = async (url, lang) => {
     GET_NOW_PLAYNG: `/api/contents/sermons/${lang}/2`,
   };
 
-  const response = await fetch(`${host}/${endPoints[url]}`);
+  const response = await fetch(`${host}${endPoints[url]}`);
   const data = await response.json();
   return data;
 };

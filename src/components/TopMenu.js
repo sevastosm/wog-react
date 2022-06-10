@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { applicationLang } from "../utils";
 import Logo from "../Assets/Header/logo.svg";
 import { Link } from "react-router-dom";
 import useResources from "../hooks/UseResources";
@@ -21,7 +22,7 @@ export default function TopMenu() {
     <header className={isSmallScreen && "small"}>
       <div className={`navbar navbar-expand-md fixed-top`}>
         <div className="header-item d-flex  flex-grow-1">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to={`/${applicationLang()}`}>
             <img
               src={Logo}
               className="rounded float-left img-fluid"

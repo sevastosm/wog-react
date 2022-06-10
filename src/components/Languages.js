@@ -7,9 +7,11 @@ export default function Languages() {
   const { setLang } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
 
+  const cn = isSmallScreen ? "small" : "";
+
   return (
-    <div className={isSmallScreen && "small"}>
-      <div className="d-flex flex-column flex-wrap ">
+    <div className={cn}>
+      <div className="d-flex flex-column flex-wrap">
         <div className="header-item">
           <ul className="tabs navbar-nav mr-auto flex-row">
             <li className="nav-item">

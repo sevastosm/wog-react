@@ -46,7 +46,7 @@ export default function Banners() {
 
   return (
     <div className="d-flex">
-      <div className="d-flex w-100 flex-wrap">
+      <div className="d-flex w-100 flex-column">
         {lang === "el" &&
           customList.map((listItem) => {
             return (
@@ -61,7 +61,7 @@ export default function Banners() {
             );
           })}
         {/* More Series */}
-        <div
+        {/* <div
           className={`d-flex banner 
          ${isSmallScreen && "small"}`}
         >
@@ -71,7 +71,7 @@ export default function Banners() {
           >
             {resourses?.Text}
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

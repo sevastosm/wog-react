@@ -4,7 +4,7 @@ import { getIntialData, applicationLang } from "../utils";
 const AppContext = React.createContext({});
 
 const live = {
-  YouTubeId: "Jp6ueJnMdFw",
+  YouTubeId: "ENn6RLC0wpo",
   Subject: "LIVE",
   RecordingSubject: "Live streaming from youtube",
 };
@@ -20,6 +20,7 @@ const store = {
   series: null,
   sidebar: false,
   filterSidebar: false,
+  Data: [],
 };
 
 export const Provider = ({ children }) => {
@@ -64,7 +65,7 @@ export const Provider = ({ children }) => {
     getData(lang);
   }, [lang]);
 
-  console.log("STORE___", state);
+  console.log("GLOBAL --- STORE ----", state);
   return (
     <AppContext.Provider
       value={{
