@@ -34,7 +34,7 @@ const AllSeriesPage = () => {
     activeVideo,
     setLoader,
   } = useContext(AppContext);
-  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
 
   let customList = series || [];
   const history = useHistory();

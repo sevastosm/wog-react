@@ -64,7 +64,9 @@ export default function (props) {
             </NavLink>
           </NavItem>
         )}
-        <Button onClick={handleClick}> {resourses[2].Text}</Button>
+        {lang === "gr" && (
+          <Button onClick={handleClick}> {resourses[2].Text}</Button>
+        )}
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">

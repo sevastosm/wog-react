@@ -1,23 +1,15 @@
-import React, { useContext } from "react";
-import { Link, useLocation, useParams, useRouteMatch } from "react-router-dom";
-import { applicationLang } from "../../utils";
+import React from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 
 import "./footer.scss";
 import { useMedia } from "react-media";
-import AppContext from "../../components/AppContext";
 
 import { route } from "../../constants";
 
 export default function () {
-  const { setActivePlaylist, series, lang, setFilterSidebar, filterSidebar } =
-    useContext(AppContext);
-  const locat = useLocation();
-  const params = useParams();
   const match = useRouteMatch("/:lang");
 
-  console.log("locat", locat);
-  console.log("params", params);
-  console.log("match", match);
+  if (!match) return null;
 
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
   return (

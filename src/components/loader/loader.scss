@@ -6,11 +6,11 @@
 }
 
 .loader {
-  border: 16px solid #499b7b;
+  border: 8px solid #499b7b;
   border-radius: 50%;
-  border-top: 16px solid #193d4d;
-  width: 120px;
-  height: 120px;
+  border-top: 8px solid #193d4d;
+  width: 100px;
+  height: 100px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
 }

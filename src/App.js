@@ -20,7 +20,7 @@ const Routes = () => {
 };
 
 export default function App() {
-  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   return (
     <Layout>
       {isSmallScreen && (
