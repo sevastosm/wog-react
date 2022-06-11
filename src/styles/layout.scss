@@ -34,19 +34,20 @@ body > .container {
 
 .listItem {
   cursor: pointer;
-  border: 1px solid #b5abab21;
-  padding: 11px;
-  margin: 3px;
+  // border: 1px solid #b5abab21;
+  background: #dddddd6b;
+  margin-bottom: 10px;
   border-radius: 5px;
   max-width: 400px;
 }
 
 .listItem:hover {
-  background: #dddddd6b;
+  border: 1px solid #499b7b;
 }
 
 .listItem.active {
-  background: #dddddd6b;
+  // background: #dddddd6b;
+  border: 1px solid #499b7b;
 }
 
 .playList {

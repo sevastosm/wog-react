@@ -15,6 +15,10 @@ h2 {
 h3,
 .title-small {
   font-size: 0.8125em;
+
+  br {
+    display: none;
+  }
 }
 
 span {
