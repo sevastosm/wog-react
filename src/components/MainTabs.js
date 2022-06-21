@@ -21,7 +21,7 @@ export default function (props) {
     "tabProgramHdr",
     "ImageReturnToLive",
   ]);
-  const { lang, setVideo } = useContext(AppContext);
+  const { lang, setVideo, activeVideo } = useContext(AppContext);
   const [activeTab, setActiveTab] = React.useState("1");
 
   if (resourses.length < 1) {
@@ -64,8 +64,11 @@ export default function (props) {
             </NavLink>
           </NavItem>
         )}
-        {lang === "gr" && (
-          <Button onClick={handleClick}> {resourses[2].Text}</Button>
+        {lang === "gr" && activeVideo.YouTubeId !== "ENn6RLC0wpo" && (
+          <div className="position-absolute bottom-0 mb-2">
+            {" "}
+            <Button onClick={handleClick}> {resourses[2].Text}</Button>
+          </div>
         )}
       </Nav>
       <TabContent activeTab={activeTab}>

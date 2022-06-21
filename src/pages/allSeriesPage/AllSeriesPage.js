@@ -148,17 +148,17 @@ const AllSeriesPage = () => {
             <SerriesList />
           </FiltersSidebar>
         </>
-      )}{" "}
+      )}
       <div className="d-flex row">
         <div className=" col-lg-8 col-sm-12">
           <VideoPlayer />
         </div>
-        <div className="col-lg-4  col-sm-12">
+        <div className="col-lg-4  col-sm-12 position-relative">
           {!isSmallScreen && <MainTabs />}
         </div>
       </div>
       <div className="d-flex flex-wrap mt-2">
-        <div className="d-flex right-banners col-lg-2 col-sm-12">
+        <div className="d-flex col-lg-2 col-sm-12">
           {!isSmallScreen && <SerriesList />}
         </div>
 

@@ -35,7 +35,7 @@ export default function ({ listItem }) {
 
           </div>
         </div>
-        <div className="title-small w-100 p-2">
+        <div className="title-small w-100 p-2 ">
           <div dangerouslySetInnerHTML={createMarkup(listItem.Subject)} />
 
           {/* <Info listItem={listItem} /> */}

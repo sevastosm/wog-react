@@ -1,5 +1,6 @@
 // import getUserLocales from "get-user-locale";
 import getData from "./api/apis";
+import moment from "moment";
 
 // const localeCashed = () => window.localStorage.getItem("lang");
 // const validLanuages = ["el", "en", "it", "ru", "ro", "pl", "fr", "sq"];
@@ -43,7 +44,7 @@ export const getIntialData = (lang = "el") => {
   });
 };
 
-export const getPlaylist = async (id, lang, page = 1, items = 1000) => {
+export const getPlaylist = async (id, lang, page = 1, items = 20) => {
   console.log("LANG", lang);
   try {
     const response = await fetch(
@@ -51,21 +52,16 @@ export const getPlaylist = async (id, lang, page = 1, items = 1000) => {
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
-        // body: JSON.stringify({
-        //   Lang: lang,
-        //   DateFrom: "",
-        //   DateTo: "",
-        //   SpeakersList: [],
-        //   SeriesList: [id],
-        //   AllSeries: false,
-        //   Text: "",
-        //}),
       }
     );
 
     const data = await response.json();
-    return data.Data;
+    return { data: data.Data, total: data.Total };
   } catch (error) {
     console.log(error);
   }
 };
+
+const format = "DD-MM-YY";
+
+export const convertDate = (date) => moment(date).format(format);

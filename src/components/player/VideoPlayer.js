@@ -43,22 +43,4 @@ export default function VideoPlayer() {
       // onReady={onPlayerReady}
     />
   );
-
-  return (
-    <div>
-      {/* Start of Player */}
-      <iframe
-        id="ut-player"
-        className={isSmallScreen && "small"}
-        width={640}
-        height={360}
-        src={getVideo()}
-        title="YouTube video player"
-        frameborder="0"
-        // allow="accelerometer; autoplay;  clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen="true"
-      ></iframe>
-      {/* End of Player */}
-    </div>
-  );
 }

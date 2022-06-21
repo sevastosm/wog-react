@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { convertDate } from "../utils";
 import AppContext from "../components/AppContext";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
@@ -12,12 +13,13 @@ export default function Program() {
 
   const { Data } = program;
 
+  const date = convertDate(Data.DatesAndName[0]?.Date);
   return (
     <PerfectScrollbar scrollbarXActive={false} style={{ maxHeight: "400px" }}>
       <div className="d-flex">
         <div className="d-flex flex-column w-100">
           <div>{Data.DatesAndName[0]?.DateName}</div>
-          <div>{Data.DatesAndName[0]?.Date}</div>
+          <div>{date}</div>
 
           {Data.Timetable.map((listItem, index) => {
             let s = listItem.Date;

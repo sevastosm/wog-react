@@ -59,7 +59,7 @@ export const Provider = ({ children }) => {
       getIntialData(lang).then((data) => {
         setGlobalstate({
           ...state,
-          activePlaylist: data[0].Data,
+          activePlaylist: { data: data[0].Data, total: data[0].Total },
           program: data[1],
           resourses: data[2].Data,
           series: data[3].Data,

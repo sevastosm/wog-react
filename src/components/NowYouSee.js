@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { convertDate } from "../utils";
 import AppContext from "./AppContext";
 
 export default function NowYouSee({ listItem }) {
@@ -9,15 +10,13 @@ export default function NowYouSee({ listItem }) {
 
   return (
     <div className="info col-xs-12 pt-1">
-      <h3 className="title-small">{activeVideo.RecordingDate}</h3>
+      <h3 className="title-small">{convertDate(activeVideo.RecordingDate)}</h3>
       <div className="maintitle">
         <div dangerouslySetInnerHTML={createMarkup(activeVideo.Subject)} />
       </div>
-      <div className="title-small">
-        <div
-          dangerouslySetInnerHTML={createMarkup(activeVideo.RecordingSubject)}
-        />
-      </div>
+      <div
+        dangerouslySetInnerHTML={createMarkup(activeVideo.RecordingSubject)}
+      />
     </div>
   );
 }
