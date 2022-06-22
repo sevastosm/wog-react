@@ -47,4 +47,33 @@ div[role="tooltip"] {
   // text-transform: capitalize;
   flex-grow: 1;
   align-items: center;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  display: flex;
+  flex-grow: 1;
+}
+.btn:hover {
+  color: #fff;
+}
+
+.btn-check:focus + .btn,
+.btn:focus {
+  background-color: #499b7b;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #499b7b;
+  border-color: #499b7b;
+}
+.page-item {
+  margin-left: 2px;
+}
+
+.page-link:hover {
+  z-index: 2;
+  background-color: #193a49;
+  border-color: #499b7b;
 }

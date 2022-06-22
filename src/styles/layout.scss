@@ -54,7 +54,8 @@ body > .container {
 .playList {
   // max-height: 100vh;.footer
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding-left: 5%;
 }
 
 .playList.small {

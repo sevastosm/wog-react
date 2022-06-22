@@ -8,6 +8,7 @@ import {
   Searchbar,
 } from "../filter/individualFilters";
 import AppContext, { useGlobalState } from "../AppContext";
+import useResources from "../../hooks/UseResources";
 
 import getData from "../../api/apis";
 import {
@@ -57,11 +58,19 @@ const defaultValues = {
 };
 
 export default function Filter() {
+  const resourses = useResources([
+    "tabRecordingsSeriesHdr",
+    "SearchFilters",
+    "SearchBtnClear",
+    "SearchBtnFind",
+    "SearchSpeakers",
+  ]);
   const { setActivePlaylist, speakersList, lang, seriesSearchList, setLoader } =
     useContext(AppContext);
   const [selectedFilters, setSelectedFilters] = React.useState({
     ...defaultValues,
   });
+
   const formatedSpeakers = speakersList
     .map(formatSpeaker)
     .filter((sp) => sp.value);
@@ -146,7 +155,7 @@ export default function Filter() {
         const data = await response.json();
         console.log("SEARCH_DATA", data);
 
-        setActivePlaylist(data.Data);
+        setActivePlaylist(data);
       } catch (error) {
         console.log(error);
       }
@@ -157,8 +166,8 @@ export default function Filter() {
   return (
     <>
       <Button onClick={toggle} className="filter-btn">
-        {getLabel("51")}
-        FILTERS
+        {resourses.length > 0 && resourses[1].Text}
+        {console.log(resourses)}
       </Button>
       <Collapse isOpen={isOpen}>
         <Fade in={isOpen} className="filter-collapsibles">
@@ -174,19 +183,20 @@ export default function Filter() {
             setFilters={setSelectedFilters}
           />
           <Searchbar
-            labelValue={getLabel("110")}
+            labelValue={resourses.length > 0 && resourses[3].Text}
             value={selectedFilters.text}
             setFilters={setSelectedFilters}
           />
+
           <SelectSpeaker
-            labelValue={getLabel("98")}
+            labelValue={resourses.length > 0 && resourses[4].Text}
             values={selectedFilters.speakersIds}
             lang={lang}
             setFilters={setSelectedFilters}
             speakers={fetchedData.speakers}
           />
           <SelectSermon
-            labelValue={getLabel("2")}
+            labelValue={resourses.length > 0 && resourses[0].Text}
             sermons={fetchedData.sermons}
             values={selectedFilters.sermonsIds}
             lang={lang}
@@ -194,15 +204,13 @@ export default function Filter() {
           />
           <div className="actions-container">
             <Button onClick={onApplyFilters} className="reset-filters-btn">
-              {getLabel("57")}
-              SEARCH
+              {resourses.length > 0 && resourses[3].Text}
             </Button>
             <Button
               onClick={resetSelectedFilters}
               className="reset-filters-btn"
             >
-              {getLabel("55")}
-              RESET
+              {resourses.length > 0 && resourses[2].Text}
             </Button>
           </div>
         </Fade>

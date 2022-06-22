@@ -38,7 +38,11 @@ export const Provider = ({ children }) => {
   };
 
   const setActivePlaylist = (data) => {
-    setGlobalstate({ ...state, activePlaylist: data, loader: false });
+    setGlobalstate({
+      ...state,
+      activePlaylist: { data: data.Data, total: data.Total },
+      loader: false,
+    });
   };
 
   const setLang = async (data) => {

@@ -3,6 +3,7 @@ import ListItem from "./listitem/ListItem";
 import Loader from "../loader/Loader";
 import UltimatePagination from "./Pagination";
 import { getPlaylist } from "../../utils";
+import useResources from "../../hooks/UseResources";
 
 import "./Playlist.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -15,10 +16,15 @@ export default function () {
     useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
   const [activePage, setActivepage] = React.useState(1);
+  const resourses = useResources(["ErrMsgErrorOccuredText"]);
   if (loader) return <Loader />;
-  if (!activePlaylist?.data) return <Loader />;
-
-  console.log("activePlaylist", activePlaylist);
+  if (!activePlaylist?.data) {
+    return <Loader />;
+  } else if (activePlaylist.data.length === 0) {
+    return (
+      <div className="w-100 text-center">{resourses && resourses[0].Text}</div>
+    );
+  }
 
   const handleClick = async (num) => {
     const result = await getPlaylist(
@@ -26,7 +32,8 @@ export default function () {
       lang,
       num
     );
-    setActivePlaylist(result);
+    console.log("result", result);
+    setActivePlaylist({ Data: result.data, Total: result.total });
 
     setActivepage(num);
   };
@@ -43,6 +50,7 @@ export default function () {
           />
         </div>
       )}
+
       <div
         className={`playList ${isSmallScreen && "small"}`}
         strt

@@ -66,8 +66,9 @@ export default function (props) {
         )}
         {lang === "gr" && activeVideo.YouTubeId !== "ENn6RLC0wpo" && (
           <div className="position-absolute bottom-0 mb-2">
-            {" "}
-            <Button onClick={handleClick}> {resourses[2].Text}</Button>
+            <button className="btn" onClick={handleClick}>
+              {resourses[2].Text}
+            </button>
           </div>
         )}
       </Nav>

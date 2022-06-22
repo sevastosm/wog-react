@@ -28,6 +28,7 @@ export default function VideoPlayer() {
     height: "360",
     width: "640",
     allowfullscreen: "true",
+    rel: 0,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,

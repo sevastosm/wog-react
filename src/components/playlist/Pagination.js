@@ -15,15 +15,15 @@ const withPreventDefault = (fn) => (event) => {
 
 const Page = ({ value, isActive, onClick }) => (
   <li className={isActive ? "page-item active" : "page-item"}>
-    <a className="page-link" href="#" onClick={withPreventDefault(onClick)}>
+    <a className="page-link btn" href="#" onClick={withPreventDefault(onClick)}>
       {value}
     </a>
   </li>
 );
 
 const Ellipsis = ({ onClick }) => (
-  <li className="page-item">
-    <a className="page-link" href="#" onClick={withPreventDefault(onClick)}>
+  <li className="page-item ">
+    <a className="page-link btn" href="#" onClick={withPreventDefault(onClick)}>
       ...
     </a>
   </li>
@@ -31,7 +31,7 @@ const Ellipsis = ({ onClick }) => (
 
 const FirstPageLink = ({ onClick }) => (
   <li className="page-item">
-    <a className="page-link" href="#" onClick={withPreventDefault(onClick)}>
+    <a className="page-link btn" href="#" onClick={withPreventDefault(onClick)}>
       &laquo;
     </a>
   </li>
@@ -39,7 +39,7 @@ const FirstPageLink = ({ onClick }) => (
 
 const PreviousPageLink = ({ onClick }) => (
   <li className="page-item">
-    <a className="page-link" href="#" onClick={withPreventDefault(onClick)}>
+    <a className="page-link btn" href="#" onClick={withPreventDefault(onClick)}>
       &lsaquo;
     </a>
   </li>
@@ -47,7 +47,7 @@ const PreviousPageLink = ({ onClick }) => (
 
 const NextPageLink = ({ onClick }) => (
   <li className="page-item">
-    <a className="page-link" href="#" onClick={withPreventDefault(onClick)}>
+    <a className="page-link btn" href="#" onClick={withPreventDefault(onClick)}>
       &rsaquo;
     </a>
   </li>
@@ -55,7 +55,7 @@ const NextPageLink = ({ onClick }) => (
 
 const LastPageLink = ({ onClick }) => (
   <li className="page-item">
-    <a className="page-link" href="#" onClick={withPreventDefault(onClick)}>
+    <a className="page-link btn" href="#" onClick={withPreventDefault(onClick)}>
       &raquo;
     </a>
   </li>
