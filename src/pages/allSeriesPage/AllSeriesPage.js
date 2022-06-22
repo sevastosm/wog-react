@@ -6,6 +6,7 @@ import VideoPlayer from "../../components/player/VideoPlayer";
 import MainTabs from "../../components/MainTabs";
 import { useMedia } from "react-media";
 import FiltersSidebar from "../../components/FiltersSidebar";
+import useResources from "../../hooks/UseResources";
 
 import "./AllSeriesPage.scss";
 import AppContext from "../../components/AppContext";
@@ -28,6 +29,7 @@ const AllSeriesPage = () => {
     activeVideo,
   } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
+  const resourses = useResources(["tabRecordingsSeriesHdr"]);
 
   let query = useQuery();
   console.log("URL-PARAMS", query.values());
@@ -77,7 +79,7 @@ const AllSeriesPage = () => {
         <div className="col-lg-9 col-sm-12">
           {isSmallScreen && (
             <button onClick={handleClick} className="button tonglefilters">
-              Filters
+              {resourses.length > 0 && resourses[0].Text}
             </button>
           )}
           <Playlist />
