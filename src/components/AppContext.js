@@ -42,6 +42,7 @@ export const Provider = ({ children }) => {
       ...state,
       activePlaylist: { data: data.Data, total: data.Total },
       loader: false,
+      sidebar: false,
     });
   };
 

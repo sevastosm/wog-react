@@ -56,13 +56,13 @@ const AllSeriesPage = () => {
 
   return (
     <div className="p-2">
-      {isSmallScreen && (
+      {/* {isSmallScreen && (
         <>
           <FiltersSidebar>
             <SeriesList />
           </FiltersSidebar>
         </>
-      )}
+      )} */}
       <div className="d-flex row mx-0">
         <div className=" col-lg-8 col-sm-12">
           <VideoPlayer />
@@ -76,12 +76,12 @@ const AllSeriesPage = () => {
           {!isSmallScreen && <SeriesList />}
         </div>
 
-        <div className="col-lg-9 col-sm-12">
-          {isSmallScreen && (
+        <div className="col-lg-9 col-sm-12 m-auto">
+          {/* {isSmallScreen && (
             <button onClick={handleClick} className="button tonglefilters">
               {resourses.length > 0 && resourses[0].Text}
             </button>
-          )}
+          )} */}
           <Playlist />
         </div>
       </div>

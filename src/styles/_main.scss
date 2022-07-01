@@ -77,3 +77,15 @@ div[role="tooltip"] {
   background-color: #193a49;
   border-color: #499b7b;
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  #ut-player {
+    width: 100%;
+    height: auto !important;
+    min-height: 214px;
+  }
+  .btn {
+    font-size: 11px;
+    text-align: left;
+  }
+}

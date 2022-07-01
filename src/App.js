@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Layout from "./components/Layout";
 import Banners from "./components/banners/Banners";
+import SeriesList from "./components/playlist/SeriesList";
+
 import { applicationLang } from "./utils";
 
 import routes from "./routes";
@@ -27,6 +29,7 @@ export default function App() {
         <Sidebar>
           <Banners />
           <Languages />
+          <SeriesList />
         </Sidebar>
       )}
       <Switch>

@@ -55,11 +55,12 @@ body > .container {
   // max-height: 100vh;.footer
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding-left: 5%;
+  // padding-left: 5%;
 }
 
 .playList.small {
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  padding: auto;
 }
 
 .small {

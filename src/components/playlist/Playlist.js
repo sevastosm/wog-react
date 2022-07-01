@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ListItem from "./listitem/ListItem";
 import Loader from "../loader/Loader";
+import Skeleton from "../loader/Skeleton";
 import UltimatePagination from "./Pagination";
 import { getPlaylist } from "../../utils";
 import useResources from "../../hooks/UseResources";
@@ -17,9 +18,11 @@ export default function () {
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
   const [activePage, setActivepage] = React.useState(1);
   const resourses = useResources(["ErrMsgErrorOccuredText"]);
-  if (loader) return <Loader />;
+  // return <Skeleton />;
+
+  if (loader) return <Skeleton />;
   if (!activePlaylist?.data) {
-    return <Loader />;
+    return <Skeleton />;
   } else if (activePlaylist.data.length === 0) {
     return (
       <div className="w-100 text-center">{resourses && resourses[0].Text}</div>

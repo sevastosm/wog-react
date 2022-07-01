@@ -39,6 +39,7 @@ export default function VideoPlayer() {
   return (
     <YouTube
       id="ut-player"
+      // className={isSmallScreen && "small"}
       videoId={activeVideo.YouTubeId}
       opts={opts}
       // onReady={onPlayerReady}

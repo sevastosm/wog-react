@@ -12,6 +12,7 @@ export default function () {
   if (!match) return null;
 
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  if (isSmallScreen) return null;
   return (
     <footer className={isSmallScreen && "small"}>
       <div id="footer" className="footer">
