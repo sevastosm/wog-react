@@ -28,7 +28,6 @@ export default function (props) {
     return null;
   }
 
-  console.log("LANIO", lang);
   const handleTabclick = (tab) => {
     setActiveTab(tab);
   };
@@ -36,8 +35,6 @@ export default function (props) {
   const handleClick = () => {
     setVideo({ YouTubeId: "ENn6RLC0wpo" });
   };
-
-  console.log(resourses);
 
   return (
     <div className="mt-2">

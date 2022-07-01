@@ -13,20 +13,12 @@ import moment from "moment";
 
 export const applicationLang = () => {
   let lang = window.localStorage.getItem("lang");
-  console.log("lang", lang);
   if (lang) {
     return lang;
   }
   return "el";
 };
 
-// export const getIntialData = async () => {
-//   const lang = applicationLang();
-//   return await getData("GET_RESOURCES", lang).then((values) => {
-//     console.log("GET_RESOURCES", values);
-//     return values;
-//   });
-// };
 export const getIntialData = (lang = "el") => {
   return Promise.all([
     getData("GET_RECENT", lang),
@@ -36,16 +28,11 @@ export const getIntialData = (lang = "el") => {
     getData("GET_SERIES_SEARCH_LIST", lang),
     getData("GET_ALL_SPEAKERS", lang),
   ]).then((values) => {
-    console.log("VALUES", values);
-    // window.localStorage.setItem("lang", lang);
-    console.log("GET_RECENT", values[0].Data);
-    console.log("GET_PROGRAM", values[1].Data);
     return values;
   });
 };
 
 export const getPlaylist = async (id, lang, page = 1, items = 20) => {
-  console.log("LANG", lang);
   try {
     const response = await fetch(
       `https://www.wordofgod.gr/api/series/${lang}/${id}/${items}/${page}`,

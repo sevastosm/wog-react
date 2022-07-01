@@ -19,7 +19,6 @@ export default function VideoPlayer() {
 
   const onPlayerReady = (event) => {
     // access to player in all event handlers via event.target
-    console.log("event", event);
     document.getElementById("ut-player").click();
     event.target.playVideoAt(0);
   };

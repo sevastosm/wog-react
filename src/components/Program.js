@@ -9,8 +9,6 @@ export default function Program() {
     return null;
   }
 
-  console.log("program", program);
-
   const { Data } = program;
 
   const date = convertDate(Data.DatesAndName[0]?.Date);

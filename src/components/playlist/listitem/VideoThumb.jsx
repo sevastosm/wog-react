@@ -24,7 +24,7 @@ export default function VideoThumb({ listItem }) {
           style={{ borderWidth: "0px", maxWidth: '120px' }}
           alt="video-thumb"
         /> */}
-        <div class="image" style={{ backgroundImage: `url(${imagePath})` }}></div>
+        <div className="image" style={{ backgroundImage: `url(${imagePath})` }}></div>
 
       </div>
     </div>

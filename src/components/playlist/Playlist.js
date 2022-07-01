@@ -35,7 +35,6 @@ export default function () {
       lang,
       num
     );
-    console.log("result", result);
     setActivePlaylist({ Data: result.data, Total: result.total });
 
     setActivepage(num);
@@ -62,10 +61,23 @@ export default function () {
         border={0}
         width="100%"
       >
-        {activePlaylist.data.map((sermon) => {
-          return <ListItem key={sermon.ID} listItem={sermon} />;
+        {activePlaylist.data.map((sermon, i) => {
+          return (
+            <span key={i}>
+              <ListItem key={sermon.ID} listItem={sermon} />
+            </span>
+          );
         })}
       </div>
+      {activePlaylist.data && activePlaylist.total > 20 && (
+        <div className="align-self-center">
+          <UltimatePagination
+            currentPage={activePage}
+            totalPages={Math.round(activePlaylist.total / 20)}
+            onChange={handleClick}
+          />
+        </div>
+      )}
     </div>
     // </PerfectScrollbar>
   );

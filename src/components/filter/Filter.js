@@ -50,8 +50,8 @@ const fetchSermons = async (lang) => {
 };
 
 const defaultValues = {
-  dateFrom: new Date(),
-  dateTo: new Date(),
+  dateFrom: null,
+  dateTo: null,
   speakersIds: [],
   sermonsIds: [],
   text: "",
@@ -106,9 +106,6 @@ export default function Filter() {
   const prepareBodyForPost = React.useCallback(() => {
     const { dateFrom, dateTo, sermonsIds, speakersIds, text } = selectedFilters;
 
-    const formattedDateFrom = format(dateFrom, "yyyy/MM/dd");
-    const formattedDateTo = format(dateTo, "yyyy/MM/dd");
-
     const formattedSpeakerIds = speakersIds.map((sp) => {
       return sp.value;
     });
@@ -124,6 +121,19 @@ export default function Filter() {
 
       return formattedSermonIds.length > 0 ? true : false;
     };
+    const formattedDateFrom = dateFrom && format(dateFrom, "yyyy/MM/dd");
+    const formattedDateTo = dateTo && format(dateTo, "yyyy/MM/dd");
+    if (!formattedDateFrom && !formattedDateTo) {
+      return {
+        Lang: lang,
+        // DateFrom: formattedDateFrom,
+        // DateTo: formattedDateTo,
+        SpeakersList: formattedSpeakerIds,
+        SeriesList: formattedSermonIds,
+        // AllSeries: hasSelectedAllSermons(),
+        Text: text,
+      };
+    }
 
     return {
       Lang: lang,
@@ -153,7 +163,6 @@ export default function Filter() {
         );
 
         const data = await response.json();
-        console.log("SEARCH_DATA", data);
 
         setActivePlaylist(data);
       } catch (error) {
@@ -167,7 +176,6 @@ export default function Filter() {
     <>
       <Button onClick={toggle} className="filter-btn">
         {resourses.length > 0 && resourses[1].Text}
-        {console.log(resourses)}
       </Button>
       <Collapse isOpen={isOpen}>
         <Fade in={isOpen} className="filter-collapsibles">

@@ -1,20 +1,26 @@
 import React, { useContext } from "react";
 import { applicationLang } from "../utils";
 import Logo from "../Assets/Header/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useRouteMatch, useHistory } from "react-router-dom";
 import useResources from "../hooks/UseResources";
 import AppContext from "../components/AppContext";
 import Languages from "./Languages";
 import { useMedia } from "react-media";
 
 export default function TopMenu() {
+  const location = useLocation();
+  const history = useHistory();
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
 
-  const { setLang, sidebar, setSidebar } = useContext(AppContext);
+  const { setLang, sidebar, setSidebar, lang } = useContext(AppContext);
 
   const resourses = useResources("ChristianChannel");
 
   const handleClick = () => {
+    if (location.pathname === `/${lang}/contact`) {
+      history.push(`/${lang}`);
+    }
+
     setSidebar(!sidebar);
   };
 

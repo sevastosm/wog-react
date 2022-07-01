@@ -32,7 +32,6 @@ const AllSeriesPage = () => {
   const resourses = useResources(["tabRecordingsSeriesHdr"]);
 
   let query = useQuery();
-  console.log("URL-PARAMS", query.values());
 
   const handleClick = () => {
     setFilterSidebar(!filterSidebar);
@@ -48,8 +47,6 @@ const AllSeriesPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log("LANG", activePlaylist);
-
     // activePlaylist && setVideo(activePlaylist[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang, activePlaylist, activeVideo]);
@@ -76,7 +73,7 @@ const AllSeriesPage = () => {
           {!isSmallScreen && <SeriesList />}
         </div>
 
-        <div className="col-lg-9 col-sm-12 m-auto">
+        <div className="col-lg-9 col-sm-12 series-wraper">
           {/* {isSmallScreen && (
             <button onClick={handleClick} className="button tonglefilters">
               {resourses.length > 0 && resourses[0].Text}

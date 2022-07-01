@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useLocation, useHistory, Link, useRouteMatch } from "react-router-dom";
+import { useLocation, Link, useRouteMatch } from "react-router-dom";
 import { UncontrolledCollapse, Button } from "reactstrap";
 import { route } from "../../constants";
 
@@ -23,38 +23,26 @@ const SeriesList = () => {
         setActivePlaylist,
         series,
         lang,
-        activePlaylist,
         setVideo,
-        activeVideo,
         setLoader,
         setSidebar
     } = useContext(AppContext);
     const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
     const resourses = useResources([
         "tabRecordingsSeriesHdr",
+        "tabRecentHdr"
     ]);
     const match = useRouteMatch("/:lang");
 
     let customList = series || [];
-    const history = useHistory();
 
     const onClick = async (e) => {
         const { id } = e.target;
         setLoader(true);
         const result = await getPlaylist(id, lang);
-        console.log("result", result);
-
         setActivePlaylist({ Data: result.data, Total: result.total });
 
-        history.push(`?lang=${lang}&search=series&sid=${id}`);
     };
-
-    let query = useQuery();
-    console.log("URL-PARAMS", query.values());
-
-
-
-
 
     useEffect(() => {
         setVideo({
@@ -76,10 +64,21 @@ const SeriesList = () => {
                 // </button>
             )}
             <div className="d-flex flex-column  w-100">
+                <button
+                    key={32}
+                    id={32}
+                    className="w-100 btn mb-1"
+                    onClick={onClick}
+                >
+                    {resourses.length > 0 && resourses[1].Text}
+
+                </button>
                 {customList.map((listItem) => {
 
+                    console.log('listItem', listItem)
                     if (listItem.Series) {
-                        return (<div>
+                        return (<div key={lang + listItem.ID} >
+
                             <button
                                 id={lang + listItem.ID}
                                 key={lang + listItem.ID}
@@ -94,6 +93,7 @@ const SeriesList = () => {
                                 {listItem.Series.map((item) => {
                                     return (
                                         <button
+                                            key={item.ID}
                                             id={item.ID}
                                             className="w-100 btn mb-1"
                                             onClick={onClick}

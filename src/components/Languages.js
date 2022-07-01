@@ -17,7 +17,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="/el"
+                to="/gr"
                 title="Ελληνικά"
                 onClick={() => setLang("gr")}
               >

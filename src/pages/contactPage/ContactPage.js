@@ -7,7 +7,6 @@ export default function ContactPage() {
     "ContactTextSubmit",
   ]);
   if (!resourses.length) return null;
-  console.log("RES", resourses);
   return (
     <form className="mt-4 contact p-2">
       <div className="col-lg-9 col-sm-12 m-auto">
