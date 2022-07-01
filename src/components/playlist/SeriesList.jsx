@@ -6,6 +6,7 @@ import { route } from "../../constants";
 import { getPlaylist } from "../../utils";
 import Filter from "../../components/filter/Filter";
 import { useMedia } from "react-media";
+import useResources from "../../hooks/UseResources";
 
 import AppContext from "../../components/AppContext";
 
@@ -29,6 +30,9 @@ const SeriesList = () => {
         setSidebar
     } = useContext(AppContext);
     const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
+    const resourses = useResources([
+        "tabRecordingsSeriesHdr",
+    ]);
     const match = useRouteMatch("/:lang");
 
     let customList = series || [];
@@ -66,6 +70,11 @@ const SeriesList = () => {
 
     return (
         <div className={`${isSmallScreen && "small"} w-100`}>
+            {!isSmallScreen && (
+                // <button onClick={handleClick} className="button tonglefilters">
+                <h2 className='text-center'> {resourses.length > 0 && resourses[0].Text}</h2>
+                // </button>
+            )}
             <div className="d-flex flex-column  w-100">
                 {customList.map((listItem) => {
 
