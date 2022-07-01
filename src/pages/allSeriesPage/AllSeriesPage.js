@@ -41,8 +41,8 @@ const AllSeriesPage = () => {
   useEffect(() => {
     setVideo({
       YouTubeId: "ENn6RLC0wpo",
-      Subject: "LIVE",
-      RecordingSubject: "Live streaming from youtube",
+      Subject: "YouTube chanel",
+      RecordingSubject: "",
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

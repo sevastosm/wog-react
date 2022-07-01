@@ -127,8 +127,8 @@ export default function Filter() {
 
     return {
       Lang: lang,
-      // DateFrom: formattedDateFrom,
-      // DateTo: formattedDateTo,
+      DateFrom: formattedDateFrom,
+      DateTo: formattedDateTo,
       SpeakersList: formattedSpeakerIds,
       SeriesList: formattedSermonIds,
       // AllSeries: hasSelectedAllSermons(),
@@ -173,8 +173,8 @@ export default function Filter() {
         <Fade in={isOpen} className="filter-collapsibles">
           <SelectDates
             labelValue={getLabel("47")}
-            fromDateLabel={getLabel("115")}
-            toDateLabel={getLabel("73")}
+            fromDateLabel={lang !== "gr" ? "Date from" : "Ημ/νια από"}
+            toDateLabel={lang !== "gr" ? "Date το" : "Ημ/νια έως"}
             dates={{
               dateFrom: selectedFilters.dateFrom,
               dateTo: selectedFilters.dateTo,

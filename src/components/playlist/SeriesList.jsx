@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { useLocation, useHistory } from "react-router-dom";
-import { UncontrolledCollapse } from "reactstrap";
+import { useLocation, useHistory, Link, useRouteMatch } from "react-router-dom";
+import { UncontrolledCollapse, Button } from "reactstrap";
+import { route } from "../../constants";
 
 import { getPlaylist } from "../../utils";
 import Filter from "../../components/filter/Filter";
@@ -25,8 +26,10 @@ const SeriesList = () => {
         setVideo,
         activeVideo,
         setLoader,
+        setSidebar
     } = useContext(AppContext);
     const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
+    const match = useRouteMatch("/:lang");
 
     let customList = series || [];
     const history = useHistory();
@@ -105,6 +108,23 @@ const SeriesList = () => {
                     )
                 })}
                 <Filter />
+
+                {isSmallScreen && match &&
+                    <Button
+                        onClick={() => setSidebar(false)}
+                        className="reset-filters-btn w-100"
+                    >
+                        <Link
+                            to={`${match.url}/${route.CONTACT}`}
+                            style={{
+                                cursor: "pointer",
+                                color: "white",
+                                textDecoration: "none",
+                            }}
+                        >
+                            Επικοινωνία
+                        </Link>
+                    </Button>}
             </div>
         </div >
     );

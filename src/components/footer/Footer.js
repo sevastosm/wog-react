@@ -42,7 +42,7 @@ export default function () {
                 Βοήθεια
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to={`${match.url}/${route.NEWSLETTER}`}
                 style={{
@@ -53,7 +53,7 @@ export default function () {
               >
                 Newsletter
               </Link>
-            </li>
+              </li>*/}
             <li>
               <Link
                 to={`${match.url}/${route.ABOUT}`}
@@ -78,7 +78,7 @@ export default function () {
                 Ιστορία
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to={`${match.url}/${route.LINK}`}
                 style={{
@@ -90,15 +90,15 @@ export default function () {
                 Σύνδεσμοι
               </Link>
             </li>
-            <li>
-              <Link
+            <li> *
+              {/* <Link
                 to={`${match.url}/${route.COOKIES}`}
                 style={{ cursor: "pointer", textDecoration: "none" }}
               >
                 Cookies
               </Link>
-            </li>
-            {/* <li>
+            </li> *
+             <li>
                 <Link
                   to="/donate"
                   style={{ cursor: "pointer", display: "none" }}

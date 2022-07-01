@@ -18,11 +18,18 @@ export default function TopMenu() {
     setSidebar(!sidebar);
   };
 
+  const handleLogoClick = () => {
+    window.location.replace(`/${applicationLang()}`);
+  };
   return (
     <header className={isSmallScreen && "small"}>
       <div className={`navbar navbar-expand-md fixed-top`}>
         <div className="header-item d-flex  flex-grow-1">
-          <Link className="navbar-brand" to={`/${applicationLang()}`}>
+          <Link
+            className="navbar-brand"
+            to={`/${applicationLang()}`}
+            onClick={handleLogoClick}
+          >
             <img
               src={Logo}
               className="rounded float-left img-fluid"

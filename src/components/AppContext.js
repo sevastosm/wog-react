@@ -5,8 +5,8 @@ const AppContext = React.createContext({});
 
 const live = {
   YouTubeId: "ENn6RLC0wpo",
-  Subject: "LIVE",
-  RecordingSubject: "Live streaming from youtube",
+  Subject: "YouTube chanel",
+  RecordingSubject: "",
 };
 const lang = applicationLang();
 
@@ -48,7 +48,7 @@ export const Provider = ({ children }) => {
 
   const setLang = async (data) => {
     await window.localStorage.setItem("lang", data);
-    setGlobalstate({ ...state, lang: data });
+    setGlobalstate({ ...state, lang: data, sidebar: false });
   };
   const setSidebar = (data) => {
     setGlobalstate({ ...state, sidebar: data });
