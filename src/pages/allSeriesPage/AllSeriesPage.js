@@ -87,7 +87,7 @@ const AllSeriesPage = () => {
 
   return (
     <div className="p-2">
-      <div className="d-flex row mx-0">
+      <div className="d-flex row mx-0 justify-content-center">
         <div className={cls}>
           <VideoPlayer />
           {isMobile && activePlaylist.data && activePlaylist.total > 24 && (
