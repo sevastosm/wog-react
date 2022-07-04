@@ -22,6 +22,8 @@ export default function () {
     setActivepage,
   } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const isMobile = useMedia({ query: "(max-width: 480px)" });
+
   const resourses = useResources(["ErrMsgErrorOccuredText"]);
   // return <Skeleton />;
 
@@ -55,7 +57,7 @@ export default function () {
     <div className="col-xs-12 d-flex flex-column">
       {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center">
-          {!isSmallScreen && (
+          {!isMobile && (
             <UltimatePagination
               currentPage={parseInt(activePage)}
               totalPages={Math.round(activePlaylist.total / 20)}
@@ -83,7 +85,7 @@ export default function () {
       </div>
       {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center">
-          {!isSmallScreen && (
+          {!isMobile && (
             <UltimatePagination
               currentPage={parseInt(activePage)}
               totalPages={Math.round(activePlaylist.total / 20)}
