@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Collapse, Fade } from "reactstrap";
 import {
@@ -11,11 +11,7 @@ import AppContext, { useGlobalState } from "../AppContext";
 import useResources from "../../hooks/UseResources";
 
 import getData from "../../api/apis";
-import {
-  createAllSpeakersChoice,
-  createAllSermonsChoice,
-  dataLabel,
-} from "./individualFilters/utils";
+
 import { format } from "date-fns";
 import "./filter.scss";
 
@@ -65,24 +61,31 @@ export default function Filter() {
     "SearchBtnFind",
     "SearchSpeakers",
   ]);
-  const { setActivePlaylist, speakersList, lang, seriesSearchList, setLoader } =
-    useContext(AppContext);
+  const {
+    setActivePlaylist,
+    speakersList,
+    lang,
+    seriesSearchList,
+    setLoader,
+    setActivePage,
+  } = useContext(AppContext);
   const [selectedFilters, setSelectedFilters] = React.useState({
     ...defaultValues,
   });
 
-  const formatedSpeakers = speakersList
-    .map(formatSpeaker)
-    .filter((sp) => sp.value);
-  formatedSpeakers.unshift(createAllSpeakersChoice(lang));
+  const formatedSpeakers = (list) => {
+    const formatedList = list.map(formatSpeaker).filter((sp) => sp.value);
+    return formatedList.unshift(list(lang));
+  };
 
-  const formatedSermons = seriesSearchList
-    .map(formatSermon)
-    .filter((sp) => sp.value);
-  formatedSermons.unshift(createAllSermonsChoice(lang));
+  const formatedSermons = (list) => {
+    const formatedList = list.map(formatSpeaker).filter((sp) => sp.value);
+    return formatedList.unshift(seriesSearchList(lang));
+  };
+
   const [fetchedData, setFetchedData] = React.useState({
-    speakers: formatedSpeakers,
-    sermons: formatedSermons,
+    speakers: [],
+    sermons: [],
   });
   const [isOpen, setIsOpen] = React.useState(false);
   const { Data } = useGlobalState();
@@ -93,15 +96,6 @@ export default function Filter() {
   const resetSelectedFilters = React.useCallback(() => {
     setSelectedFilters({ ...defaultValues });
   }, []);
-
-  const labels = dataLabel(Data);
-
-  const getLabel = React.useCallback(
-    (num) => {
-      return "";
-    },
-    [labels]
-  );
 
   const prepareBodyForPost = React.useCallback(() => {
     const { dateFrom, dateTo, sermonsIds, speakersIds, text } = selectedFilters;
@@ -163,14 +157,23 @@ export default function Filter() {
         );
 
         const data = await response.json();
-
-        setActivePlaylist(data);
+        setActivePlaylist({ ...data, activePage: 1 });
       } catch (error) {
         console.log(error);
       }
     },
     [prepareBodyForPost]
   );
+  console.log("FETCHDATA", fetchedData);
+
+  useEffect(() => {
+    // console.log("formatedSpeakers", formatedSpeakers(speakersList));
+    // console.log("formatedSermons", formatedSermons(seriesSearchList));
+    // setFetchedData({
+    //   speakers: formatedSpeakers(speakersList),
+    //   sermons: formatedSermons(seriesSearchList),
+    // });
+  }, [seriesSearchList, speakersList]);
 
   return (
     <>
@@ -180,7 +183,6 @@ export default function Filter() {
       <Collapse isOpen={isOpen}>
         <Fade in={isOpen} className="filter-collapsibles">
           <SelectDates
-            labelValue={getLabel("47")}
             fromDateLabel={lang !== "gr" ? "Date from" : "Ημ/νια από"}
             toDateLabel={lang !== "gr" ? "Date το" : "Ημ/νια έως"}
             dates={{
@@ -196,20 +198,22 @@ export default function Filter() {
             setFilters={setSelectedFilters}
           />
 
-          <SelectSpeaker
-            labelValue={resourses.length > 0 && resourses[4].Text}
-            values={selectedFilters.speakersIds}
-            lang={lang}
-            setFilters={setSelectedFilters}
-            speakers={fetchedData.speakers}
-          />
-          <SelectSermon
-            labelValue={resourses.length > 0 && resourses[0].Text}
-            sermons={fetchedData.sermons}
-            values={selectedFilters.sermonsIds}
-            lang={lang}
-            setFilters={setSelectedFilters}
-          />
+          {speakersList.length && (
+            <SelectSpeaker
+              labelValue={resourses.length > 0 && resourses[4].Text}
+              lang={lang}
+              setFilters={setSelectedFilters}
+              speakers={speakersList}
+            />
+          )}
+          {seriesSearchList && (
+            <SelectSermon
+              labelValue={resourses.length > 0 && resourses[0].Text}
+              sermons={seriesSearchList}
+              lang={lang}
+              setFilters={setSelectedFilters}
+            />
+          )}
           <div className="actions-container">
             <Button onClick={onApplyFilters} className="reset-filters-btn">
               {resourses.length > 0 && resourses[3].Text}

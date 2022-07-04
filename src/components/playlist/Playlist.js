@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ListItem from "./listitem/ListItem";
 import Loader from "../loader/Loader";
 import Skeleton from "../loader/Skeleton";
@@ -13,10 +13,15 @@ import AppContext from "../AppContext";
 import { useMedia } from "react-media";
 
 export default function () {
-  const { activePlaylist, loader, lang, setActivePlaylist } =
-    useContext(AppContext);
+  const {
+    activePlaylist,
+    loader,
+    lang,
+    setActivePlaylist,
+    activePage,
+    setActivepage,
+  } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
-  const [activePage, setActivepage] = React.useState(1);
   const resourses = useResources(["ErrMsgErrorOccuredText"]);
   // return <Skeleton />;
 
@@ -31,22 +36,27 @@ export default function () {
 
   const handleClick = async (num) => {
     const result = await getPlaylist(
+      activePlaylist.data[0].kind,
       activePlaylist.data[0].SeriesID,
       lang,
       num
     );
-    setActivePlaylist({ Data: result.data, Total: result.total });
-
-    setActivepage(num);
+    // setActivepage(num);
+    setActivePlaylist({
+      Data: result.data,
+      Total: result.total,
+      kind: activePlaylist.kind,
+      activePage: num,
+    });
   };
 
   return (
     // <PerfectScrollbar scrollbarXActive={false}>
     <div className="col-xs-12 d-flex flex-column">
-      {activePlaylist.data && activePlaylist.total > 20 && (
+      {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center">
           <UltimatePagination
-            currentPage={activePage}
+            currentPage={parseInt(activePage)}
             totalPages={Math.round(activePlaylist.total / 20)}
             onChange={handleClick}
           />
@@ -69,10 +79,10 @@ export default function () {
           );
         })}
       </div>
-      {activePlaylist.data && activePlaylist.total > 20 && (
+      {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center">
           <UltimatePagination
-            currentPage={activePage}
+            currentPage={parseInt(activePage)}
             totalPages={Math.round(activePlaylist.total / 20)}
             onChange={handleClick}
           />

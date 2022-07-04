@@ -25,7 +25,7 @@ const SeriesList = () => {
         lang,
         setVideo,
         setLoader,
-        setSidebar
+        setSidebar,
     } = useContext(AppContext);
     const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
     const resourses = useResources([
@@ -36,11 +36,11 @@ const SeriesList = () => {
 
     let customList = series || [];
 
-    const onClick = async (e) => {
-        const { id } = e.target;
+    const onClick = async (e, kind) => {
+        const { id } = e.target
         setLoader(true);
-        const result = await getPlaylist(id, lang);
-        setActivePlaylist({ Data: result.data, Total: result.total });
+        const result = await getPlaylist(kind, id, lang,);
+        setActivePlaylist({ Data: result.data, Total: result.total, type: kind, activePage: 1 });
 
     };
 
@@ -71,7 +71,6 @@ const SeriesList = () => {
                     onClick={onClick}
                 >
                     {resourses.length > 0 && resourses[1].Text}
-
                 </button>
                 {customList.map((listItem) => {
 
@@ -96,7 +95,8 @@ const SeriesList = () => {
                                             key={item.ID}
                                             id={item.ID}
                                             className="w-100 btn mb-1"
-                                            onClick={onClick}
+                                            onClick={(e) => onClick(e, item.Kind)}
+
                                         >
                                             {item.Name}
                                         </button>
@@ -109,7 +109,7 @@ const SeriesList = () => {
                     return (<button
                         key={listItem.ID}
                         id={listItem.ID}
-                        onClick={onClick}
+                        onClick={(e) => onClick(e, listItem.Kind)}
                         className="w-100 btn mb-1"
                     >
                         {listItem.Name}

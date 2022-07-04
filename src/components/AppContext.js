@@ -24,6 +24,7 @@ const store = {
   loader: false,
   speakersList: [],
   seriesSearchList: [],
+  activePage: 1,
 };
 
 export const Provider = ({ children }) => {
@@ -36,13 +37,16 @@ export const Provider = ({ children }) => {
   const setLoader = (loader) => {
     setGlobalstate({ ...state, loader: loader });
   };
-
+  const setActivepage = (page) => {
+    setGlobalstate({ ...state, activePage: page });
+  };
   const setActivePlaylist = (data) => {
     setGlobalstate({
       ...state,
-      activePlaylist: { data: data.Data, total: data.Total },
+      activePlaylist: { data: data.Data, total: data.Total, kind: data.type },
       loader: false,
       sidebar: false,
+      activePage: parseInt(data.activePage),
     });
   };
 
@@ -91,6 +95,7 @@ export const Provider = ({ children }) => {
         setSidebar,
         setFilterSidebar,
         setLoader,
+        setActivepage,
       }}
     >
       {children}

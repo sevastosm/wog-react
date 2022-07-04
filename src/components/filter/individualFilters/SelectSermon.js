@@ -4,12 +4,7 @@ import { Label } from "reactstrap";
 
 import "./select-sermon.scss";
 
-export default function SelectSermon({
-  labelValue,
-  sermons,
-  values,
-  setFilters,
-}) {
+export default function SelectSermon({ labelValue, sermons, setFilters }) {
   const onChange = React.useCallback(
     (e) => {
       setFilters((previousValues) => ({
@@ -19,15 +14,16 @@ export default function SelectSermon({
     },
     [setFilters]
   );
-
+  const options = sermons.map((s) => {
+    return { value: s.ID, label: s.Name };
+  });
   return (
     <div className="select-sermon-container">
       <Select
-        options={sermons}
+        options={options}
         isMulti
         id="sermons"
         onChange={onChange}
-        value={values}
         placeholder={labelValue + "..."}
       />
     </div>
