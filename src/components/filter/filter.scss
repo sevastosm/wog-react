@@ -1,41 +1,42 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 .filter-btn {
-    background: $dark-green;
-    margin: 1rem 0rem;
+  background: $dark-green;
+  margin: 1rem 0rem;
+  max-width: 132px;
 }
 
 .filter-btn:hover {
-    background: $light-green;
+  background: $light-green;
 }
 
 .filter-btn:focus {
-    background: $dark-green;
-    border-color: $dark-green;
+  background: $dark-green;
+  border-color: $dark-green;
 }
 
 .filter-collapsibles {
-    height: fit-content;
-    max-height: 700px;
-    display: flex;
-    flex-direction: column;
+  height: fit-content;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
 }
 
 .actions-container {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .reset-filters-btn {
-    background: $dark-green;
-    margin: 1rem auto;
+  background: $dark-green;
+  margin: 1rem auto;
 }
 
 .reset-filters-btn:hover {
-    background: $light-green;
+  background: $light-green;
 }
 
 .reset-filters-btn:focus {
-    background: $dark-green;
-    border-color: $dark-green;
+  background: $dark-green;
+  border-color: $dark-green;
 }

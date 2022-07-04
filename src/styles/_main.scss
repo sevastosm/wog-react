@@ -97,6 +97,21 @@ div[role="tooltip"] {
   margin: 0 auto;
 }
 
+.paginate-small {
+  position: fixed;
+  z-index: 3;
+  background: #fff;
+  top: 52px;
+  padding: 8px;
+}
+
+.series-list-small {
+  margin-top: 210px;
+}
+.series-list-small-pager {
+  margin-top: 260px;
+}
+
 @media only screen and (min-device-width: 220px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   #ut-player {
     width: 100%;

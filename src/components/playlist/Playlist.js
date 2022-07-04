@@ -55,11 +55,13 @@ export default function () {
     <div className="col-xs-12 d-flex flex-column">
       {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center">
-          <UltimatePagination
-            currentPage={parseInt(activePage)}
-            totalPages={Math.round(activePlaylist.total / 20)}
-            onChange={handleClick}
-          />
+          {!isSmallScreen && (
+            <UltimatePagination
+              currentPage={parseInt(activePage)}
+              totalPages={Math.round(activePlaylist.total / 20)}
+              onChange={handleClick}
+            />
+          )}
         </div>
       )}
 
@@ -81,11 +83,13 @@ export default function () {
       </div>
       {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center">
-          <UltimatePagination
-            currentPage={parseInt(activePage)}
-            totalPages={Math.round(activePlaylist.total / 20)}
-            onChange={handleClick}
-          />
+          {!isSmallScreen && (
+            <UltimatePagination
+              currentPage={parseInt(activePage)}
+              totalPages={Math.round(activePlaylist.total / 20)}
+              onChange={handleClick}
+            />
+          )}
         </div>
       )}
     </div>

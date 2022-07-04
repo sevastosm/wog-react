@@ -3,6 +3,9 @@ import { useLocation } from "react-router-dom";
 import Playlist from "../../components/playlist/Playlist";
 import SeriesList from "../../components/playlist/SeriesList";
 import VideoPlayer from "../../components/player/VideoPlayer";
+import UltimatePagination from "../../components/playlist/Pagination";
+import { getPlaylist } from "../../utils";
+
 import MainTabs from "../../components/MainTabs";
 import { useMedia } from "react-media";
 import FiltersSidebar from "../../components/FiltersSidebar";
@@ -27,15 +30,15 @@ const AllSeriesPage = () => {
     activePlaylist,
     setVideo,
     activeVideo,
+    activePage,
+    setActivePlaylist,
   } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
+  const isMobile = useMedia({ query: "(max-width: 480px)" });
+
   const resourses = useResources(["tabRecordingsSeriesHdr"]);
 
   let query = useQuery();
-
-  const handleClick = () => {
-    setFilterSidebar(!filterSidebar);
-  };
 
   useEffect(() => {
     setVideo({
@@ -51,18 +54,51 @@ const AllSeriesPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang, activePlaylist, activeVideo]);
 
+  const handlePagination = async (num) => {
+    const result = await getPlaylist(
+      activePlaylist.data[0].kind,
+      activePlaylist.data[0].SeriesID,
+      lang,
+      num
+    );
+    setActivePlaylist({
+      Data: result.data,
+      Total: result.total,
+      kind: activePlaylist.kind,
+      activePage: num,
+    });
+  };
+
+  const cls = isMobile
+    ? "col-lg-8 col-sm-12 d-flex flex-column paginate-small"
+    : "col-lg-8 col-sm-12 d-flex flex-column";
+
+  let cls2 = "";
+
+  if (!isMobile) {
+    cls2 = "col-lg-9 col-sm-12 series-wraper";
+  }
+  if (isMobile) {
+    cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small";
+  }
+  if (isMobile && activePlaylist.data && activePlaylist.total > 24) {
+    cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small-pager";
+  }
+
   return (
     <div className="p-2">
-      {/* {isSmallScreen && (
-        <>
-          <FiltersSidebar>
-            <SeriesList />
-          </FiltersSidebar>
-        </>
-      )} */}
       <div className="d-flex row mx-0">
-        <div className=" col-lg-8 col-sm-12">
+        <div className={cls}>
           <VideoPlayer />
+          {isMobile && activePlaylist.data && activePlaylist.total > 24 && (
+            <div className="align-self-center">
+              <UltimatePagination
+                currentPage={parseInt(activePage)}
+                totalPages={Math.round(activePlaylist.total / 20)}
+                onChange={handlePagination}
+              />
+            </div>
+          )}
         </div>
         <div className="col-lg-4  col-sm-12 position-relative">
           {!isSmallScreen && <MainTabs />}
@@ -73,12 +109,7 @@ const AllSeriesPage = () => {
           {!isSmallScreen && <SeriesList />}
         </div>
 
-        <div className="col-lg-9 col-sm-12 series-wraper">
-          {/* {isSmallScreen && (
-            <button onClick={handleClick} className="button tonglefilters">
-              {resourses.length > 0 && resourses[0].Text}
-            </button>
-          )} */}
+        <div className={cls2}>
           <Playlist />
         </div>
       </div>
