@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import AppContext from "../components/AppContext";
 import Program from "./Program";
+import Banners from "./Banners";
+
 import {
   TabContent,
   TabPane,
@@ -37,7 +39,8 @@ export default function (props) {
   };
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 ">
+      <Banners/>
       <Nav tabs>
         <NavItem>
           <NavLink

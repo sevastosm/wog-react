@@ -101,7 +101,7 @@ const AllSeriesPage = () => {
           )}
         </div>
         <div className="col-lg-4  col-sm-12 position-relative">
-          {!isSmallScreen && <MainTabs />}
+           <MainTabs />
         </div>
       </div>
       <div className="d-flex flex-wrap mt-2">

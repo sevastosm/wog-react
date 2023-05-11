@@ -11,7 +11,7 @@ export default function VideoPlayer() {
   const { activeVideo } = useContext(AppContext);
   const getVideo = React.useCallback(
     () =>
-      `https://www.youtube.com/embed/${activeVideo.YouTubeId}?autoplay=1?rel=0`,
+      `https://youtu.be/embed/${activeVideo.YouTubeId}?autoplay=1?rel=0`,
     [activeVideo]
   );
 
@@ -30,7 +30,8 @@ export default function VideoPlayer() {
     rel: 0,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
+      autoplay: 0
+      ,
       allow: "autoplay",
     },
   };
