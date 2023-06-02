@@ -73,8 +73,6 @@ const SeriesList = () => {
                     {resourses.length > 0 && resourses[1].Text}
                 </button>
                 {customList.map((listItem) => {
-
-                    console.log('listItem', listItem)
                     if (listItem.Series) {
                         return (<div key={lang + listItem.ID} >
 

@@ -27,6 +27,9 @@ export const getIntialData = (lang = "el") => {
     getData("GET_ALL_SERIES", lang),
     getData("GET_SERIES_SEARCH_LIST", lang),
     getData("GET_ALL_SPEAKERS", lang),
+     getData("GET_POPULAR", lang),
+     getData("GET_SUGGESTED", lang), getData("GET_LIVE", lang),
+      getData("GET_ADS", lang)
   ]).then((values) => {
     return values;
   });

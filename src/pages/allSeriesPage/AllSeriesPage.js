@@ -5,6 +5,8 @@ import SeriesList from "../../components/playlist/SeriesList";
 import VideoPlayer from "../../components/player/VideoPlayer";
 import UltimatePagination from "../../components/playlist/Pagination";
 import { getPlaylist } from "../../utils";
+import Skeleton from "../../components/loader/Skeleton";
+
 
 import MainTabs from "../../components/MainTabs";
 import { useMedia } from "react-media";
@@ -110,6 +112,10 @@ const AllSeriesPage = () => {
         </div>
 
         <div className={cls2}>
+          <section> <Skeleton /></section>
+          <section> <Skeleton /></section>
+          <section> <Skeleton /></section>
+
           <Playlist />
         </div>
       </div>

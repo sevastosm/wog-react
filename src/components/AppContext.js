@@ -74,6 +74,9 @@ export const Provider = ({ children }) => {
           series: data[3].Data,
           seriesSearchList: data[4].Data,
           speakersList: data[5].Data,
+          popular: data[6].Data,
+          sugested: data[7].Data,
+          ads: data[8].Data,
         });
       }),
     [lang, state]

@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import "./VideoPlayer.scss";
 import YouTube from "react-youtube";
-import { useMedia } from "react-media";
+import { useMedia, } from "react-media";
 
 import AppContext from "../AppContext";
+import { useEffect } from "react";
 
 export default function VideoPlayer() {
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const [video,setVideo]=React.useState("")
 
   const { activeVideo } = useContext(AppContext);
   const getVideo = React.useCallback(
@@ -36,11 +38,15 @@ export default function VideoPlayer() {
     },
   };
 
+//   useEffect(()=>{
+// setVideo(activeVideo?.YouTubeId)
+//   },[activeVideo])
+
   return (
     <YouTube
       id="ut-player"
       // className={isSmallScreen && "small"}
-      videoId={activeVideo.YouTubeId}
+      videoId={video}
       opts={opts}
       // onReady={onPlayerReady}
     />
