@@ -76,7 +76,8 @@ export const Provider = ({ children }) => {
           speakersList: data[5].Data,
           popular: data[6].Data,
           sugested: data[7].Data,
-          ads: data[8].Data,
+          live:data[8].Data,
+          ads:data[9]?.Data,
         });
       }),
     [lang, state]

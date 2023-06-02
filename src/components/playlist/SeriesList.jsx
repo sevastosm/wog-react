@@ -12,11 +12,11 @@ import AppContext from "../../components/AppContext";
 
 // A custom hook that builds on useLocation to parse
 // the query string for you.
-function useQuery() {
-    const { search } = useLocation();
+// function useQuery() {
+//     const { search } = useLocation();
 
-    return React.useMemo(() => new URLSearchParams(search), [search]);
-}
+//     return React.useMemo(() => new URLSearchParams(search), [search]);
+// }
 
 const SeriesList = () => {
     const {

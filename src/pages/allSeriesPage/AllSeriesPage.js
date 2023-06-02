@@ -112,10 +112,6 @@ const AllSeriesPage = () => {
         </div>
 
         <div className={cls2}>
-          <section> <Skeleton /></section>
-          <section> <Skeleton /></section>
-          <section> <Skeleton /></section>
-
           <Playlist />
         </div>
       </div>
