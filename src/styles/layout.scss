@@ -52,12 +52,16 @@ body > .container {
   border: 1px solid #499b7b;
 }
 
-// .playList {
-//   // max-height: 100vh;.footer
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-//   // padding-left: 5%;
-// }
+.playList.simple {
+  // max-height: 100vh;.footer
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-flow: inherit;
+}
+.playList.simple.small {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  padding: auto;
+}
 
 .playList {
   display: grid;
@@ -69,10 +73,7 @@ body > .container {
   padding-bottom: 10px;
 }
 
-// .playList.small {
-//   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-//   padding: auto;
-// }
+
 
 .small {
   .info * {

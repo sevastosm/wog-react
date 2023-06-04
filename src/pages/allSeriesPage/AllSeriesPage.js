@@ -119,9 +119,13 @@ const AllSeriesPage = () => {
         </div>
 
         <div className={cls2}>
+          {activePlaylist?.data? <Playlist  list={activePlaylist} simple={true}/>:
+          <>
           <Playlist  list={recent} title={resourses[2]?.Text||''}/>
           <Playlist  list={sugested} title={resourses[1]?.Text||''}/>
           <Playlist  list={popular} title={resourses[0]?.Text||''}/>
+          </>
+          }
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import Skeleton from "../loader/Skeleton";
 import UltimatePagination from "./Pagination";
 import { getPlaylist } from "../../utils";
 import useResources from "../../hooks/UseResources";
+import { Button} from "reactstrap";
 
 import "./Playlist.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -12,7 +13,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import AppContext from "../AppContext";
 import { useMedia } from "react-media";
 
-export default function ({list,title}) {
+export default function ({list,title,simple=false}) {
   const {
     loader,
     lang,
@@ -24,7 +25,7 @@ console.log("LIST",list)
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
 
-  const resourses = useResources(["ErrMsgErrorOccuredText"]);
+  const resourses = useResources(["ErrMsgErrorOccuredText","ImageReturnToLive"]);
   // return <Skeleton />;
 
   if (loader) return <Skeleton />;
@@ -56,8 +57,13 @@ console.log("LIST",list)
     // <PerfectScrollbar scrollbarXActive={false}>
     <div className="col-xs-12 d-flex flex-column mb-4">
       <h1 className="p-3">{title}</h1>
+    
+      <div className="d-flex mb-3">
+      {simple&&<Button onClick={()=>setActivePlaylist([])} className="back-btn">
+      {resourses && resourses[1].Text}
+      </Button>}
       {activePlaylist.data && activePlaylist.total > 24 && (
-        <div className="align-self-center">
+        <div className="align-self-center m-auto">
           {!isMobile && (
             <UltimatePagination
               currentPage={parseInt(activePage)}
@@ -67,9 +73,9 @@ console.log("LIST",list)
           )}
         </div>
       )}
-
+</div>
       <div
-        className={`playList ${isSmallScreen && "small"}`}
+        className={`playList ${simple&&'simple'} ${isSmallScreen && "small"}`}
         strt
         cellSpacing={0}
         cellPadding={5}
@@ -85,7 +91,7 @@ console.log("LIST",list)
         })}
       </div>
       {activePlaylist.data && activePlaylist.total > 24 && (
-        <div className="align-self-center">
+        <div className="align-self-center m-auto">
           {!isMobile && (
             <UltimatePagination
               currentPage={parseInt(activePage)}
