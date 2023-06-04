@@ -8,6 +8,7 @@ h1,
 .title {
   font-size: 1.125em;
 }
+
 h2 {
   font-size: 1em;
 }
@@ -15,7 +16,8 @@ h2 {
 h3,
 .title-small {
   font-size: 0.8125em;
-  > div {
+
+  >div {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -55,6 +57,10 @@ i {
   text-decoration: none;
   font-style: inherit;
   font-size: 14px;
+  width: 233px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .title {

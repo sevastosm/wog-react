@@ -146,7 +146,7 @@ export default function Filter() {
         const body = prepareBodyForPost();
         setLoader(true);
         const response = await fetch(
-          `https://www.wordofgod.gr/api/contents/search`,
+          `https://www.wordofgod.gr/api/recordings/search`,
           {
             method: "POST",
             headers: {

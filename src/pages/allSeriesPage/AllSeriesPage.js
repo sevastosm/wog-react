@@ -34,11 +34,17 @@ const AllSeriesPage = () => {
     activeVideo,
     activePage,
     setActivePlaylist,
+    recent,
+    sugested,
+    popular
+
   } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
 
-  const resourses = useResources(["tabRecordingsSeriesHdr"]);
+  const resourses = useResources(["tabRecentHdr","tabMostViewedHdr","tabSuggestedHdr"
+])
+  
 
   let query = useQuery();
 
@@ -78,14 +84,15 @@ const AllSeriesPage = () => {
   let cls2 = "";
 
   if (!isMobile) {
-    cls2 = "col-lg-9 col-sm-12 series-wraper";
+    cls2 = "col-lg-9 col-sm-12 series-wraper overflow-hidden";
   }
   if (isMobile) {
-    cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small";
+    cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small overflow-hidden";
   }
   if (isMobile && activePlaylist.data && activePlaylist.total > 24) {
-    cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small-pager";
+    cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small-pager overflow-hidden";
   }
+  console.log("resourses",resourses)
 
   return (
     <div className="p-2">
@@ -112,7 +119,9 @@ const AllSeriesPage = () => {
         </div>
 
         <div className={cls2}>
-          <Playlist />
+          <Playlist  list={recent} title={resourses[2]?.Text||''}/>
+          <Playlist  list={sugested} title={resourses[1]?.Text||''}/>
+          <Playlist  list={popular} title={resourses[0]?.Text||''}/>
         </div>
       </div>
     </div>

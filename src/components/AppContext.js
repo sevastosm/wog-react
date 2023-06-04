@@ -69,13 +69,14 @@ export const Provider = ({ children }) => {
         setGlobalstate({
           ...state,
           activePlaylist: { data: data[0].Data, total: data[0].Total },
+          recent: { data: data[0].Data, total: data[0].Total },
           program: data[1],
           resourses: data[2].Data,
           series: data[3].Data,
           seriesSearchList: data[4].Data,
           speakersList: data[5].Data,
-          popular: data[6].Data,
-          sugested: data[7].Data,
+          popular: { data: data[6].Data, total: data[6].Total },
+          sugested: { data: data[7].Data, total: data[7].Total },
           live:data[8].Data,
           ads:data[9]?.Data,
         });

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AppContext from "../components/AppContext";
 import Program from "./Program";
-import Banners from "./Banners";
+import Banners from "./banners/Banners";
 
 import {
   TabContent,
@@ -11,7 +11,6 @@ import {
   NavLink,
   Row,
   Col,
-  Button,
 } from "reactstrap";
 import classnames from "classnames";
 import NowYouSee from "./NowYouSee";

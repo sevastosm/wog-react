@@ -12,15 +12,15 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import AppContext from "../AppContext";
 import { useMedia } from "react-media";
 
-export default function () {
+export default function ({list,title}) {
   const {
-    activePlaylist,
     loader,
     lang,
     setActivePlaylist,
     activePage,
-    setActivepage,
-  } = useContext(AppContext);
+    } = useContext(AppContext);
+console.log("LIST",list)
+  const activePlaylist={...list}
   const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
 
@@ -54,7 +54,8 @@ export default function () {
 
   return (
     // <PerfectScrollbar scrollbarXActive={false}>
-    <div className="col-xs-12 d-flex flex-column">
+    <div className="col-xs-12 d-flex flex-column mb-4">
+      <h1 className="p-3">{title}</h1>
       {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center">
           {!isMobile && (
@@ -77,9 +78,9 @@ export default function () {
       >
         {activePlaylist.data.map((sermon, i) => {
           return (
-            <span key={i}>
+            // <span key={i}>
               <ListItem key={sermon.ID} listItem={sermon} />
-            </span>
+            // </span>
           );
         })}
       </div>
