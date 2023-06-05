@@ -7,10 +7,11 @@ import AppContext from "../AppContext";
 import { useEffect } from "react";
 
 export default function VideoPlayer() {
-  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const [video,setVideo]=React.useState("")
 
   const { activeVideo } = useContext(AppContext);
+  console.log("ACTIVE",activeVideo)
   const getVideo = React.useCallback(
     () =>
       `https://youtu.be/embed/${activeVideo.YouTubeId}?autoplay=1?rel=0`,
@@ -32,7 +33,7 @@ export default function VideoPlayer() {
     rel: 0,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 0
+      autoplay: 1
       ,
       allow: "autoplay",
     },
@@ -46,7 +47,7 @@ export default function VideoPlayer() {
     <YouTube
       id="ut-player"
       // className={isSmallScreen && "small"}
-      videoId={video}
+      videoId={activeVideo.YouTubeId}
       opts={opts}
       // onReady={onPlayerReady}
     />

@@ -11,7 +11,7 @@ export default function () {
 
   if (!match) return null;
 
-  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   if (isSmallScreen) return null;
   return (
     <footer className={isSmallScreen && "small"}>
@@ -30,7 +30,7 @@ export default function () {
                 Επικοινωνία
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to={`${match.url}/${route.HELP}`}
                 style={{
@@ -41,7 +41,7 @@ export default function () {
               >
                 Βοήθεια
               </Link>
-            </li>
+            </li> */}
             {/* <li>
               <Link
                 to={`${match.url}/${route.NEWSLETTER}`}

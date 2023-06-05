@@ -19,3 +19,26 @@ const getData = async (url, lang) => {
   return data;
 };
 export default getData;
+
+export const applySearch= async(body)=>await fetch(
+  `https://www.wordofgod.gr/api/recordings/search`,
+  {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(body),
+  }
+);
+
+
+export const applyContact= async(body)=>await fetch(
+  `https://www.wordofgod.gr/api/contact/sendmessage`,
+  {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(body),
+  }
+);

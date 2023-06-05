@@ -5,7 +5,7 @@ import { useMedia } from "react-media";
 
 export default function Languages() {
   const { setLang } = useContext(AppContext);
-  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
 
   const cn = isSmallScreen ? "small" : "";
 

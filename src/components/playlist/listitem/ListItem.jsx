@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { convertDate } from "../../../utils";
+
 import Info from "./Info";
 import VideoThumb from "./VideoThumb";
 import Buttons from "./Buttons";
@@ -36,12 +38,14 @@ export default function ({ listItem }) {
           </div>
         </div>
         <div className="title-small w-100 p-2 ">
+      <h3>{convertDate(listItem.RecordingDate)}</h3>
           <div dangerouslySetInnerHTML={createMarkup(listItem.Subject)} />
 
           {/* <Info listItem={listItem} /> */}
           <Truncate lines={3} ellipsis={<span>...</span>}>
             {<div dangerouslySetInnerHTML={createMarkup(listItem.RecordingSubject)} />}
           </Truncate>
+
         </div>
       </div>
     </div>

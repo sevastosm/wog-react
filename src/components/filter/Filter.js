@@ -10,40 +10,10 @@ import {
 import AppContext, { useGlobalState } from "../AppContext";
 import useResources from "../../hooks/UseResources";
 
-import getData from "../../api/apis";
+import {applySearch} from "../../api/apis";
 
 import { format } from "date-fns";
 import "./filter.scss";
-
-function formatSpeaker(speaker) {
-  if (speaker.Name === "(Removed)") {
-    return "";
-  }
-  return {
-    value: speaker.ID,
-    label: speaker.Name,
-  };
-}
-
-const fetchSpeaker = async (lang) => {
-  const data = await getData("GET_ALL_SPEAKERS", lang);
-  return data;
-};
-
-function formatSermon(sermon) {
-  if (sermon.Name === "(Removed)") {
-    return "";
-  }
-  return {
-    value: sermon.ID,
-    label: sermon.Name,
-  };
-}
-
-const fetchSermons = async (lang) => {
-  const data = await getData("GET_SERIES_SEARCH_LIST", lang);
-  return data;
-};
 
 const defaultValues = {
   dateFrom: null,
@@ -67,21 +37,12 @@ export default function Filter() {
     lang,
     seriesSearchList,
     setLoader,
-    setActivePage,
   } = useContext(AppContext);
   const [selectedFilters, setSelectedFilters] = React.useState({
     ...defaultValues,
   });
 
-  const formatedSpeakers = (list) => {
-    const formatedList = list.map(formatSpeaker).filter((sp) => sp.value);
-    return formatedList.unshift(list(lang));
-  };
 
-  const formatedSermons = (list) => {
-    const formatedList = list.map(formatSpeaker).filter((sp) => sp.value);
-    return formatedList.unshift(seriesSearchList(lang));
-  };
 
   const [fetchedData, setFetchedData] = React.useState({
     speakers: [],
@@ -108,13 +69,6 @@ export default function Filter() {
       return sermon.value;
     });
 
-    const hasSelectedAllSermons = function () {
-      formattedSermonIds.filter(
-        (sermon) => sermon.value >= 900 && sermon.value <= 907
-      );
-
-      return formattedSermonIds.length > 0 ? true : false;
-    };
     const formattedDateFrom = dateFrom && format(dateFrom, "yyyy/MM/dd");
     const formattedDateTo = dateTo && format(dateTo, "yyyy/MM/dd");
     if (!formattedDateFrom && !formattedDateTo) {
@@ -141,21 +95,11 @@ export default function Filter() {
   }, [lang, selectedFilters]);
 
   const onApplyFilters = React.useCallback(
-    async (e) => {
+    async () => {
       try {
         const body = prepareBodyForPost();
         setLoader(true);
-        const response = await fetch(
-          `https://www.wordofgod.gr/api/recordings/search`,
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify(body),
-          }
-        );
-
+        const response = await applySearch(body)
         const data = await response.json();
         setActivePlaylist({ ...data, activePage: 1 });
       } catch (error) {
@@ -164,15 +108,8 @@ export default function Filter() {
     },
     [prepareBodyForPost]
   );
-  console.log("FETCHDATA", fetchedData);
 
   useEffect(() => {
-    // console.log("formatedSpeakers", formatedSpeakers(speakersList));
-    // console.log("formatedSermons", formatedSermons(seriesSearchList));
-    // setFetchedData({
-    //   speakers: formatedSpeakers(speakersList),
-    //   sermons: formatedSermons(seriesSearchList),
-    // });
   }, [seriesSearchList, speakersList]);
 
   return (

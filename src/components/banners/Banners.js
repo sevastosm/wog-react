@@ -8,7 +8,7 @@ import "./Banners.scss";
 
 
 export default function Banners() {
-  const isSmallScreen = useMedia({ query: "(max-width: 799px)" });
+  const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const {
     ads
   } = React.useContext(AppContext);

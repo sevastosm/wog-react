@@ -69,11 +69,24 @@ body > .container {
   /* grid-auto-flow: row; */
   grid-auto-flow: column;
   gap: 10px;
-  overflow: auto;
+  // overflow: auto;
   padding-bottom: 10px;
+
+  i{
+    width: 233px;
+  }
+  
 }
 
+// .playList::-webkit-scrollbar {
+//   display: none;
+// }
 
+// /* Hide scrollbar for IE, Edge and Firefox */
+// .playList {
+//   -ms-overflow-style: none;  /* IE and Edge */
+//   scrollbar-width: none;  /* Firefox */
+// }
 
 .small {
   .info * {

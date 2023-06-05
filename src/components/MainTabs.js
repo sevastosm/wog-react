@@ -33,9 +33,9 @@ export default function (props) {
     setActiveTab(tab);
   };
 
-  const handleClick = () => {
-    setVideo({ YouTubeId: "ENn6RLC0wpo" });
-  };
+  // const handleClick = () => {
+  //   setVideo({ YouTubeId: "ENn6RLC0wpo" });
+  // };
 
   return (
     <div className="mt-2 ">
@@ -63,13 +63,13 @@ export default function (props) {
             </NavLink>
           </NavItem>
         )}
-        {lang === "gr" && activeVideo.YouTubeId !== "ENn6RLC0wpo" && (
+        {/* {lang === "gr" && activeVideo.YouTubeId !== "ENn6RLC0wpo" && (
           <div className="position-absolute bottom-0 mb-2">
             <button className="btn" onClick={handleClick}>
               {resourses[2].Text}
             </button>
           </div>
-        )}
+        )} */}
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
