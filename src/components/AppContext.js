@@ -63,6 +63,16 @@ export const Provider = ({ children }) => {
 
   const { lang } = state;
 
+  function extractVideoID(url) {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[7].length == 11) {
+      return match[7];
+    } else {
+      alert('Could not extract video ID.');
+    }
+  }
+
   const getData = useCallback(
     () =>
       getIntialData(lang).then((data) => {
@@ -78,7 +88,14 @@ export const Provider = ({ children }) => {
           sugested: { data: data[7].Data, total: data[7].Total },
           live:data[8].Data,
           ads:data[9]?.Data,
+          activeVideo: {
+            YouTubeId: extractVideoID(data[8].Data.HIGH.URL),
+            Subject: '',
+            RecordingSubject: ''
+        }
         });
+
+
       }),
     [lang, state]
   );

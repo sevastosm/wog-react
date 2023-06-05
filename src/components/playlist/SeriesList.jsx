@@ -41,7 +41,6 @@ const SeriesList = () => {
         setLoader(true);
         const result = await getPlaylist(kind, id, lang,);
         setActivePlaylist({ Data: result.data, Total: result.total, type: kind, activePage: 1 });
-
     };
 
     useEffect(() => {

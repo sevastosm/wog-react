@@ -4,9 +4,16 @@
  justify-content: space-between;
 }
 
-.banners  img {
+.banners div > img {
   width: 120px;
   border-radius: 5px;
   /* width: 100%; */
-  border: 4px solid;
+  border: 4px solid #499b7b;
+ }
+
+ .banners a > img {
+  width: 120px;
+  border-radius: 5px;
+  /* width: 100%; */
+  border: 4px solid #499b7b;
  }
