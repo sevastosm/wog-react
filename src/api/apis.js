@@ -8,15 +8,18 @@ const getData = async (url, lang) => {
     GET_RESOURCES: `/api/contents/resources/${lang}`,
     GET_ALL_SPEAKERS: `/api/contents/speakers/${lang}`,
     GET_NOW_PLAYNG: `/api/contents/sermons/${lang}/2`,
-    GET_LIVE: `/api/live/${lang}`,
+    GET_LIVE: `/api/live/gr`,
     GET_POPULAR: `/api/recordings/popular/${lang}`,
     GET_SUGGESTED: `/api/recordings/suggested/${lang}`,
     GET_ADS: `/api/contents/ads/gr`,
   };
-
-  const response = await fetch(`${host}${endPoints[url]}`);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(`${host}${endPoints[url]}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("error")
+  }
 };
 export default getData;
 
