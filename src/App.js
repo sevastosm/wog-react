@@ -6,7 +6,6 @@ import SeriesList from "./components/playlist/SeriesList";
 import AppContext from "./components/AppContext";
 
 import { applicationLang } from "./utils";
-import { Offcanvas } from "react-bootstrap";
 
 import routes from "./routes";
 import { useMedia } from "react-media";

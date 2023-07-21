@@ -31,7 +31,7 @@ const AllSeriesPage = () => {
     filterSidebar,
     activePlaylist,
     setVideo,
-    activeVideo,
+    // activeVideo,
     activePage,
     setActivePlaylist,
     recent,
@@ -57,10 +57,10 @@ const AllSeriesPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    // activePlaylist && setVideo(activePlaylist[0]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lang, activePlaylist, activeVideo]);
+  // useEffect(() => {
+  //   // activePlaylist && setVideo(activePlaylist[0]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [lang, activePlaylist, activeVideo]);
 
   const handlePagination = async (num) => {
     const result = await getPlaylist(
@@ -93,7 +93,7 @@ const AllSeriesPage = () => {
     cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small-pager overflow-hidden";
   }
   console.log("resourses",resourses)
-
+  console.log("RENDER")
   return (
     <div className="p-2">
       <div className="d-flex row mx-0 justify-content-center">

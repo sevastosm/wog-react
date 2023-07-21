@@ -78,6 +78,15 @@ body > .container {
   
 }
 
+.sidebar{
+  position: fixed;
+  max-width: 350px;
+  background-color: #fff;
+  z-index: 99;
+  width: 100%;
+  height: 100vh;
+  top: 50px;
+}
 // .playList::-webkit-scrollbar {
 //   display: none;
 // }

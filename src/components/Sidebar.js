@@ -1,28 +1,23 @@
 import React, { useContext } from "react";
-import { Offcanvas } from "react-bootstrap";
 import AppContext from "./AppContext";
 
 function Sidebar({ children }) {
   const { sidebar, setSidebar, lang } = useContext(AppContext);
 
-  const handleClose = () => setSidebar(false);
+  const handleClose = (e) =>{e.prevendDefault(); setSidebar(false);}
 
   return (
-    <>
-      <Offcanvas
-        // backdrop={true}
-        scroll={true}
-        show={sidebar}
-        onHide={handleClose}
-      >
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>
-            <h3>{lang !== "gr" ? "Menu" : "Επιλογές"}</h3>
-          </Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>{children}</Offcanvas.Body>
-      </Offcanvas>
-    </>
+    <div style={{ display: sidebar ? 'block' : 'none' }} className="sidebar">
+      <div class="offcanvas-header">
+        <div class="offcanvas-title h5">
+          <h3>Επιλογές</h3></div>
+          <button type="button" onClick={handleClose} class="btn-close" aria-label="Close">
+            </button></div>
+            <div class="offcanvas-body" onClick={(e)=>e.stopPropagation()}>
+            {children}
+            </div>
+     
+    </div>
   );
 }
 

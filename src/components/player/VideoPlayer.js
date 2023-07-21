@@ -30,11 +30,10 @@ export default function VideoPlayer() {
     height: "360",
     width: "640",
     allowfullscreen: "true",
-    rel: 0,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1
-      ,
+      rel: 0,
+      autoplay: 1,
       allow: "autoplay",
     },
   };
@@ -49,7 +48,7 @@ export default function VideoPlayer() {
       // className={isSmallScreen && "small"}
       videoId={activeVideo.YouTubeId}
       opts={opts}
-      // onReady={onPlayerReady}
+      onReady={onPlayerReady}
     />
   );
 }
