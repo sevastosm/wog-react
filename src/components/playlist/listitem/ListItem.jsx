@@ -29,7 +29,7 @@ export default function ({ listItem }) {
     <div
       title={listItem.RecordingSubject}
       onClick={handleClick}
-      className={`listItem mx-3 ${listItem.RecordingID === activeVideo.RecordingID ? "active" : ""}`} key={listItem.RecordingID}>
+      className={`listItem mx-3 ${listItem?.RecordingID === activeVideo?.RecordingID ? "active" : ""}`} key={listItem?.RecordingID}>
       <div className="d-flex flex-column align-items-center">
         <div className="d-flex">
           <div className="col-xs-12 d-flex flex-column">
@@ -39,11 +39,11 @@ export default function ({ listItem }) {
         </div>
         <div className="title-small w-100 p-2 ">
       <h3>{convertDate(listItem.RecordingDate)}</h3>
-          <div dangerouslySetInnerHTML={createMarkup(listItem.Subject)} />
+          <div dangerouslySetInnerHTML={createMarkup(listItem?.Subject)} />
 
           {/* <Info listItem={listItem} /> */}
           <Truncate lines={3} ellipsis={<span>...</span>}>
-            {<div dangerouslySetInnerHTML={createMarkup(listItem.RecordingSubject)} />}
+            {<div dangerouslySetInnerHTML={createMarkup(listItem?.RecordingSubject)} />}
           </Truncate>
 
         </div>

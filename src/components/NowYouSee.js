@@ -10,12 +10,12 @@ export default function NowYouSee({ listItem }) {
 
   return (
     <div className="info col-xs-12 pt-1">
-      <h3 className="title-small">{convertDate(activeVideo.RecordingDate)}</h3>
+      <h3 className="title-small">{convertDate(activeVideo?.RecordingDate)}</h3>
       <div className="maintitle">
-        <div dangerouslySetInnerHTML={createMarkup(activeVideo.Subject)} />
+        <div dangerouslySetInnerHTML={createMarkup(activeVideo?.Subject)} />
       </div>
       <div
-        dangerouslySetInnerHTML={createMarkup(activeVideo.RecordingSubject)}
+        dangerouslySetInnerHTML={createMarkup(activeVideo?.RecordingSubject)}
       />
     </div>
   );
