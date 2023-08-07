@@ -73,9 +73,23 @@ export const Provider = ({ children }) => {
     }
   }
 
+
   const getData = useCallback(
     () =>
       getIntialData(lang).then((data) => {
+
+        const activeVideoSetup = (language) => {
+          if (language === 'gr') {
+            return {
+              YouTubeId: extractVideoID(data[8].Data.HIGH.URL),
+              Subject: '',
+              RecordingSubject: ''
+            }
+          }
+          return data[0].Data[0]
+        }
+
+
         setGlobalstate({
           ...state,
           recent: { data: data[0].Data, total: data[0].Total },
@@ -86,13 +100,9 @@ export const Provider = ({ children }) => {
           speakersList: data[5].Data,
           popular: { data: data[6].Data, total: data[6].Total },
           sugested: { data: data[7].Data, total: data[7].Total },
-          live:data[8].Data,
-          ads:data[9]?.Data,
-          activeVideo: {
-            YouTubeId: extractVideoID(data[8].Data.HIGH.URL),
-            Subject: '',
-            RecordingSubject: ''
-        }
+          live: data[8].Data,
+          ads: data[9]?.Data,
+          activeVideo: activeVideoSetup(lang)
         });
 
 

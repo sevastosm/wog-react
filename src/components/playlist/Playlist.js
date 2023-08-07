@@ -20,7 +20,6 @@ export default function ({ list, title, simple = false }) {
     setActivePlaylist,
     activePage,
   } = useContext(AppContext);
-  console.log("LIST", list)
   const activePlaylist = { ...list }
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
@@ -59,10 +58,10 @@ export default function ({ list, title, simple = false }) {
       <h1 className="p-3">{title}</h1>
 
       <div className="d-flex mb-3">
-        {simple && <Button onClick={() => setActivePlaylist([])} className="back-btn">
+        {simple&&<Button onClick={() => setActivePlaylist([])} className="back-btn">
           {resourses && resourses[1].Text}
         </Button>}
-        {activePlaylist.data && activePlaylist.total > 24 && (
+        {activePlaylist.data && activePlaylist.total > 24 &&simple&& (
           <div className="align-self-center m-auto">
             {!isMobile && (
               <UltimatePagination
@@ -94,7 +93,7 @@ export default function ({ list, title, simple = false }) {
       </PerfectScrollbar>
       {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center m-auto">
-          {!isMobile && (
+          {!isMobile  &&simple&& (
             <UltimatePagination
               currentPage={parseInt(activePage)}
               totalPages={Math.round(activePlaylist.total / 20)}

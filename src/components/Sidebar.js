@@ -13,7 +13,7 @@ function Sidebar({ children }) {
           <h3>Επιλογές</h3></div>
           <button type="button" onClick={handleClose} class="btn-close" aria-label="Close">
             </button></div>
-            <div class="offcanvas-body" onClick={(e)=>e.stopPropagation()}>
+            <div class="offcanvas-body" >
             {children}
             </div>
      

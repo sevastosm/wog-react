@@ -3,7 +3,7 @@ import React from 'react'
 
 const FakeElement = () => (<div className="col-lg-2 col-sm-12 m-2">
     <div className="card">
-        <img src="/static/media/logo.efe8290e.svg" className="card-img-top" alt="..." />
+        <img src="./static/media/logo.efe8290e.svg" className="card-img-top" alt="..." />
         <div className="card-body">
             <h5 className="card-title">Card title</h5>
             <h5 className="card-title">Card title</h5>

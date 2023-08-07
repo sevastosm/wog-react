@@ -19,8 +19,7 @@ export default function Banners() {
   } = React.useContext(AppContext);
 
   if (isSmallScreen) return null
-  console.log("ADS", ads)
-  // if (!ads) return null
+
   const path = "https://www.wordofgod.gr"
 
   const handleClick = async (image) => {
@@ -30,12 +29,12 @@ export default function Banners() {
       return setActivePlaylist({ Data: result.data, Total: result.total, type: 'type', activePage: 1 });
 
     }
-    if (image.includes("doctrines_gr")) {
-      setLoader(true);
-      const result = await getPlaylist('series', 108, lang,);
-      return setActivePlaylist({ Data: result.data, Total: result.total, type: 'type', activePage: 1 });
+    // if (image.includes("doctrines_gr")) {
+    //   setLoader(true);
+    //   const result = await getPlaylist('series', 108, lang,);
+    //   return setActivePlaylist({ Data: result.data, Total: result.total, type: 'type', activePage: 1 });
 
-    }
+    // }
     if (image.includes("omologies_pisteos_gr")) {
       setLoader(true);
       const result = await getPlaylist('series', 67, lang,);
@@ -51,7 +50,7 @@ export default function Banners() {
 
   return <div className="d-flex flex-wrap mb-3 banners">
     {ads.map((a, i) => {
-      if (a?.Image.includes("sunday")) {
+      if (a?.Image.includes("sunday")||a?.Image.includes("doctrines_gr")) {
         return null
       }
       if (a?.Image.includes("esxates_gr_new")) {

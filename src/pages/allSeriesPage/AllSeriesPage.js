@@ -42,20 +42,12 @@ const AllSeriesPage = () => {
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
 
-  const resourses = useResources(["tabRecentHdr","tabMostViewedHdr","tabSuggestedHdr"
-])
-  
+  const resourses = useResources(["tabRecentHdr", "tabMostViewedHdr", "tabSuggestedHdr"
+  ])
+
 
   let query = useQuery();
 
-  useEffect(() => {
-    setVideo({
-      YouTubeId: "ENn6RLC0wpo",
-      Subject: "YouTube chanel",
-      RecordingSubject: "",
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   // useEffect(() => {
   //   // activePlaylist && setVideo(activePlaylist[0]);
@@ -92,8 +84,7 @@ const AllSeriesPage = () => {
   if (isMobile && activePlaylist.data && activePlaylist.total > 24) {
     cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small-pager overflow-hidden";
   }
-  console.log("resourses",resourses)
-  console.log("RENDER")
+
   return (
     <div className="p-2">
       <div className="d-flex row mx-0 justify-content-center">
@@ -110,7 +101,7 @@ const AllSeriesPage = () => {
           )}
         </div>
         <div className="col-lg-4  col-sm-12 position-relative">
-           <MainTabs />
+          <MainTabs />
         </div>
       </div>
       <div className="d-flex flex-wrap mt-2">
@@ -119,12 +110,12 @@ const AllSeriesPage = () => {
         </div>
 
         <div className={cls2}>
-          {activePlaylist?.data? <Playlist  list={activePlaylist} simple={true}/>:
-          <>
-          <Playlist  list={recent} title={resourses[2]?.Text||''}/>
-          <Playlist  list={sugested} title={resourses[1]?.Text||''}/>
-          <Playlist  list={popular} title={resourses[0]?.Text||''}/>
-          </>
+          {activePlaylist?.data ? <Playlist list={activePlaylist} simple={true} /> :
+            <>
+              <Playlist list={recent} title={resourses[2]?.Text || ''} />
+              <Playlist list={sugested} title={resourses[1]?.Text || ''} />
+              <Playlist list={popular} title={resourses[0]?.Text || ''} />
+            </>
           }
         </div>
       </div>

@@ -25,7 +25,7 @@ export default function TopMenu() {
   };
 
   const handleLogoClick = () => {
-    window.location.replace(`/${applicationLang()}`);
+    window.location.reload();
   };
   return (
     <header className={isSmallScreen && "small"}>
