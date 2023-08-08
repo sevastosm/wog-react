@@ -7,7 +7,6 @@ import UltimatePagination from "../../components/playlist/Pagination";
 import { getPlaylist } from "../../utils";
 import Skeleton from "../../components/loader/Skeleton";
 
-
 import MainTabs from "../../components/MainTabs";
 import { useMedia } from "react-media";
 import FiltersSidebar from "../../components/FiltersSidebar";
@@ -36,18 +35,18 @@ const AllSeriesPage = () => {
     setActivePlaylist,
     recent,
     sugested,
-    popular
-
+    popular,
   } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
 
-  const resourses = useResources(["tabRecentHdr", "tabMostViewedHdr", "tabSuggestedHdr"
-  ])
-
+  const resourses = useResources([
+    "tabRecentHdr",
+    "tabMostViewedHdr",
+    "tabSuggestedHdr",
+  ]);
 
   let query = useQuery();
-
 
   // useEffect(() => {
   //   // activePlaylist && setVideo(activePlaylist[0]);
@@ -82,7 +81,8 @@ const AllSeriesPage = () => {
     cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small overflow-hidden";
   }
   if (isMobile && activePlaylist.data && activePlaylist.total > 24) {
-    cls2 = "col-lg-9 col-sm-12 series-wraper series-list-small-pager overflow-hidden";
+    cls2 =
+      "col-lg-9 col-sm-12 series-wraper series-list-small-pager overflow-hidden";
   }
 
   return (
@@ -104,19 +104,25 @@ const AllSeriesPage = () => {
           <MainTabs />
         </div>
       </div>
-      <div className="d-flex flex-wrap mt-2">
+      <div
+        className={
+          isSmallScreen ? "d-flex flex-wrap playlist" : "d-flex flex-wrap mt-4"
+        }
+      >
         <div className="d-flex col-lg-2 col-sm-12">
-          {!isSmallScreen && <SeriesList />}
+          {!isMobile && <SeriesList />}
         </div>
 
         <div className={cls2}>
-          {activePlaylist?.data ? <Playlist list={activePlaylist} simple={true} /> :
+          {activePlaylist?.data ? (
+            <Playlist list={activePlaylist} simple={true} />
+          ) : (
             <>
-              <Playlist list={recent} title={resourses[2]?.Text || ''} />
-              <Playlist list={sugested} title={resourses[1]?.Text || ''} />
-              <Playlist list={popular} title={resourses[0]?.Text || ''} />
+              <Playlist list={recent} title={resourses[2]?.Text || ""} />
+              <Playlist list={sugested} title={resourses[1]?.Text || ""} />
+              <Playlist list={popular} title={resourses[0]?.Text || ""} />
             </>
-          }
+          )}
         </div>
       </div>
     </div>

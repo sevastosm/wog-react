@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "../components/AppContext";
 import Program from "./Program";
 import Banners from "./banners/Banners";
+import { useMedia } from "react-media";
 
 import {
   TabContent,
@@ -17,6 +18,8 @@ import NowYouSee from "./NowYouSee";
 import useResources from "../hooks/UseResources";
 
 export default function (props) {
+  const isMobile = useMedia({ query: "(max-width: 480px)" });
+
   const resourses = useResources([
     "tabCurrentStreamHdr",
     "tabProgramHdr",
@@ -38,57 +41,59 @@ export default function (props) {
   // };
 
   return (
-    <div className="mt-2 ">
-      <Banners/>
-      <Nav tabs>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "1" })}
-            onClick={() => {
-              handleTabclick("1");
-            }}
-          >
-            {resourses[0].Text}
-          </NavLink>
-        </NavItem>
-        {lang === "gr" && (
+    !isMobile && (
+      <div className="mt-2 ">
+        <Banners />
+        <Nav tabs>
           <NavItem>
             <NavLink
-              className={classnames({ active: activeTab === "2" })}
+              className={classnames({ active: activeTab === "1" })}
               onClick={() => {
-                handleTabclick("2");
+                handleTabclick("1");
               }}
             >
-              {resourses[1].Text}
+              {resourses[0].Text}
             </NavLink>
           </NavItem>
-        )}
-        {/* {lang === "gr" && activeVideo.YouTubeId !== "ENn6RLC0wpo" && (
+          {lang === "gr" && (
+            <NavItem>
+              <NavLink
+                className={classnames({ active: activeTab === "2" })}
+                onClick={() => {
+                  handleTabclick("2");
+                }}
+              >
+                {resourses[1].Text}
+              </NavLink>
+            </NavItem>
+          )}
+          {/* {lang === "gr" && activeVideo.YouTubeId !== "ENn6RLC0wpo" && (
           <div className="position-absolute bottom-0 mb-2">
             <button className="btn" onClick={handleClick}>
               {resourses[2].Text}
             </button>
           </div>
         )} */}
-      </Nav>
-      <TabContent activeTab={activeTab}>
-        <TabPane tabId="1">
-          <Row>
-            <Col sm="12">
-              <NowYouSee />
-            </Col>
-          </Row>
-        </TabPane>
-        {lang === "gr" && (
-          <TabPane tabId="2">
+        </Nav>
+        <TabContent activeTab={activeTab}>
+          <TabPane tabId="1">
             <Row>
               <Col sm="12">
-                <Program />
+                <NowYouSee />
               </Col>
             </Row>
           </TabPane>
-        )}
-      </TabContent>
-    </div>
+          {lang === "gr" && (
+            <TabPane tabId="2">
+              <Row>
+                <Col sm="12">
+                  <Program />
+                </Col>
+              </Row>
+            </TabPane>
+          )}
+        </TabContent>
+      </div>
+    )
   );
 }

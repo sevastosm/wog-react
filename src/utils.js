@@ -16,10 +16,10 @@ export const applicationLang = () => {
   if (lang) {
     return lang;
   }
-  return "el";
+  return "gr";
 };
 
-export const getIntialData = (lang = "el") => {
+export const getIntialData = (lang = "gr") => {
   return Promise.all([
     getData("GET_RECENT", lang),
     getData("GET_PROGRAM", lang),
@@ -30,7 +30,7 @@ export const getIntialData = (lang = "el") => {
     getData("GET_POPULAR", lang),
     getData("GET_SUGGESTED", lang),
     getData("GET_LIVE", lang),
-    getData("GET_ADS", lang)
+    getData("GET_ADS", lang),
   ]).then((values) => {
     return values;
   });
