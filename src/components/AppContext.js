@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { getIntialData, applicationLang } from "../utils";
+import { getLive } from "../api/apis";
 const AppContext = React.createContext({});
 
 const live = {
@@ -31,7 +32,7 @@ export const Provider = ({ children }) => {
   const [state, setGlobalstate] = React.useState(store);
 
   const setVideo = (video) => {
-    setGlobalstate({ ...state, activeVideo: video });
+    setGlobalstate({ ...state, activeVideo: video, isLive: false });
   };
 
   const setLoader = (loader) => {
@@ -52,7 +53,12 @@ export const Provider = ({ children }) => {
 
   const setLang = async (data) => {
     await window.localStorage.setItem("lang", data);
-    setGlobalstate({ ...state, lang: data, sidebar: false });
+    setGlobalstate({
+      ...state,
+      lang: data,
+      sidebar: false,
+      activePlaylist: {},
+    });
   };
   const setSidebar = (data) => {
     setGlobalstate({ ...state, sidebar: data });
@@ -61,34 +67,56 @@ export const Provider = ({ children }) => {
     setGlobalstate({ ...state, filterSidebar: data });
   };
 
+  const setLiveVideo = async () => {
+    const response = await getLive();
+    const { Data } = response;
+    if (Data) {
+      console.log("LIVE", response);
+      const activeVideoSetup = (language) => {
+        if (language === "gr") {
+          return {
+            YouTubeId: extractVideoID(Data.HIGH.URL),
+            Subject: "",
+            RecordingSubject: "",
+          };
+        }
+      };
+
+      setGlobalstate({
+        ...state,
+        live: Data,
+        activeVideo: activeVideoSetup("gr"),
+        isLive: true,
+      });
+    }
+  };
+
   const { lang } = state;
 
   function extractVideoID(url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var regExp =
+      /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     if (match && match[7].length == 11) {
       return match[7];
     } else {
-      alert('Could not extract video ID.');
+      alert("Could not extract video ID.");
     }
   }
-
 
   const getData = useCallback(
     () =>
       getIntialData(lang).then((data) => {
-
         const activeVideoSetup = (language) => {
-          if (language === 'gr') {
+          if (language === "gr") {
             return {
               YouTubeId: extractVideoID(data[8].Data.HIGH.URL),
-              Subject: '',
-              RecordingSubject: ''
-            }
+              Subject: "",
+              RecordingSubject: "",
+            };
           }
-          return data[0].Data[0]
-        }
-
+          return data[0].Data[0];
+        };
 
         setGlobalstate({
           ...state,
@@ -102,10 +130,9 @@ export const Provider = ({ children }) => {
           sugested: { data: data[7].Data, total: data[7].Total },
           live: data[8].Data,
           ads: data[9]?.Data,
-          activeVideo: activeVideoSetup(lang)
+          activeVideo: activeVideoSetup(lang),
+          isLive: lang === "gr",
         });
-
-
       }),
     [lang, state]
   );
@@ -127,6 +154,7 @@ export const Provider = ({ children }) => {
         setFilterSidebar,
         setLoader,
         setActivepage,
+        setLiveVideo,
       }}
     >
       {children}

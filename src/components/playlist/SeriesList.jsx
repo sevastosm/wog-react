@@ -43,14 +43,14 @@ const SeriesList = () => {
         setActivePlaylist({ Data: result.data, Total: result.total, type: kind, activePage: 1 });
     };
 
-    useEffect(() => {
-        setVideo({
-            YouTubeId: "ENn6RLC0wpo",
-            Subject: "LIVE",
-            RecordingSubject: "Live streaming from youtube",
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // useEffect(() => {
+    //     setVideo({
+    //         YouTubeId: "ENn6RLC0wpo",
+    //         Subject: "LIVE",
+    //         RecordingSubject: "Live streaming from youtube",
+    //     });
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
 
 

@@ -21,8 +21,8 @@ export default function VideoPlayer() {
 
   const onPlayerReady = (event) => {
     // access to player in all event handlers via event.target
-    if (activeVideo.YouTubeId) document.getElementById("ut-player").click();
-    event.target.playVideoAt(0);
+    if (activeVideo.YouTubeId) event.target.unMute();
+    event.target.playVideo();
   };
 
   const opts = {
@@ -33,7 +33,7 @@ export default function VideoPlayer() {
       // https://developers.google.com/youtube/player_parameters
       rel: 0,
       autoplay: 1,
-      allow: "autoplay",
+      mute: 1,
     },
   };
 

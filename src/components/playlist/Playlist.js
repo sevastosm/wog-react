@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 import ListItem from "./listitem/ListItem";
-import Loader from "../loader/Loader";
 import Skeleton from "../loader/Skeleton";
 import UltimatePagination from "./Pagination";
 import { getPlaylist } from "../../utils";
 import useResources from "../../hooks/UseResources";
-import { Button } from "reactstrap";
-
+import BackToLive from "../player/BackToLive";
 import "./Playlist.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -14,17 +14,18 @@ import AppContext from "../AppContext";
 import { useMedia } from "react-media";
 
 export default function ({ list, title, simple = false }) {
-  const {
-    loader,
-    lang,
-    setActivePlaylist,
-    activePage,
-  } = useContext(AppContext);
-  const activePlaylist = { ...list }
+  const { loader, lang, setActivePlaylist, activePage, isLive } =
+    useContext(AppContext);
+  const activePlaylist = { ...list };
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
 
-  const resourses = useResources(["ErrMsgErrorOccuredText", "ImageReturnToLive"]);
+  const history = useHistory();
+
+  const resourses = useResources([
+    "ErrMsgErrorOccuredText",
+    "ImageReturnToLive",
+  ]);
   // return <Skeleton />;
 
   if (loader) return <Skeleton />;
@@ -58,10 +59,8 @@ export default function ({ list, title, simple = false }) {
       <h1 className="p-3">{title}</h1>
 
       <div className="d-flex mb-3">
-        {simple&&<Button onClick={() => setActivePlaylist([])} className="back-btn">
-          {resourses && resourses[1].Text}
-        </Button>}
-        {activePlaylist.data && activePlaylist.total > 24 &&simple&& (
+        {/* {!isLive && <BackToLive />} */}
+        {activePlaylist.data && activePlaylist.total > 24 && simple && (
           <div className="align-self-center m-auto">
             {!isMobile && (
               <UltimatePagination
@@ -73,9 +72,11 @@ export default function ({ list, title, simple = false }) {
           </div>
         )}
       </div>
-      <PerfectScrollbar >
+      <PerfectScrollbar>
         <div
-          className={`playList ${simple && 'simple'} ${isSmallScreen && "small"}`}
+          className={`playList ${simple && "simple"} ${
+            isSmallScreen && "small"
+          }`}
           strt
           cellSpacing={0}
           cellPadding={5}
@@ -93,7 +94,7 @@ export default function ({ list, title, simple = false }) {
       </PerfectScrollbar>
       {activePlaylist.data && activePlaylist.total > 24 && (
         <div className="align-self-center m-auto">
-          {!isMobile  &&simple&& (
+          {!isMobile && simple && (
             <UltimatePagination
               currentPage={parseInt(activePage)}
               totalPages={Math.round(activePlaylist.total / 20)}

@@ -36,14 +36,14 @@ export const getIntialData = (lang = "gr") => {
   });
 };
 
-//https://www.wordofgod.gr/api/recordings/gr/type/13/50/0
+//https://www.wordofgod.gr/media/api/recordings/gr/type/13/50/0
 
 export const getPlaylist = async (kind, id, lang, page = 1, items = 20) => {
   const type = kind === "type" ? "type" : "series";
 
   try {
     const response = await fetch(
-      `https://www.wordofgod.gr/api/recordings/${lang}/${type}/${id}/${items}/${page}`,
+      `https://www.wordofgod.gr/media/api/recordings/${lang}/${type}/${id}/${items}/${page}`,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },

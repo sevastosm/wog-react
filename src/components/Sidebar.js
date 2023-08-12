@@ -10,18 +10,18 @@ function Sidebar({ children }) {
 
   return (
     <div style={{ display: sidebar ? "block" : "none" }} className="sidebar">
-      <div class="offcanvas-header">
-        <div class="offcanvas-title h5">
+      <div className="offcanvas-header">
+        <div className="offcanvas-title h5">
           <h3>Επιλογές</h3>
         </div>
         <button
           type="button"
           onClick={handleClose}
-          class="btn-close"
+          className="btn-close"
           aria-label="Close"
         ></button>
       </div>
-      <div class="offcanvas-body">{children}</div>
+      <div className="offcanvas-body">{children}</div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import Playlist from "../../components/playlist/Playlist";
 import SeriesList from "../../components/playlist/SeriesList";
 import VideoPlayer from "../../components/player/VideoPlayer";
@@ -11,7 +11,8 @@ import MainTabs from "../../components/MainTabs";
 import { useMedia } from "react-media";
 import FiltersSidebar from "../../components/FiltersSidebar";
 import useResources from "../../hooks/UseResources";
-
+import { Button } from "reactstrap";
+import BackToLive from "../../components/player/BackToLive";
 import "./AllSeriesPage.scss";
 import AppContext from "../../components/AppContext";
 
@@ -36,6 +37,8 @@ const AllSeriesPage = () => {
     recent,
     sugested,
     popular,
+    isLive,
+    setLiveVideo,
   } = useContext(AppContext);
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const isMobile = useMedia({ query: "(max-width: 480px)" });
@@ -44,9 +47,11 @@ const AllSeriesPage = () => {
     "tabRecentHdr",
     "tabMostViewedHdr",
     "tabSuggestedHdr",
+    "ImageReturnToLive",
   ]);
 
   let query = useQuery();
+  const history = useHistory();
 
   // useEffect(() => {
   //   // activePlaylist && setVideo(activePlaylist[0]);
@@ -115,10 +120,14 @@ const AllSeriesPage = () => {
 
         <div className={cls2}>
           {activePlaylist?.data ? (
-            <Playlist list={activePlaylist} simple={true} />
+            <>
+              {!isLive && <BackToLive />}
+              <Playlist list={activePlaylist} simple={true} />
+            </>
           ) : (
             <>
-              <Playlist list={recent} title={resourses[2]?.Text || ""} />
+              {!isLive && <BackToLive />}
+              <Playlist list={recent} title={resourses[3]?.Text || ""} />
               <Playlist list={sugested} title={resourses[1]?.Text || ""} />
               <Playlist list={popular} title={resourses[0]?.Text || ""} />
             </>
