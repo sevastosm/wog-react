@@ -1,17 +1,19 @@
 const host = "https://wordofgod.gr";
+
+const d = new Date();
 const getData = async (url, lang) => {
   const endPoints = {
     GET_SERIES_SEARCH_LIST: `/media/api/series/searchlist/${lang}`,
     GET_ALL_SERIES: `/media/api/series/${lang}`,
     GET_RECENT: `/media/api/recordings/recent/${lang}`,
-    GET_PROGRAM: `/media/api/contents/program/${lang}/2`,
+    GET_PROGRAM: `/media/api/contents/program/${lang}/${d.getTimezoneOffset()}`,
     GET_RESOURCES: `/media/api/contents/resources/${lang}`,
     GET_ALL_SPEAKERS: `/media/api/contents/speakers/${lang}`,
     GET_NOW_PLAYNG: `/media/api/contents/sermons/${lang}/2`,
     GET_LIVE: `/media/api/live/gr`,
     GET_POPULAR: `/media/api/recordings/popular/${lang}`,
     GET_SUGGESTED: `/media/api/recordings/suggested/${lang}`,
-    GET_ADS: `/media/api/contents/ads/gr`,
+    GET_ADS: `/media/api/contents/ads/${lang}`,
   };
   try {
     const response = await fetch(`${host}${endPoints[url]}`);

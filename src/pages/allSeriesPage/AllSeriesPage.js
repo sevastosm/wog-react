@@ -121,12 +121,12 @@ const AllSeriesPage = () => {
         <div className={cls2}>
           {activePlaylist?.data ? (
             <>
-              {!isLive && <BackToLive />}
+              {!isLive && lang === "gr" && <BackToLive />}
               <Playlist list={activePlaylist} simple={true} />
             </>
           ) : (
             <>
-              {!isLive && <BackToLive />}
+              {!isLive && lang === "gr" && <BackToLive />}
               <Playlist list={recent} title={resourses[3]?.Text || ""} />
               <Playlist list={sugested} title={resourses[1]?.Text || ""} />
               <Playlist list={popular} title={resourses[0]?.Text || ""} />
