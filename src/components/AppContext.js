@@ -108,14 +108,11 @@ export const Provider = ({ children }) => {
     () =>
       getIntialData(lang).then((data) => {
         const activeVideoSetup = (language) => {
-          if (language === "gr") {
-            return {
-              YouTubeId: extractVideoID(data[8].Data.HIGH.URL),
-              Subject: "",
-              RecordingSubject: "",
-            };
-          }
-          return data[0].Data[0];
+          return {
+            YouTubeId: extractVideoID(data[8].Data.HIGH.URL),
+            Subject: "",
+            RecordingSubject: "",
+          };
         };
 
         setGlobalstate({
