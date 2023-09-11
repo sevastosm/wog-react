@@ -19,7 +19,7 @@ export default function VideoPlayer() {
     [activeVideo]
   );
 
-  if (!activeVideo.YouTubeId) {
+  if (!activeVideo?.YouTubeId) {
     return <>{resourses[0]?.Text}</>;
   }
 

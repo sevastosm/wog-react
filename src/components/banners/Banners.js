@@ -2,9 +2,13 @@
 import React from "react";
 import { useMedia } from "react-media";
 import { getPlaylist } from "../../utils";
-import answers from "../../Assets/answers_gr.png";
-import family from "../../Assets/family.png";
-import omologies_pisteos_gr from "../../Assets/omologies_pisteos_gr.png";
+import answers from "../../Assets/gr/answers_gr.png";
+import family from "../../Assets/gr/family.png";
+import esxates_gr from "../../Assets/gr/esxates_gr.png";
+import omologies_pisteos_gr from "../../Assets/gr/omologies_pisteos_gr.png";
+import answers_pl from "../../Assets/pl/answers_pl.png";
+import omologies_pisteos_pl from "../../Assets/pl/omologies_pisteos_pl.png";
+import esxates_pl from "../../Assets/pl/esxates_pl.png";
 
 import AppContext from "../AppContext";
 import "./Banners.scss";
@@ -35,7 +39,7 @@ export default function Banners() {
     //   return setActivePlaylist({ Data: result.data, Total: result.total, type: 'type', activePage: 1 });
 
     // }
-    if (image.includes("omologies_pisteos_gr")) {
+    if (image.includes("omologies_pisteos")) {
       setLoader(true);
       const result = await getPlaylist("series", 67, lang);
       return setActivePlaylist({
@@ -58,15 +62,30 @@ export default function Banners() {
     }
   };
 
-  const getImage = (image) => {
-    if (image.includes("omologies_pisteos_gr")) {
-      return omologies_pisteos_gr;
-    }
-    if (image.includes("family")) {
-      return family;
-    }
-    if (image.includes("answers")) {
-      return answers;
+  const getImage = (image, lang) => {
+    if (lang === "pl") {
+      if (image.includes("esxates")) {
+        return esxates_pl;
+      }
+      if (image.includes("omologies_pisteos")) {
+        return omologies_pisteos_pl;
+      }
+      if (image.includes("answers")) {
+        return answers_pl;
+      }
+    } else {
+      if (image.includes("esxates")) {
+        return esxates_gr;
+      }
+      if (image.includes("omologies_pisteos")) {
+        return omologies_pisteos_gr;
+      }
+      if (image.includes("family")) {
+        return family;
+      }
+      if (image.includes("answers")) {
+        return answers;
+      }
     }
   };
 
@@ -76,7 +95,7 @@ export default function Banners() {
         if (a?.Image.includes("sunday") || a?.Image.includes("doctrines_gr")) {
           return null;
         }
-        if (a?.Image.includes("esxates_gr_new")) {
+        if (a?.Image.includes("esxates")) {
           return (
             <div
               key={i}
@@ -89,7 +108,7 @@ export default function Banners() {
                 target="blank"
                 href={path + a.Link}
               >
-                <img title={a.Text} src={path + "/" + a.Image} alt="" />
+                <img title={a.Text} src={getImage(a?.Image, lang)} alt="" />
               </a>
             </div>
           );
@@ -104,7 +123,7 @@ export default function Banners() {
             }}
           >
             <div id="ctl00_main_adv1" title={a.Text} href={path + a.Link}>
-              <img title={a.Text} src={getImage(a?.Image)} alt="" />
+              <img title={a.Text} src={getImage(a?.Image, lang)} alt="" />
             </div>
           </div>
         );
