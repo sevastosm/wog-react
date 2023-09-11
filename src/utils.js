@@ -31,6 +31,7 @@ export const getIntialData = (lang = "gr") => {
     getData("GET_SUGGESTED", lang),
     getData("GET_LIVE", lang),
     getData("GET_ADS", lang),
+    getData("GET_NOW_PLAYNG", lang),
   ]).then((values) => {
     return values;
   });

@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import "./VideoPlayer.scss";
 import YouTube from "react-youtube";
 import { useMedia } from "react-media";
+import useResources from "../../hooks/UseResources";
 
 import AppContext from "../AppContext";
 import { useEffect } from "react";
 
 export default function VideoPlayer() {
+  const resourses = useResources(["LinksTextDataNotFound"]);
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   const [video, setVideo] = React.useState("");
 
@@ -17,7 +19,9 @@ export default function VideoPlayer() {
     [activeVideo]
   );
 
-  if (!activeVideo) return null;
+  if (!activeVideo.YouTubeId) {
+    return <>{resourses[0]?.Text}</>;
+  }
 
   const onPlayerReady = (event) => {
     // access to player in all event handlers via event.target
