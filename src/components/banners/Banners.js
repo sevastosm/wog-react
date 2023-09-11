@@ -9,13 +9,14 @@ import omologies_pisteos_gr from "../../Assets/gr/omologies_pisteos_gr.png";
 import answers_pl from "../../Assets/pl/answers_pl.png";
 import omologies_pisteos_pl from "../../Assets/pl/omologies_pisteos_pl.png";
 import esxates_pl from "../../Assets/pl/esxates_pl.png";
+import church_of_christ_pl from "../../Assets/pl/church_of_christ_pl.png";
 
 import AppContext from "../AppContext";
 import "./Banners.scss";
 
 export default function Banners() {
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
-  const { ads, setActivePlaylist, setLoader, lang } =
+  const { ads, setActivePlaylist, setLoader, lang, setDocumentrary } =
     React.useContext(AppContext);
 
   if (isSmallScreen) return null;
@@ -50,6 +51,17 @@ export default function Banners() {
       });
     }
 
+    if (image.includes("church_of_christ")) {
+      setLoader(true);
+      const result = await getPlaylist("series", 79, lang);
+      return setDocumentrary({
+        Data: result.data,
+        Total: result.total,
+        type: "type",
+        activePage: 1,
+      });
+    }
+
     if (image.includes("family")) {
       setLoader(true);
       const result = await getPlaylist("series", 110, lang);
@@ -73,6 +85,9 @@ export default function Banners() {
       if (image.includes("answers")) {
         return answers_pl;
       }
+      if (image.includes("church_of_christ")) {
+        return church_of_christ_pl;
+      }
     } else {
       if (image.includes("esxates")) {
         return esxates_gr;
@@ -92,7 +107,11 @@ export default function Banners() {
   return (
     <div className="d-flex flex-wrap mb-3 banners">
       {ads.map((a, i) => {
-        if (a?.Image.includes("sunday") || a?.Image.includes("doctrines_gr")) {
+        if (
+          a?.Image.includes("sunday") ||
+          a?.Image.includes("doctrines_gr") ||
+          a?.Image.includes("christianity_science")
+        ) {
           return null;
         }
         if (a?.Image.includes("esxates")) {

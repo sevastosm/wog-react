@@ -51,6 +51,19 @@ export const Provider = ({ children }) => {
     });
   };
 
+  // only for pl language
+  const setDocumentrary = (data) => {
+    setGlobalstate({
+      ...state,
+      activePlaylist: { data: data.Data, total: data.Total, kind: data.type },
+      loader: false,
+      sidebar: false,
+      activePage: parseInt(data.activePage),
+      activeVideo: data.Data[0],
+      isLive: false,
+    });
+  };
+
   const setLang = async (data) => {
     await window.localStorage.setItem("lang", data);
     setGlobalstate({
@@ -152,6 +165,7 @@ export const Provider = ({ children }) => {
         setLoader,
         setActivepage,
         setLiveVideo,
+        setDocumentrary,
       }}
     >
       {children}
