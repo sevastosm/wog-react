@@ -17,7 +17,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./gr"
+                to="/gr"
                 title="Ελληνικά"
                 onClick={() => setLang("gr")}
               >
@@ -27,7 +27,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./en"
+                to="/en"
                 title="English"
                 onClick={() => setLang("en")}
               >
@@ -37,7 +37,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./it"
+                to="/it"
                 title="Italiano"
                 onClick={() => setLang("it")}
               >
@@ -47,7 +47,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./es"
+                to="/es"
                 title="Español"
                 onClick={() => setLang("es")}
               >
@@ -57,7 +57,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./ru"
+                to="/ru"
                 title="Русский"
                 onClick={() => setLang("ru")}
               >
@@ -67,7 +67,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./ro"
+                to="/ro"
                 title="Română"
                 onClick={() => setLang("ro")}
               >
@@ -77,7 +77,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./pl"
+                to="/pl"
                 title="Polski"
                 onClick={() => setLang("pl")}
               >
@@ -87,7 +87,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./fr"
+                to="/fr"
                 title="Francais"
                 onClick={() => setLang("fr")}
               >
@@ -97,7 +97,7 @@ export default function Languages() {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="./sq"
+                to="/sq"
                 title="Squip"
                 onClick={() => setLang("sq")}
               >

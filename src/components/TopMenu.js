@@ -25,7 +25,7 @@ export default function TopMenu() {
   };
 
   const handleLogoClick = () => {
-    history.push(`/${lang}`);
+    history.push(`./${lang}`);
     window.location.reload();
   };
   return (

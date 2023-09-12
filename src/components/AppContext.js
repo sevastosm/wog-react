@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getIntialData, applicationLang } from "../utils";
 import { getLive } from "../api/apis";
 const AppContext = React.createContext({});
@@ -29,6 +29,7 @@ const store = {
 };
 
 export const Provider = ({ children }) => {
+  const history = useHistory();
   const [state, setGlobalstate] = React.useState(store);
 
   const setVideo = (video) => {
@@ -121,8 +122,10 @@ export const Provider = ({ children }) => {
     () =>
       getIntialData(lang).then((data) => {
         const activeVideoSetup = (language) => {
+          const YouTubeId = extractVideoID(data[8].Data.HIGH.URL);
+          history.push(`/${lang}/live/${YouTubeId}`);
           return {
-            YouTubeId: extractVideoID(data[8].Data.HIGH.URL),
+            YouTubeId: YouTubeId,
             Subject: "",
             RecordingSubject: "",
           };

@@ -54,11 +54,11 @@ const routes = [
     exact: true,
     path: `/:lang/${route.ABOUT}/`,
   },
-  {
-    component: AllSeriesPage,
-    exact: true,
-    path: `/:lang`,
-  },
+  // {
+  //   component: AllSeriesPage,
+  //   exact: true,
+  //   path: `/:lang/:seriesId?/:videoId?`,
+  // },
 ];
 
 export default routes;

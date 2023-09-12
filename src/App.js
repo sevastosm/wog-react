@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Layout from "./components/Layout";
 import SeriesList from "./components/playlist/SeriesList";
 import AppContext from "./components/AppContext";
+import AllSeriesPage from "./pages/allSeriesPage/AllSeriesPage";
 
 import { applicationLang } from "./utils";
 
@@ -41,8 +42,8 @@ export default function App() {
         </Sidebar>
       )}
       <Switch>
-        <Route exact path="/">
-          <Redirect to={`/${applicationLang()}`} />
+        <Route exact path={`/:lang/:seriesId/:videoId`}>
+          <AllSeriesPage />
         </Route>
         <Routes />
       </Switch>

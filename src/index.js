@@ -10,11 +10,11 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <HashRouter>
+  <BrowserRouter>
     <Provider>
       <App />
     </Provider>
-  </HashRouter>,
+  </BrowserRouter>,
   document.getElementById("root")
 );
 
