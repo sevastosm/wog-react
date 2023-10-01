@@ -30,8 +30,12 @@ const SeriesList = () => {
     const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
     const resourses = useResources([
         "tabRecordingsSeriesHdr",
-        "tabRecentHdr"
+        "tabRecentHdr",
+    "Contact",
+    'LegalNotice'
+
     ]);
+    console.log(resourses)
     const match = useRouteMatch("/:lang");
 
     let customList = series || [];
@@ -128,9 +132,25 @@ const SeriesList = () => {
                                 textDecoration: "none",
                             }}
                         >
-                            Επικοινωνία
+                            {resourses[1]?.Text}
                         </Link>
                     </Button>}
+                    <Button
+                        onClick={() => setSidebar(false)}
+                        className="reset-filters-btn w-100"
+                    >
+                        <Link
+                            to={`${match.url}/${route.COOKIES}`}
+                            style={{
+                                cursor: "pointer",
+                                color: "white",
+                                textDecoration: "none",
+                            }}
+                        >
+                                                        {resourses[2]?.Text}
+
+                        </Link>
+                    </Button>
             </div>
         </div >
     );

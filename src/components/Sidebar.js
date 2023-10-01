@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import AppContext from "./AppContext";
+import useResources from "../hooks/UseResources";
 
 function Sidebar({ children }) {
   const { sidebar, setSidebar, lang } = useContext(AppContext);
@@ -7,12 +8,14 @@ function Sidebar({ children }) {
   const handleClose = (e) => {
     setSidebar(false);
   };
-
+  const resourses = useResources([
+    "Selections",
+  ]);
   return (
     <div style={{ display: sidebar ? "block" : "none" }} className="sidebar">
       <div className="offcanvas-header">
         <div className="offcanvas-title h5">
-          <h3>Επιλογές</h3>
+          <h3>{resourses[0]?.Text}</h3>
         </div>
         <button
           type="button"

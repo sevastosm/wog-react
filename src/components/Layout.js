@@ -6,7 +6,7 @@ import "../styles/app.scss";
 
 export default function Layout({ children }) {
   return (
-    <div className="d-flex flex-column justify-content-center ">
+    <div className="d-flex flex-column justify-content-center layout">
       <main id="page">
         <TopMenu />
         {children}

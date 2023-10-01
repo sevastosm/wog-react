@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
+import useResources from "../../hooks/UseResources";
 
 import "./footer.scss";
 import { useMedia } from "react-media";
@@ -13,8 +14,15 @@ export default function () {
 
   const isSmallScreen = useMedia({ query: "(max-width: 1000px)" });
   if (isSmallScreen) return null;
+
+  const resourses = useResources([
+    "Contact",
+    "History",
+    "WhatisWordofGod",
+    "LegalNotice"
+  ]);
   return (
-    <footer className={isSmallScreen && "small"}>
+    <footer className={isSmallScreen && "small"} style={{ marginTop: "auto" }}>
       <div id="footer" className="footer">
         <div className="footerRow">
           <ul>
@@ -27,7 +35,8 @@ export default function () {
                   textDecoration: "none",
                 }}
               >
-                Επικοινωνία
+                {resourses[1]?.Text}
+
               </Link>
             </li>
             {/* <li>
@@ -63,7 +72,8 @@ export default function () {
                   textDecoration: "none",
                 }}
               >
-                Τι είναι το WordofGod
+                {resourses[0]?.Text}
+
               </Link>
             </li>
             <li>
@@ -75,7 +85,15 @@ export default function () {
                   textDecoration: "none",
                 }}
               >
-                Ιστορία
+                {resourses[3]?.Text}
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={`${match.url}/${route.COOKIES}`}
+                style={{ cursor: "pointer", textDecoration: "none" ,color:'white'}}
+              >
+                {resourses[2]?.Text}
               </Link>
             </li>
             {/* <li>
@@ -90,14 +108,7 @@ export default function () {
                 Σύνδεσμοι
               </Link>
             </li>
-            <li> *
-              {/* <Link
-                to={`${match.url}/${route.COOKIES}`}
-                style={{ cursor: "pointer", textDecoration: "none" }}
-              >
-                Cookies
-              </Link>
-            </li> *
+        
              <li>
                 <Link
                   to="/donate"
