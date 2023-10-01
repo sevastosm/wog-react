@@ -120,6 +120,7 @@ const SeriesList = () => {
                 <Filter />
 
                 {isSmallScreen && match &&
+                <>
                     <Button
                         onClick={() => setSidebar(false)}
                         className="reset-filters-btn w-100"
@@ -134,7 +135,7 @@ const SeriesList = () => {
                         >
                             {resourses[1]?.Text}
                         </Link>
-                    </Button>}
+                    </Button>
                     <Button
                         onClick={() => setSidebar(false)}
                         className="reset-filters-btn w-100"
@@ -151,6 +152,7 @@ const SeriesList = () => {
 
                         </Link>
                     </Button>
+                    </>}
             </div>
         </div >
     );
