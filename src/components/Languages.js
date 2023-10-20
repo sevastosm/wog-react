@@ -104,6 +104,16 @@ export default function Languages() {
                 AL
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/de"
+                title="Squip"
+                onClick={() => setLang("de")}
+              >
+                DE
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
